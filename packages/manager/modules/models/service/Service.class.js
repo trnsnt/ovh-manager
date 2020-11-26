@@ -35,9 +35,7 @@ export default class Service {
 
   get engagementEndDate() {
     return (
-      this.isEngaged() &&
-      this.billing.engagement &&
-      moment(this.billing.engagement.endDate).format('LL')
+      this.isEngaged() && moment(this.billing.engagement?.endDate).format('LL')
     );
   }
 
