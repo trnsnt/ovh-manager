@@ -107,12 +107,10 @@ export default function() {
         // insert a invisible link to it for a better focus management
         let focusHelper = visiblePage.find('a.focus-helper');
         if (!focusHelper.length) {
-          focusHelper = $('<a></a>');
-          focusHelper.attr({
-            href: '#',
-            class: 'focus-helper',
-            onClick: 'return false;',
-          });
+          focusHelper = document.createElement('a');
+          focusHelper.setAttribute('href', '#');
+          focusHelper.classList.add('focus-helper');
+          focusHelper.setAttribute('on-click', 'return false;');
           visiblePage.append(focusHelper);
         }
 
@@ -121,15 +119,21 @@ export default function() {
 
         // manage focus loop for current page
         visiblePage.on('keydown', (event) => {
+          const firstLinkElement = visiblePage
+            .find('a:not(.focus-helper), button')
+            .first()[0];
+          const firstLinkElementAsString = `${firstLinkElement.localName}.${firstLinkElement.className}`;
+
+          const lastLinkElement = visiblePage
+            .find('a:not(.focus-helper), button')
+            .last()[0];
+          const lastLinkElementAsString = `${lastLinkElement.localName}.${lastLinkElement.className}`;
+
           if (event.keyCode === 9) {
             // tab
             if (event.shiftKey) {
               // shift+tab
-              if (
-                $(event.target).is(
-                  visiblePage.find('a:not(.focus-helper), button').first(),
-                )
-              ) {
+              if (event.target.matches(firstLinkElementAsString)) {
                 visiblePage
                   .find('a:not(.focus-helper), button')
                   .last()
@@ -137,10 +141,10 @@ export default function() {
                 event.preventDefault();
               }
             } else if (
-              $(event.target).is(
-                visiblePage.find('a:not(.focus-helper), button').last(),
-              ) ||
-              $(event.target).is(focusHelper)
+              event.target.matches(lastLinkElementAsString) ||
+              event.target.matches(
+                `${focusHelper.localName}.${focusHelper.className}`,
+              )
             ) {
               visiblePage
                 .find('a:not(.focus-helper), button')
