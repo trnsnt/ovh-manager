@@ -3,7 +3,7 @@ import { Environment, fetchConfiguration } from '@ovh-ux/manager-config';
 import Shell from './shell';
 import DirectClientMessageBus from '../message-bus/direct-client';
 import environmentPlugin from '../plugin/environment';
-import i18nPlugin from '../plugin/i18n';
+import { i18n as i18nPlugin } from '../plugin/i18n';
 
 export function initShell(): Promise<Shell> {
   return fetchConfiguration('shell').then((environment: Environment) => {
