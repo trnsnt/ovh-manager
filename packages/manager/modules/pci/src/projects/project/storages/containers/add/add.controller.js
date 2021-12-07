@@ -8,6 +8,7 @@ import {
   OBJECT_CONTAINER_OFFERS,
   OBJECT_CONTAINER_TYPE_OFFERS,
   OBJECT_CONTAINER_TYPES,
+  STORAGE_PRICES_LINK,
 } from '../containers.constants';
 
 export default class PciStoragesContainersAddController {
@@ -27,6 +28,7 @@ export default class PciStoragesContainersAddController {
     this.OBJECT_CONTAINER_NAME_PATTERN = OBJECT_CONTAINER_NAME_PATTERN;
     this.OBJECT_CONTAINER_OFFERS = OBJECT_CONTAINER_OFFERS;
     this.OBJECT_CONTAINER_TYPE_OFFERS = OBJECT_CONTAINER_TYPE_OFFERS;
+    this.STORAGE_PRICES_LINK = STORAGE_PRICES_LINK;
   }
 
   $onInit() {
