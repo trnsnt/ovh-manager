@@ -13,11 +13,14 @@ import { buildURL } from '@ovh-ux/ufrontend';
 import { findAvailableLocale, detectUserLocale } from '@ovh-ux/manager-config';
 import { BILLING_REDIRECTIONS } from './constants';
 
+import { getShellClient, setShellClient } from './shell';
+
 attachPreloader(findAvailableLocale(detectUserLocale()));
 
 useShellClient('hub')
-  .then((shellClient) => {
-    return shellClient.environment.getEnvironment();
+  .then((client) => {
+    setShellClient(client);
+    return client.environment.getEnvironment();
   })
   .then((environment) => {
     environment.setVersion(__VERSION__);
@@ -42,6 +45,6 @@ useShellClient('hub')
       .catch(() => {})
       .then(() => import('./app.module'))
       .then(({ default: startApplication }) => {
-        startApplication(document.body, environment);
+        startApplication(document.body, getShellClient());
       });
   });
