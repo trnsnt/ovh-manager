@@ -33,5 +33,6 @@
   "pci_projects_project_users_createdAt_label": "Fecha de creación",
   "pci_projects_project_users_show_key_label": "Mostrar la clave de acceso",
   "pci_projects_project_users_show_cert_label": "Mostrar el certificado",
-  "pci_projects_project_users_show_user_informations_label": "Mostrar la información"
+  "pci_projects_project_users_show_user_informations_label": "Mostrar la información",
+  "pci_projects_project_users_high_perf_info": "Puede definir los roles del servicio High Performance Object Storage en la pestaña «Usuarios S3» de su solución Object Storage."
 }

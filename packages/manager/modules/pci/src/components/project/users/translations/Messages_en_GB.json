@@ -33,5 +33,6 @@
   "pci_projects_project_users_createdAt_label": "Creation date",
   "pci_projects_project_users_show_key_label": "Show access key",
   "pci_projects_project_users_show_cert_label": "View certificate",
-  "pci_projects_project_users_show_user_informations_label": "View details"
+  "pci_projects_project_users_show_user_informations_label": "View details",
+  "pci_projects_project_users_high_perf_info": "The roles of the High Performance object storage solution must be defined in your Object storage solution, in the “S3 Users” tab."
 }

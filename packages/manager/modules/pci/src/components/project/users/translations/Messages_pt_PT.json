@@ -33,5 +33,6 @@
   "pci_projects_project_users_createdAt_label": "Data de criação",
   "pci_projects_project_users_show_key_label": "Mostrar a chave de acesso",
   "pci_projects_project_users_show_cert_label": "Mostrar o certificado",
-  "pci_projects_project_users_show_user_informations_label": "Apresentar as informações"
+  "pci_projects_project_users_show_user_informations_label": "Apresentar as informações",
+  "pci_projects_project_users_high_perf_info": "As funções da oferta High Performance Object Storage devem ser definidas na oferta Object Storage, separador \"Utilizadores S3\"."
 }

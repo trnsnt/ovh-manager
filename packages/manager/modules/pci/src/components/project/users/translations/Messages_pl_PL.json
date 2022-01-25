@@ -33,5 +33,6 @@
   "pci_projects_project_users_createdAt_label": "Data utworzenia",
   "pci_projects_project_users_show_key_label": "Wyświetl klucz dostępu",
   "pci_projects_project_users_show_cert_label": "Wyświetl certyfikat",
-  "pci_projects_project_users_show_user_informations_label": "Wyświetl informacje"
+  "pci_projects_project_users_show_user_informations_label": "Wyświetl informacje",
+  "pci_projects_project_users_high_perf_info": "Role w ramach High Performance Object Storage należy zdefiniować w rozwiązaniu Object Storage, w zakładce „Użytkownicy S3”."
 }
