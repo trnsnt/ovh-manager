@@ -30,7 +30,7 @@ export default class PciStoragesContainersAddController {
     this.PciProjectStorageBlockService = PciProjectStorageBlockService;
     this.PciProjectStorageContainersService = PciProjectStorageContainersService;
     this.storagePricesLink =
-      STORAGE_PRICES_LINK[ovhSubsidiary] || STORAGE_PRICES_LINK.FR;
+      STORAGE_PRICES_LINK[ovhSubsidiary] || STORAGE_PRICES_LINK.DEFAULT;
     this.OBJECT_CONTAINER_NAME_PATTERN = OBJECT_CONTAINER_NAME_PATTERN;
     this.OBJECT_CONTAINER_OFFERS = OBJECT_CONTAINER_OFFERS;
     this.OBJECT_CONTAINER_OFFERS_LABELS = OBJECT_CONTAINER_OFFERS_LABELS;
