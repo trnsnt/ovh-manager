@@ -4,6 +4,7 @@ import { buildURL } from '@ovh-ux/ufrontend';
 import ApplicationContext from '@/context';
 import { useURL } from '@/container/common/urls-constants';
 import SidebarLink from './sidebar-link';
+import useOnboarding from '@/core/onboarding';
 
 function AssistanceSidebar() {
   const { t } = useTranslation('sidebar');
@@ -13,6 +14,8 @@ function AssistanceSidebar() {
     .getPlugin('environment')
     .getEnvironment();
   const urls = useURL(environment);
+
+  const { displayOnboardingWidget } = useOnboarding();
 
   return (
     <ul>
@@ -49,6 +52,10 @@ function AssistanceSidebar() {
         <SidebarLink
           node={{ translation: 'sidebar_assistance_live_chat' }}
           onClick={() => shell.getPlugin('ux').openChatbot()}
+        />
+        <SidebarLink
+          node={{ translation: 'sidebar_assistance_onboarding' }}
+          onClick={() => displayOnboardingWidget()}
         />
       </li>
     </ul>
