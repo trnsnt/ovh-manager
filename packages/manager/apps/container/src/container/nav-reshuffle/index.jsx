@@ -7,9 +7,11 @@ import React, {
 } from 'react';
 import { plugin, IFrameMessageBus } from '@ovh-ux/shell';
 import ApplicationContext from '@/context';
+import useOnboarding from '@/core/onboarding';
 
 import Header from './header';
 import Sidebar from './sidebar';
+import NavReshuffleOnboardingWidget from './onboarding';
 import NavReshuffleFeedbackWidget from './feedback';
 
 import style from './template.module.scss';
@@ -21,6 +23,7 @@ function NavReshuffleContainer() {
   const [isSidebarExpanded, setSidebarExpanded] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const { shell } = useContext(ApplicationContext);
+  const isOnboardingWidgetVisible = useOnboarding().isWidgetVisible;
 
   useEffect(() => {
     setIframe(iframeRef.current);
@@ -65,10 +68,11 @@ function NavReshuffleContainer() {
             src="about:blank"
             ref={iframeRef}
           ></iframe>
-          <Suspense fallback="">
-            <NavReshuffleFeedbackWidget />
-          </Suspense>
         </div>
+        <Suspense fallback="">
+          {isOnboardingWidgetVisible && <NavReshuffleOnboardingWidget />}
+          <NavReshuffleFeedbackWidget />
+        </Suspense>
       </div>
     </div>
   );
