@@ -32,7 +32,7 @@ export const COUNTRIES_VAT_LABEL = {
   BY: 'УНП / UNP',
   CA: 'BN / NE',
   IS: 'VSK / VASK',
-  IN: 'VAT TIN / CST TIN',
+  IN: 'GST',
   ID: 'NPWP',
   KZ: 'БСН / BIN',
   NZ: 'GST/IRD',
