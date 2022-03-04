@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { buildURL } from '@ovh-ux/ufrontend';
 import ApplicationContext from '@/context';
 import { useURL } from '@/container/common/urls-constants';
 import SidebarLink from './sidebar-link';
@@ -13,6 +12,8 @@ function AssistanceSidebar() {
     .getPlugin('environment')
     .getEnvironment();
   const urls = useURL(environment);
+
+  const hasAdvancedSupport = ['EU', 'CA'].includes(environment.getRegion());
 
   return (
     <ul>
@@ -30,8 +31,10 @@ function AssistanceSidebar() {
         <SidebarLink
           node={{
             translation: 'sidebar_assistance_tickets',
-            url: buildURL('dedicated', '#/ticket'),
-            isExternal: true,
+            routing: {
+              application: 'dedicated',
+              hash: '#/ticket',
+            },
           }}
         />
         <SidebarLink
@@ -40,16 +43,24 @@ function AssistanceSidebar() {
             url: urls.get('status'),
             isExternal: true,
           }}
-          onClick={() => {}}
         />
-        <SidebarLink
-          node={{ translation: 'sidebar_assistance_support_level' }}
-          onClick={() => {}}
-        />
-        <SidebarLink
-          node={{ translation: 'sidebar_assistance_live_chat' }}
-          onClick={() => shell.getPlugin('ux').openChatbot()}
-        />
+        {hasAdvancedSupport && (
+          <SidebarLink
+            node={{
+              translation: 'sidebar_assistance_support_level',
+              routing: {
+                application: 'dedicated',
+                hash: '#/useraccount/support/level',
+              },
+            }}
+          />
+        )}
+        {hasAdvancedSupport && (
+          <SidebarLink
+            node={{ translation: 'sidebar_assistance_live_chat' }}
+            onClick={() => shell.getPlugin('ux').openChatbot()}
+          />
+        )}
       </li>
     </ul>
   );

@@ -1,16 +1,21 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useMemo, useState, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useReket } from '@ovh-ux/ovh-reket';
+import { useShell } from '@/context';
 import SidebarLink from './sidebar-link';
 import { countServices, findNodeById } from './utils';
 import Assistance from './assistance';
 import style from './style.module.scss';
 import navigationRoot from './navigation-tree/root';
 import PciMenu from './pci';
-import logo from '@/assets/images/icon-logo-ovh.svg';
+import logo from '@/assets/images/OVHcloud_logo.svg';
 
 function Sidebar() {
   const { t } = useTranslation('sidebar');
+  const shell = useShell();
+  const navigationPlugin = shell.getPlugin('navigation');
+  const environment = shell.getPlugin('environment').getEnvironment();
+  const currentRegion = environment.getRegion();
   const reketInstance = useReket();
   const [currentNavigationNode, setCurrentNavigationNode] = useState(
     navigationRoot,
@@ -83,9 +88,6 @@ function Sidebar() {
     } else if (node.children) {
       setNavigationHistory([...navigationHistory, currentNavigationNode]);
       setCurrentNavigationNode(node);
-    } else if (node.path) {
-      // @TODO use navigation plugin
-      // console.log('navigate to', node.path);
     }
   };
 
@@ -94,11 +96,34 @@ function Sidebar() {
     setNavigationHistory(navigationHistory);
   };
 
+  /**
+   * Displayed menu items are the children of current navigation node
+   * filtered by region if the attribute is provided
+   */
+  const menuItems = useMemo(() => {
+    return currentNavigationNode.children
+      ?.filter((node) => {
+        if (node.region) {
+          const regionFilter = [].concat(node.region);
+          return regionFilter.includes(currentRegion);
+        }
+        return true;
+      })
+      .map((node) => (
+        <li key={node.id}>
+          <SidebarLink
+            node={node}
+            count={countServices(servicesCount, node)}
+            onClick={() => clickHandler(node)}
+          />
+        </li>
+      ));
+  }, [currentNavigationNode, servicesCount]);
+
   return (
     <div className={style.sidebar}>
-      <span className={style.sidebar_logo}>
+      <span role="img" className={style.sidebar_logo} aria-label="OVHcloud">
         <img src={logo} aria-hidden="true" />
-        OVHcloud
       </span>
       <ul>
         {navigationHistory.length > 0 && !isPciMenu && (
@@ -110,9 +135,11 @@ function Sidebar() {
             {t('sidebar_back')}
           </a>
         )}
-        <li>
-          <h2>{currentNavigationNode.label}</h2>
-        </li>
+        {!isPciMenu && (
+          <li>
+            <h2>{t(currentNavigationNode.translation)}</h2>
+          </li>
+        )}
         {isPciMenu && (
           <PciMenu
             onExit={() => setIsPciMenu(false)}
@@ -122,19 +149,10 @@ function Sidebar() {
             onSelectProject={(project) => setSelectedPciProject(project)}
           />
         )}
-        {!isPciMenu &&
-          currentNavigationNode.children?.map((node) => (
-            <li key={node.id}>
-              <SidebarLink
-                node={node}
-                count={countServices(servicesCount, node)}
-                onClick={() => clickHandler(node)}
-              />
-            </li>
-          ))}
+        {!isPciMenu && menuItems}
       </ul>
       <div className={style.sidebar_action}>
-        <a href="#">
+        <a href={navigationPlugin.getURL('hub', '#/catalog')}>
           <span
             className={`oui-icon oui-icon-plus ${style.sidebar_action_icon}`}
             aria-hidden="true"

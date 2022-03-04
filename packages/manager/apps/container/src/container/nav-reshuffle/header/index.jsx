@@ -10,6 +10,7 @@ import HamburgerMenu from './hamburger-menu';
 import NavReshuffleSwitchBack from '@/container/common/nav-reshuffle-switch-back';
 import modalStyle from '@/container/common/modal.module.scss';
 import UserAccountMenu from './user-account-menu';
+import style from './style.module.scss';
 
 function Header({
   isSidebarExpanded,
@@ -31,7 +32,7 @@ function Header({
               isDropdownOpen ? '' : modalStyle.hidden
             }`}
           ></div>
-          <div className="oui-navbar">
+          <div className={`oui-navbar ${style.navbar}`}>
             <HamburgerMenu
               isOpen={isSidebarExpanded}
               onClick={onHamburgerMenuClick}
