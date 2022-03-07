@@ -3,17 +3,17 @@ import { useTranslation } from 'react-i18next';
 import { useReket } from '@ovh-ux/ovh-reket';
 import { useShell } from '@/context';
 import SidebarLink from './sidebar-link';
-import { countServices, findNodeById } from './utils';
+import { countServices, findPathToNode } from './utils';
 import Assistance from './assistance';
 import style from './style.module.scss';
 import navigationRoot from './navigation-tree/root';
-import PciMenu from './pci';
 import logo from '@/assets/images/OVHcloud_logo.svg';
 
 function Sidebar() {
   const { t } = useTranslation('sidebar');
   const shell = useShell();
   const navigationPlugin = shell.getPlugin('navigation');
+  const routingPlugin = shell.getPlugin('routing');
   const environment = shell.getPlugin('environment').getEnvironment();
   const currentRegion = environment.getRegion();
   const reketInstance = useReket();
@@ -26,6 +26,48 @@ function Sidebar() {
   const [pciProjects, setPciProjects] = useState(null);
   const [selectedPciProject, setSelectedPciProject] = useState(null);
   const [pciProjectServiceCount, setPciProjectServiceCount] = useState(null);
+  const [initialNavigationPath, setInitialNavigationPath] = useState([]);
+
+  const clickHandler = (node) => {
+    if (node.children) {
+      setNavigationHistory([...navigationHistory, currentNavigationNode]);
+      setCurrentNavigationNode(node);
+    }
+  };
+
+  const goBackHandler = () => {
+    setCurrentNavigationNode(navigationHistory.pop());
+    setNavigationHistory(navigationHistory);
+  };
+
+  /**
+   * At startup we try to find the initial path to the node corresponding
+   * to the current URL
+   */
+  useEffect(() => {
+    const { appId, appHash } = routingPlugin.parseContainerURL();
+    const path = findPathToNode(navigationRoot, (node) => {
+      if (!node?.routing) return false;
+      const hashRegexp = new RegExp(
+        (node.routing.appHash || '#/').replace(/{[^}]+}/g, '[^/]+'),
+      );
+      return node.routing.application === appId && hashRegexp.test(appHash);
+    });
+    setInitialNavigationPath(path);
+  }, []);
+
+  /**
+   * While the initial path is not empty, navigate down inside the path
+   */
+  useEffect(() => {
+    if (initialNavigationPath.length) {
+      const [nextNode] = initialNavigationPath;
+      if (nextNode !== currentNavigationNode) {
+        clickHandler(nextNode);
+      }
+      setInitialNavigationPath(initialNavigationPath.slice(1));
+    }
+  }, [initialNavigationPath]);
 
   /**
    * Fetch service count per service type
@@ -52,12 +94,39 @@ function Sidebar() {
         })
         .then((result) => {
           if (result && result.length) {
-            findNodeById(navigationRoot, 'public-cloud').count = result.length;
             setPciProjects(result);
+            const { appHash } = routingPlugin.parseContainerURL();
+            const pciProjectMatch = (appHash || '').match(
+              /^#\/pci\/projects\/([^/]+)/,
+            );
+            if (pciProjectMatch && pciProjectMatch.length >= 2) {
+              const [, pciProjectId] = pciProjectMatch;
+              const project = result.find((p) => p.project_id === pciProjectId);
+              if (project) {
+                setSelectedPciProject(project);
+                return;
+              }
+            }
             setSelectedPciProject(result[0]);
           }
         });
     }
+  }, [currentNavigationNode]);
+
+  /**
+   * Check if we are inside a public cloud section
+   */
+  useEffect(() => {
+    const currentNavigationPath = findPathToNode(
+      navigationRoot,
+      (node) => node === currentNavigationNode,
+    );
+    setIsPciMenu(false);
+    currentNavigationPath.forEach((node) => {
+      if (node.id === 'public-cloud') {
+        setIsPciMenu(true);
+      }
+    });
   }, [currentNavigationNode]);
 
   /**
@@ -82,25 +151,23 @@ function Sidebar() {
     };
   }, [selectedPciProject]);
 
-  const clickHandler = (node) => {
-    if (node.id === 'public-cloud') {
-      setIsPciMenu(true);
-    } else if (node.children) {
-      setNavigationHistory([...navigationHistory, currentNavigationNode]);
-      setCurrentNavigationNode(node);
-    }
-  };
-
-  const goBackHandler = () => {
-    setCurrentNavigationNode(navigationHistory.pop());
-    setNavigationHistory(navigationHistory);
-  };
-
   /**
    * Displayed menu items are the children of current navigation node
    * filtered by region if the attribute is provided
    */
   const menuItems = useMemo(() => {
+    const count = {
+      total: servicesCount?.total,
+      serviceTypes: {
+        ...servicesCount?.serviceTypes,
+      },
+    };
+    if (pciProjectServiceCount) {
+      count.serviceTypes = {
+        ...pciProjectServiceCount.serviceTypes,
+        ...servicesCount?.serviceTypes,
+      };
+    }
     return currentNavigationNode.children
       ?.filter((node) => {
         if (node.region) {
@@ -113,12 +180,12 @@ function Sidebar() {
         <li key={node.id}>
           <SidebarLink
             node={node}
-            count={countServices(servicesCount, node)}
+            count={countServices(count, node)}
             onClick={() => clickHandler(node)}
           />
         </li>
       ));
-  }, [currentNavigationNode, servicesCount]);
+  }, [currentNavigationNode, servicesCount, pciProjectServiceCount]);
 
   return (
     <div className={style.sidebar}>
@@ -126,7 +193,7 @@ function Sidebar() {
         <img src={logo} aria-hidden="true" />
       </span>
       <ul>
-        {navigationHistory.length > 0 && !isPciMenu && (
+        {navigationHistory.length > 0 && (
           <a className={style.sidebar_back_btn} onClick={goBackHandler}>
             <span
               className="oui-icon oui-icon-chevron-left"
@@ -135,21 +202,26 @@ function Sidebar() {
             {t('sidebar_back')}
           </a>
         )}
-        {!isPciMenu && (
+        {isPciMenu && selectedPciProject && (
           <li>
-            <h2>{t(currentNavigationNode.translation)}</h2>
+            <select
+              value={pciProjects.indexOf(selectedPciProject)}
+              onChange={(e) =>
+                setSelectedPciProject(pciProjects[e.target.value])
+              }
+            >
+              {pciProjects.map((project, index) => (
+                <option value={index} key={index}>
+                  {project.description || project.project_id}
+                </option>
+              ))}
+            </select>
           </li>
         )}
-        {isPciMenu && (
-          <PciMenu
-            onExit={() => setIsPciMenu(false)}
-            projects={pciProjects}
-            selectedProject={selectedPciProject}
-            servicesCount={pciProjectServiceCount}
-            onSelectProject={(project) => setSelectedPciProject(project)}
-          />
-        )}
-        {!isPciMenu && menuItems}
+        <li>
+          <h2>{t(currentNavigationNode.translation)}</h2>
+        </li>
+        {menuItems}
       </ul>
       <div className={style.sidebar_action}>
         <a href={navigationPlugin.getURL('hub', '#/catalog')}>
