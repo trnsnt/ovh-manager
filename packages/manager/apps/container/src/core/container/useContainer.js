@@ -5,4 +5,8 @@ export const useProductNavReshuffle = () => {
   return useContext(ProductNavReshuffleContext);
 };
 
+export const useProductNavReshuffleOnboarding = () => {
+  return useContext(ProductNavReshuffleContext).onboarding;
+};
+
 export default useProductNavReshuffle;

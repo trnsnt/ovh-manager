@@ -8,7 +8,7 @@ import { shell as shellApi } from '@ovh-ux/shell';
 
 import { initSso } from '@/core/sso';
 import { ApplicationProvider } from '@/context';
-import { ProductNavReshuffleProvider } from '@/core/product-nav-reshuffle';
+import { ContainerProvider } from '@/core/container';
 import Container from '@/container';
 
 import '@ovh-ux/ui-kit/dist/css/oui.css';
@@ -36,9 +36,9 @@ shellApi.initShell().then((shell) => {
   ReactDOM.render(
     <React.StrictMode>
       <ApplicationProvider environment={environment} shell={shell}>
-        <ProductNavReshuffleProvider>
+        <ContainerProvider>
           <Container />
-        </ProductNavReshuffleProvider>
+        </ContainerProvider>
       </ApplicationProvider>
     </React.StrictMode>,
     document.querySelector('#app'),

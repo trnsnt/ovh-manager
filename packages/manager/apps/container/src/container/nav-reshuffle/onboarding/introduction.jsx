@@ -1,42 +1,67 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Overlay from 'react-bootstrap/Overlay';
 import Popover from 'react-bootstrap/Popover';
 
 import { useShell } from '@/context/useApplicationContext';
-import useOnboarding from '@/core/onboarding';
+import { ONBOARDING_OPENED_STATE_ENUM } from '@/core/onboarding';
+import useProductNavReshuffle from '@/core/product-nav-reshuffle';
 
 import style from './style.module.scss';
 import popoverStyle from '@/container/common/popover.module.scss';
 
 export const OnboardingIntroduction = () => {
   const { t } = useTranslation('nav-reshuffle/onboarding');
-  // const {} = useOnboarding();
   const popoverContainer = useRef(null);
   const popoverButton = useRef(null);
+  const productNavReshuffle = useProductNavReshuffle();
 
-  const {
-    hideOnboardingWidget,
-    isLetsGoBtnVisible,
-    isWelcomePopoverVisible,
-    toggleWelcomPopoverVisibility,
-    startWalkMe,
-  } = useOnboarding();
+  const [isBtnVisible, setIsBtnVisible] = useState(false);
+  const [isPopoverVisible, setIsPopoverVisible] = useState(false);
 
   const user = useShell()
     .getPlugin('environment')
     .getEnvironment()
     .getUser();
 
+  const openOnboarding = () => {
+    productNavReshuffle.openOnboarding();
+  };
+
+  const startOnboarding = () => {
+    productNavReshuffle.startOnboarding();
+  };
+
+  const closeOnboarding = () => {
+    productNavReshuffle.closeOnboarding();
+  };
+
+  useEffect(() => {
+    switch (productNavReshuffle.onboarding.openedState) {
+      case ONBOARDING_OPENED_STATE_ENUM.BUTTON:
+        setIsBtnVisible(true);
+        setIsPopoverVisible(false);
+        break;
+      case ONBOARDING_OPENED_STATE_ENUM.WELCOME:
+        setIsBtnVisible(true);
+        setIsPopoverVisible(true);
+        break;
+      default:
+        setIsBtnVisible(false);
+        setIsPopoverVisible(false);
+        break;
+    }
+  }, [productNavReshuffle.onboarding.openedState]);
+
   return (
     <div ref={popoverContainer}>
-      {isLetsGoBtnVisible && (
+      {isBtnVisible && (
         <button
           type="button"
           className={`${style.onboardingButton} oui-button oui-button_icon-left oui-button_l oui-button_primary`}
-          onClick={toggleWelcomPopoverVisibility}
+          onClick={() => openOnboarding()}
           ref={popoverButton}
-          aria-expanded={isWelcomePopoverVisible}
+          aria-expanded={isPopoverVisible}
         >
           <span className="oui-icon oui-icon-info"></span>
           <span className="oui-button__text">
@@ -46,11 +71,11 @@ export const OnboardingIntroduction = () => {
       )}
 
       <Overlay
-        show={isWelcomePopoverVisible}
+        show={isPopoverVisible}
         placement="top-end"
-        container={popoverContainer}
+        container={popoverContainer.current}
         transition={false}
-        target={popoverButton}
+        target={popoverButton.current}
       >
         <Popover
           className={`${style.welcomePopover} ${popoverStyle.popover} oui-popover`}
@@ -69,13 +94,13 @@ export const OnboardingIntroduction = () => {
           <div className="d-flex flex-row-reverse justify-content-between">
             <button
               className="oui-button oui-button_primary"
-              onClick={() => startWalkMe()}
+              onClick={() => startOnboarding()}
             >
               {t('onboarding_popover_follow_guide_button')}
             </button>
             <button
               className="oui-button oui-button_ghost"
-              onClick={() => hideOnboardingWidget()}
+              onClick={() => closeOnboarding()}
             >
               {t('onboarding_popover_hide_button')}
             </button>

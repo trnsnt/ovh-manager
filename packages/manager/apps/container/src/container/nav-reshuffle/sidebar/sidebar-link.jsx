@@ -26,12 +26,12 @@ StaticLink.propTypes = {
   node: PropTypes.any,
 };
 
-function SidebarLink({ count, node, onClick }) {
+function SidebarLink({ count, node, onClick, id }) {
   const { t } = useTranslation('sidebar');
   return node.url ? (
     <StaticLink node={node} />
   ) : (
-    <a onClick={onClick}>
+    <a onClick={onClick} id={id}>
       {t(node.translation)}
       {node.children ? (
         <span
@@ -56,6 +56,7 @@ SidebarLink.propTypes = {
   count: PropTypes.number,
   node: PropTypes.any,
   onClick: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default SidebarLink;

@@ -6,9 +6,10 @@ import NotificationsSidebar from '@/container/common/notifications-sidebar';
 import LanguageMenu from '@/container/common/language';
 import { NotificationsProvider } from '@/core/notifications';
 import ApplicationContext, { useShell } from '@/context';
-import HamburgerMenu from './hamburger-menu';
 import NavReshuffleSwitchBack from '@/container/common/nav-reshuffle-switch-back';
 import modalStyle from '@/container/common/modal.module.scss';
+
+import HamburgerMenu from './hamburger-menu';
 import UserAccountMenu from './user-account-menu';
 
 function Header({

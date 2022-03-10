@@ -16,7 +16,10 @@ export const UserDefaultPaymentMethod = ({
   const paymentMethodUrl = buildURL('dedicated', '#/billing/payment/method');
 
   return (
-    <div className={`${style.defaultPaymentMethod} my-1`}>
+    <div
+      className={`${style.defaultPaymentMethod} my-1`}
+      id="user-account-menu-payment-method"
+    >
       <a
         className="d-flex flex-row align-items-center p-2"
         href={paymentMethodUrl}
@@ -25,7 +28,7 @@ export const UserDefaultPaymentMethod = ({
         <div className="m-auto p-1 minw-0 w-100">
           <h2>{t('user_account_menu_payment_method_title')}</h2>
           {isLoading && (
-            <div>
+            <div className={`${style.defaultPaymentMethod_loading}`}>
               <div className="oui-skeleton oui-skeleton_s">
                 <div className="oui-skeleton__loader"></div>
               </div>

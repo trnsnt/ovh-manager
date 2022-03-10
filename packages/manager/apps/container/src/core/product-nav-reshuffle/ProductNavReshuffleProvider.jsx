@@ -1,71 +1,99 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useReket } from '@ovh-ux/ovh-reket';
 
 import ProductNavReshuffleContext from './context';
+import useOnboarding, {
+  ONBOARDING_OPENED_STATE_ENUM,
+  ONBOARDING_STATUS_ENUM,
+} from '../onboarding';
 
 export const ProductNavReshuffleProvider = ({ children }) => {
-  const reketInstance = useReket();
-  const preferenceKey = 'NAV_RESHUFFLE_BETA_ACCESS';
-  const [isLoading, setIsLoading] = useState(true);
-  const [isBeta, setIsBeta] = useState(false);
-  const [askBeta, setAskBeta] = useState(false);
-
   let pnrContext = useContext(ProductNavReshuffleContext);
+  const onboardingHelper = useOnboarding();
 
-  const updateBetaChoice = async (accept = false) => {
-    return reketInstance
-      .put(`/me/preferences/manager/${preferenceKey}`, {
-        key: preferenceKey,
-        value: accept ? 'true' : 'false',
-      })
-      .then((result) => {
-        if (accept === false) {
-          // @TODO open new tab for survey
-        }
-        window.location.reload(false);
-        return result;
-      });
+  const [isLoading, setIsLoading] = useState(true);
+
+  // onboarding
+  const [onboardingState, setOnboardingState] = useState({
+    openedState: ONBOARDING_OPENED_STATE_ENUM.CLOSED,
+  });
+
+  const openOnboarding = () => {
+    setOnboardingState({
+      ...onboardingState,
+      openedState: onboardingHelper.getNextOpenedState(
+        onboardingState.openedState,
+      ),
+    });
   };
 
-  const createBetaChoice = async (accept = false) => {
-    return reketInstance
-      .post(`/me/preferences/manager`, {
-        key: preferenceKey,
-        value: accept ? 'true' : 'false',
-      })
-      .then((result) => {
-        window.location.reload(false);
-        return result;
-      });
+  const startOnboarding = () => {
+    setOnboardingState({
+      ...onboardingState,
+      openedState: ONBOARDING_OPENED_STATE_ENUM.WALKME,
+    });
+  };
+
+  const closeOnboarding = (onboardingStatus) => {
+    setOnboardingState({
+      ...onboardingState,
+      openedState: ONBOARDING_OPENED_STATE_ENUM.CLOSED,
+    });
+
+    return onboardingHelper.updatePreference({
+      status: onboardingStatus || ONBOARDING_STATUS_ENUM.CLOSED,
+    });
+  };
+
+  // navigation
+  const [navigationState, setNavigationState] = useState({
+    isAccountSidebarOpened: false, // or maybe use ux plugin?
+  });
+
+  const openAccountSidebar = () => {
+    setNavigationState({
+      ...navigationState,
+      isAccountSidebarOpened: true,
+    });
+  };
+
+  const closeAccountSidebar = () => {
+    setNavigationState({
+      ...navigationState,
+      isAccountSidebarOpened: false,
+    });
   };
 
   useEffect(() => {
-    reketInstance
-      .get(`/me/preferences/manager/${preferenceKey}`)
-      .then(({ value }) => {
-        setIsBeta(value === 'true');
+    onboardingHelper
+      .init()
+      .then((status) => {
+        setOnboardingState({
+          ...onboardingState,
+          openedState: onboardingHelper.getOpenedStateFromStatus(status),
+        });
       })
-      .catch((error) => {
-        if (error?.status === 404) {
-          setAskBeta(true);
-        } else {
-          throw error;
-        }
-      })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   pnrContext = {
-    createBetaChoice,
-    askBeta,
-    isBeta,
-    updateBetaChoice,
+    isLoading,
+    // onboarding
+    onboarding: onboardingState,
+    openOnboarding,
+    startOnboarding,
+    closeOnboarding,
+    // navigation
+    navigation: navigationState,
+    openAccountSidebar,
+    closeAccountSidebar,
   };
 
   return (
     <ProductNavReshuffleContext.Provider value={pnrContext}>
-      {!isLoading && children}
+      {children}
     </ProductNavReshuffleContext.Provider>
   );
 };

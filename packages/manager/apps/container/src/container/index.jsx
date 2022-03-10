@@ -1,17 +1,17 @@
 import React from 'react';
 import LegacyContainer from '@/container/legacy';
 import NavReshuffleContainer from '@/container/nav-reshuffle';
-import useProductNavReshuffle from '@/core/product-nav-reshuffle';
-import { OnboardingProvider } from '@/core/onboarding';
+import useContainer from '@/core/container';
+import { ProductNavReshuffleProvider } from '@/core/product-nav-reshuffle';
 
 export default function Container() {
-  const { isBeta } = useProductNavReshuffle();
+  const { isBeta } = useContainer();
   return (
     <>
       {isBeta ? (
-        <OnboardingProvider>
+        <ProductNavReshuffleProvider>
           <NavReshuffleContainer />
-        </OnboardingProvider>
+        </ProductNavReshuffleProvider>
       ) : (
         <LegacyContainer />
       )}

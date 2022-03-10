@@ -4,7 +4,7 @@ import { buildURL } from '@ovh-ux/ufrontend';
 import ApplicationContext from '@/context';
 import { useURL } from '@/container/common/urls-constants';
 import SidebarLink from './sidebar-link';
-import useOnboarding from '@/core/onboarding';
+import useProductNavReshuffle from '@/core/product-nav-reshuffle';
 
 function AssistanceSidebar() {
   const { t } = useTranslation('sidebar');
@@ -15,7 +15,7 @@ function AssistanceSidebar() {
     .getEnvironment();
   const urls = useURL(environment);
 
-  const { displayOnboardingWidget } = useOnboarding();
+  const { openOnboarding } = useProductNavReshuffle();
 
   return (
     <ul>
@@ -55,7 +55,7 @@ function AssistanceSidebar() {
         />
         <SidebarLink
           node={{ translation: 'sidebar_assistance_onboarding' }}
-          onClick={() => displayOnboardingWidget()}
+          onClick={() => openOnboarding()}
         />
       </li>
     </ul>

@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import useClickAway from 'react-use/lib/useClickAway';
 import { useTranslation } from 'react-i18next';
-import useProductNavReshuffle from '@/core/product-nav-reshuffle';
+import useContainer from '@/core/container';
 
 import NavReshuffleSwitchBackModal from './modal';
 
 export default function NavReshuffleSwitchBack({ onChange }) {
   const { t } = useTranslation('beta-modal');
-  const { updateBetaChoice, isBeta } = useProductNavReshuffle();
+  const { updateBetaChoice, isBeta } = useContainer();
   const ref = useRef();
   const [show, setShow] = useState(false);
   const [confirm, setConfirm] = useState(false);

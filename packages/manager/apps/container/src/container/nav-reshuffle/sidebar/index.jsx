@@ -126,6 +126,7 @@ function Sidebar() {
           currentNavigationNode.children?.map((node) => (
             <li key={node.id}>
               <SidebarLink
+                id={`sidebar-link-${node.id}`}
                 node={node}
                 count={countServices(servicesCount, node)}
                 onClick={() => clickHandler(node)}

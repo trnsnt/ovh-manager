@@ -1,0 +1,27 @@
+@import '@ovh-ux/ui-kit/dist/scss/tokens/_colors';
+@import '@ovh-ux/ui-kit/dist/scss/tokens/_fonts';
+@import '@ovh-ux/ui-kit/dist/scss/tokens/_globals';
+
+$walk-me-z-index: $base-z-index-popover + 100;
+
+.onboarding-walkme {
+  &_overlay {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: $walk-me-z-index - 1;
+  }
+
+  &_step {
+    position: absolute;
+    box-shadow: rgba(0, 80, 215, 0.75) 0px 0px 0px 5000px;
+    z-index: $walk-me-z-index;
+    transition: all 0.3s ease-out;
+  }
+
+  &_popover {
+    z-index: $walk-me-z-index + 1 !important;
+  }
+}

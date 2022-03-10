@@ -5,6 +5,8 @@ import { useReket } from '@ovh-ux/ovh-reket';
 import { useOvhPaymentMethod } from '@ovh-ux/ovh-payment-method';
 
 import { useShell } from '@/context';
+import useOnboarding from '@/core/onboarding';
+import useProductNavReshuffle from '@/core/product-nav-reshuffle';
 
 import UserAccountMenuButton from './button.jsx';
 import UserAccountMenuContent from './content.jsx';
@@ -19,20 +21,38 @@ export const UserAccountMenu = ({ onToggle }) => {
   const user = environment.getUser();
   const region = environment.getRegion();
 
+  const {
+    onboarding,
+    navigation,
+    openAccountSidebar,
+    closeAccountSidebar,
+  } = useProductNavReshuffle();
+  const onboardingHelper = useOnboarding();
+
   const ovhPaymentMethod = useOvhPaymentMethod({
     reketInstance: useReket(),
     region,
   });
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const [isPaymentMethodLoading, setIsPaymentMethodLoading] = useState(true);
   const [defaultPaymentMethod, setDefaultPaymentMethod] = useState(null);
   const handleRootClose = () => {
-    setShow(false);
+    if (!onboardingHelper.hasStarted(onboarding.openedState)) {
+      closeAccountSidebar();
+    }
   };
 
+  // useEffect(async () => {
+  //   onToggle({ show });
+  // }, [show]);
+
   useEffect(async () => {
-    if (!defaultPaymentMethod && show && !user.enterprise) {
+    if (
+      !defaultPaymentMethod &&
+      navigation.isAccountSidebarOpened &&
+      !user.enterprise
+    ) {
       try {
         setDefaultPaymentMethod(
           await ovhPaymentMethod.getDefaultPaymentMethod(),
@@ -42,17 +62,21 @@ export const UserAccountMenu = ({ onToggle }) => {
       }
     }
 
-    onToggle({ show });
-  }, [show]);
+    onToggle({ show: navigation.isAccountSidebarOpened });
+  }, [navigation.isAccountSidebarOpened]);
 
   useClickAway(ref, handleRootClose);
 
   return (
     <div className="oui-navbar-dropdown" ref={ref}>
       <UserAccountMenuButton
-        show={show}
+        show={navigation.isAccountSidebarOpened}
         onClick={(nextShow) => {
-          setShow(nextShow);
+          if (nextShow) {
+            openAccountSidebar();
+          } else {
+            closeAccountSidebar();
+          }
         }}
       >
         <span
