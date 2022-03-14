@@ -11,6 +11,7 @@ export default class BillingOrdersCtrl {
     $translate,
     OvhApiMeOrder,
     constants,
+    coreConfig,
     orders,
     schema,
     criteria,
@@ -28,6 +29,7 @@ export default class BillingOrdersCtrl {
     this.OvhApiMeOrder = OvhApiMeOrder;
     this.orders = orders;
     this.schema = schema;
+    this.coreConfig = coreConfig;
     this.criteria = criteria || [];
     this.filter = filter;
     this.getOrderTrackingHref = getOrderTrackingHref;
@@ -39,6 +41,16 @@ export default class BillingOrdersCtrl {
       'guides.billing',
     );
     this.allowOrderTracking = billingFeatureAvailability.allowOrderTracking();
+  }
+
+  descriptionOfHeading() {
+    const currentRegion = this.coreConfig.getRegion();
+    const translateHeading = this.$translate.instant(
+      `orders_page_description_${currentRegion}`,
+    );
+    return translateHeading !== `orders_page_description_${currentRegion}`
+      ? translateHeading
+      : this.$translate.instant('orders_page_description');
   }
 
   loadRow($row) {
