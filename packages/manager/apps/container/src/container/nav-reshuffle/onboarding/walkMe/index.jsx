@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import Overlay from 'react-bootstrap/Overlay';
-import Popover from 'react-bootstrap/Popover';
+import { createPopper } from '@popperjs/core';
+import { debounce } from 'lodash-es';
 
 import popoverStyle from '@/container/common/popover.module.scss';
 import useProductNavReshuffle from '@/core/product-nav-reshuffle';
@@ -13,8 +13,11 @@ const ELEMENT_OFFSET = 10;
 
 export const OnboardingWalkMe = () => {
   const { t } = useTranslation('nav-reshuffle/onboarding');
-  const walkMeRef = useRef();
-  const stepElementRef = useRef();
+
+  const stepElement = useRef();
+  const popoverElement = useRef();
+  const [arrowPlacement, setArrowPlacement] = useState();
+  const [popperInstance, setPopperInstance] = useState();
 
   const {
     closeOnboarding,
@@ -34,7 +37,7 @@ export const OnboardingWalkMe = () => {
     },
     {
       selector: '#user-account-menu-profile',
-      placement: 'left-start',
+      placement: 'left',
       title: t('onboarding_walkme_popover_step2_title'),
       content: t('onboarding_walkme_popover_step2_content'),
       onBeforeEnter: () => {
@@ -49,13 +52,13 @@ export const OnboardingWalkMe = () => {
     },
     {
       selector: '#user-account-menu-payment-method',
-      placement: 'left-start',
+      placement: 'left',
       title: t('onboarding_walkme_popover_step3_title'),
       content: t('onboarding_walkme_popover_step3_content'),
     },
     {
       selector: '#sidebar-link-services',
-      placement: 'right-start',
+      placement: 'right',
       title: t('onboarding_walkme_popover_step4_title'),
       content: t('onboarding_walkme_popover_step4_content'),
       onBeforeEnter: () => {
@@ -64,7 +67,7 @@ export const OnboardingWalkMe = () => {
     },
     {
       selector: '#sidebar-link-billing',
-      placement: 'right-start',
+      placement: 'right',
       title: t('onboarding_walkme_popover_step5_title'),
       content: t('onboarding_walkme_popover_step5_content'),
     },
@@ -84,6 +87,45 @@ export const OnboardingWalkMe = () => {
     }
   };
 
+  const calculateTargetBound = () => {
+    const currentStep = steps[currentStepIndex];
+    const targetElement = document.querySelector(currentStep.selector);
+    const targetPos = targetElement.getBoundingClientRect();
+    const el = stepElement.current;
+
+    const positionOffset = ELEMENT_OFFSET / 2;
+
+    el.style.top = `${targetPos.top - positionOffset}px`;
+    el.style.left = `${targetPos.left - positionOffset}px`;
+    el.style.width = `${targetPos.width + ELEMENT_OFFSET}px`;
+    el.style.height = `${targetPos.height + ELEMENT_OFFSET}px`;
+  };
+
+  const updatePopper = () => {
+    const currentStep = steps[currentStepIndex];
+
+    if (popperInstance) {
+      popperInstance.setOptions({
+        placement: currentStep.placement,
+      });
+    } else {
+      setPopperInstance(
+        createPopper(stepElement.current, popoverElement.current, {
+          placement: currentStep.placement,
+        }),
+      );
+    }
+  };
+
+  useEffect(() => {
+    const onWindowResize = () => {
+      calculateTargetBound();
+      updatePopper();
+    };
+
+    window.addEventListener('resize', debounce(onWindowResize, 500));
+  }, []);
+
   useEffect(() => {
     const currentStep = steps[currentStepIndex];
 
@@ -92,50 +134,30 @@ export const OnboardingWalkMe = () => {
       : Promise.resolve(true);
 
     onBeforeEnter.then(() => {
-      const targetElement = document.querySelector(currentStep.selector);
-      const targetPos = targetElement.getBoundingClientRect();
-      const stepElement = stepElementRef.current;
-
-      const positionOffset = ELEMENT_OFFSET / 2;
-
-      stepElement.style.top = `${targetPos.top - positionOffset}px`;
-      stepElement.style.left = `${targetPos.left - positionOffset}px`;
-      stepElement.style.width = `${targetPos.width + ELEMENT_OFFSET}px`;
-      stepElement.style.height = `${targetPos.height + ELEMENT_OFFSET}px`;
+      calculateTargetBound();
+      setArrowPlacement(currentStep.placement);
 
       // add a timeout of the same time of the stepElement animation
-      setTimeout(
-        () => {
-          setIsPopoverVisible(true);
-        },
-        currentStepIndex === 0 ? 0 : 300,
-      );
+      setTimeout(updatePopper, 300);
     });
   }, [currentStepIndex]);
 
   return (
-    <div className={style['onboarding-walkme']} ref={walkMeRef}>
+    <div className={style['onboarding-walkme']}>
       <div className={style['onboarding-walkme_overlay']}></div>
+      <div className={style['onboarding-walkme_step']} ref={stepElement}></div>
       <div
-        className={style['onboarding-walkme_step']}
-        ref={stepElementRef}
-      ></div>
-      <Overlay
-        show={isPopoverVisible}
-        placement={steps[currentStepIndex].placement}
-        container={walkMeRef.current}
-        transition={false}
-        target={stepElementRef.current}
+        ref={popoverElement}
+        className={`${style['onboarding-walkme_popover']} ${popoverStyle.popover} oui-popover`}
+        x-placement={arrowPlacement}
       >
-        <Popover
-          className={`${style['onboarding-walkme_popover']} ${popoverStyle.popover} oui-popover`}
-        >
-          <Popover.Title as="h2" className={popoverStyle['popover-header']}>
+        <div className="oui-popover__content">
+          <h2 className={popoverStyle['popover-header']}>
             {steps[currentStepIndex].title}
-          </Popover.Title>
-          <Popover.Content className={`${popoverStyle['popover-body']} mb-3`}>
+          </h2>
+          <div className={`${popoverStyle['popover-body']} mb-3`}>
             {steps[currentStepIndex].content}
-          </Popover.Content>
+          </div>
           <div className="d-flex flex-row-reverse justify-content-between">
             <button
               className="oui-button oui-button_primary"
@@ -153,8 +175,13 @@ export const OnboardingWalkMe = () => {
               {t('onboarding_popover_hide_button')}
             </button>
           </div>
-        </Popover>
-      </Overlay>
+        </div>
+        <div
+          className="oui-popover__arrow"
+          aria-hidden="true"
+          data-popper-arrow
+        ></div>
+      </div>
     </div>
   );
 };

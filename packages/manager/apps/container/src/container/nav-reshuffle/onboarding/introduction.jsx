@@ -1,7 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Overlay from 'react-bootstrap/Overlay';
-import Popover from 'react-bootstrap/Popover';
+import { usePopper } from 'react-popper';
 
 import { useShell } from '@/context/useApplicationContext';
 import { ONBOARDING_OPENED_STATE_ENUM } from '@/core/onboarding';
@@ -12,8 +11,13 @@ import popoverStyle from '@/container/common/popover.module.scss';
 
 export const OnboardingIntroduction = () => {
   const { t } = useTranslation('nav-reshuffle/onboarding');
-  const popoverContainer = useRef(null);
-  const popoverButton = useRef(null);
+  const [popoverButton, setPopoverButton] = useState();
+  const [popover, setPopover] = useState();
+
+  const { styles, attributes } = usePopper(popoverButton, popover, {
+    placement: 'top-end',
+  });
+
   const productNavReshuffle = useProductNavReshuffle();
 
   const [isBtnVisible, setIsBtnVisible] = useState(false);
@@ -54,13 +58,13 @@ export const OnboardingIntroduction = () => {
   }, [productNavReshuffle.onboarding.openedState]);
 
   return (
-    <div ref={popoverContainer}>
+    <div>
       {isBtnVisible && (
         <button
           type="button"
           className={`${style.onboardingButton} oui-button oui-button_icon-left oui-button_l oui-button_primary`}
           onClick={() => openOnboarding()}
-          ref={popoverButton}
+          ref={setPopoverButton}
           aria-expanded={isPopoverVisible}
         >
           <span className="oui-icon oui-icon-info"></span>
@@ -70,43 +74,44 @@ export const OnboardingIntroduction = () => {
         </button>
       )}
 
-      <Overlay
-        show={isPopoverVisible}
-        placement="top-end"
-        container={popoverContainer.current}
-        transition={false}
-        target={popoverButton.current}
-      >
-        <Popover
+      {isPopoverVisible && (
+        <div
+          ref={setPopover}
           className={`${style.welcomePopover} ${popoverStyle.popover} oui-popover`}
+          x-placement="top-end"
+          style={styles.popper}
+          {...attributes.popper}
         >
-          <Popover.Title as="h2" className={popoverStyle['popover-header']}>
-            {t('onboarding_introduction_popover_title', {
-              userName: user.firstname,
-            })}
-          </Popover.Title>
-          <Popover.Content className={popoverStyle['popover-body']}>
-            <p>{t('onboarding_introduction_popover_content')}</p>
-            <small className="d-block mb-3">
-              {t('onboarding_introduction_popover_extra')}
-            </small>
-          </Popover.Content>
-          <div className="d-flex flex-row-reverse justify-content-between">
-            <button
-              className="oui-button oui-button_primary"
-              onClick={() => startOnboarding()}
-            >
-              {t('onboarding_popover_follow_guide_button')}
-            </button>
-            <button
-              className="oui-button oui-button_ghost"
-              onClick={() => closeOnboarding()}
-            >
-              {t('onboarding_popover_hide_button')}
-            </button>
+          <div className="oui-popover__content">
+            <h2 className={popoverStyle['popover-header']}>
+              {t('onboarding_introduction_popover_title', {
+                userName: user.firstname,
+              })}
+            </h2>
+            <div className={popoverStyle['popover-body']}>
+              <p>{t('onboarding_introduction_popover_content')}</p>
+              <small className="d-block mb-3">
+                {t('onboarding_introduction_popover_extra')}
+              </small>
+            </div>
+            <div className="d-flex flex-row-reverse justify-content-between">
+              <button
+                className="oui-button oui-button_primary"
+                onClick={() => startOnboarding()}
+              >
+                {t('onboarding_popover_follow_guide_button')}
+              </button>
+              <button
+                className="oui-button oui-button_ghost"
+                onClick={() => closeOnboarding()}
+              >
+                {t('onboarding_popover_hide_button')}
+              </button>
+            </div>
           </div>
-        </Popover>
-      </Overlay>
+          <div className="oui-popover__arrow" aria-hidden="true"></div>
+        </div>
+      )}
     </div>
   );
 };

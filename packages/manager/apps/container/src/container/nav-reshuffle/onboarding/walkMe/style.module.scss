@@ -23,5 +23,22 @@ $walk-me-z-index: $base-z-index-popover + 100;
 
   &_popover {
     z-index: $walk-me-z-index + 1 !important;
+
+    &[x-placement=''],
+    &[x-placement^='bottom'] {
+      margin-top: 0.75rem !important;
+    }
+
+    &[x-placement^='top'] {
+      margin-bottom: 0.75rem !important;
+    }
+
+    &[x-placement^='right'] {
+      margin-left: 0.75rem !important;
+    }
+
+    &[x-placement^='left'] {
+      margin-right: 0.75rem !important;
+    }
   }
 }
