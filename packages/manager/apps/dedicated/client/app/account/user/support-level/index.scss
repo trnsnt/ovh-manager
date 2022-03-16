@@ -25,4 +25,34 @@
   .oui-tile__body {
     height: 100%;
   }
+
+  .service {
+    border: 2px solid #85D9FD;
+    box-shadow: none;
+
+    .oui-tile__title {
+      display: none;
+    }
+
+    .oui-tile__body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      img {
+        background: linear-gradient(45deg, rgb(217,244,240) 0%, white 100%);
+        border-radius: 4px;
+      }
+
+      footer {
+        flex: 1;
+        display: flex;
+        align-items: end;
+
+        a {
+          margin-left: -0.5rem;
+        }
+      }
+    }
+  }
 }

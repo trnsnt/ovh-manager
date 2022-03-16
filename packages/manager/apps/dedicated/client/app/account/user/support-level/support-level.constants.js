@@ -149,8 +149,25 @@ export const URLS = {
   },
 };
 
+export const getServices = (subsidiary, CORE_URLS) => [
+  {
+    name: 'professional-services',
+  },
+  {
+    name: 'partners',
+  },
+  {
+    name: 'help',
+  },
+  {
+    name: 'documentation',
+    url: CORE_URLS.guides.home[subsidiary],
+  },
+];
+
 export default {
   API_MODEL_SUPPORT_LEVEL,
+  getServices,
   SUBSCRIPTION,
   URLS,
 };

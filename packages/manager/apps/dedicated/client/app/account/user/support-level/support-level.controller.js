@@ -5,15 +5,18 @@ import slice from 'lodash/slice';
 import some from 'lodash/some';
 
 import { SupportLevel } from '@ovh-ux/manager-models';
-import { SUBSCRIPTION, URLS } from './support-level.constants';
+import { getServices, SUBSCRIPTION, URLS } from './support-level.constants';
 
 export default class UserAccountSupportLevelCtrl {
   /* @ngInject */
-  constructor(constants) {
+  constructor(constants, CORE_URLS) {
     this.constants = constants;
+    this.CORE_URLS = CORE_URLS;
+    this.services = [];
   }
 
   $onInit() {
+    this.services = getServices(this.currentUser.ovhSubsidiary, this.CORE_URLS);
     this.orderBaseUrl = get(
       this.constants,
       `urls.${this.currentUser.ovhSubsidiary}.express_order`,

@@ -33,5 +33,15 @@
   "user_account_support_level_section_business_description": "Un service client 24/7 avec un temps de réponse optimisé adapté à des enjeux  majeurs.",
   "user_account_support_level_section_enterprise_description": "Un service client 24/7 au travers d’une relation privilégiée avec une équipe dédiée pour vous accompagner à relever vos défis business.",
   "user_account_support_level_section_title_annex_1": "Nos offres supports évoluent. Veuillez noter que par défaut tous nos clients qui ne souscrivent pas à une offre de support bénéficieront de l'offre standard.",
-  "user_account_support_level_section_title_annex_all_available": "Tout client OVHcloud est par défaut basculé vers notre niveau de support Standard s’il ne souscrit pas à une offre de support spécifique."
+  "user_account_support_level_section_title_annex_all_available": "Tout client OVHcloud est par défaut basculé vers notre niveau de support Standard s’il ne souscrit pas à une offre de support spécifique.",
+
+  "user_account_support_level_section_services_title": "Plus de services",
+  "user_account_support_level_section_services_professional-services_title": "Professional Services",
+  "user_account_support_level_section_services_professional-services_description": "Des experts à votre service pour vous accompagner dans vos progrès.",
+  "user_account_support_level_section_services_partners_title": "Nos partenaires",
+  "user_account_support_level_section_services_partners_description": "Un large réseau de partenaires partout dans le monde pour tous les projets.",
+  "user_account_support_level_section_services_help_title": "Centre d'aide",
+  "user_account_support_level_section_services_help_description": "Un portail d'aide à votre disposition pour vous orienter lorsque vous avez besoin d'aide.",
+  "user_account_support_level_section_services_documentation_title": "Documentation",
+  "user_account_support_level_section_services_documentation_description": "Une documentation enrichie régulièrement pour savoir utiliser les produits et les services d'OVHcloud."
 }
