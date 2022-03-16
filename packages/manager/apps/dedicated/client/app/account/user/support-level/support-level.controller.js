@@ -1,71 +1,68 @@
-import find from 'lodash/find';
-import findIndex from 'lodash/findIndex';
-import get from 'lodash/get';
-import slice from 'lodash/slice';
-import some from 'lodash/some';
-
-import { SupportLevel } from '@ovh-ux/manager-models';
-import { SUBSCRIPTION, URLS } from './support-level.constants';
+import {
+  createSupportLevel,
+  sortSupportLevels,
+} from './support-level.constants';
 
 export default class UserAccountSupportLevelCtrl {
   /* @ngInject */
-  constructor(constants) {
+  constructor($q, $http, $translate, constants, Alerter) {
+    this.$q = $q;
+    this.$http = $http;
+    this.$translate = $translate;
     this.constants = constants;
+    this.Alerter = Alerter;
+    this.isLoading = false;
   }
 
   $onInit() {
-    this.orderBaseUrl = get(
-      this.constants,
-      `urls.${this.currentUser.ovhSubsidiary}.express_order`,
-      this.constants.urls.FR.express_order,
-    );
-    this.supportLevelsEnum = get(
-      this.schema.models,
-      'me.SupportLevel.LevelTypeEnum',
-    ).enum;
-    this.supportLevels = this.supportLevelsEnum
-      .map(
-        (level) =>
-          new SupportLevel({
-            level,
-            url: get(
-              URLS,
-              `${this.currentUser.ovhSubsidiary.toUpperCase()}.${level}`,
-              get(URLS, `FR.${level}`),
-            ),
-            subscriptionUrl: this.getSubscriptionUrl(level),
-          }),
-      )
-      .filter((level) => this.isLevelActive(level))
-      .filter(({ name }) =>
-        this.supportAvailability.isFeatureAvailable(`support:${name}`),
-      );
-  }
+    const { urls } = this.constants;
+    const { isTrusted, ovhSubsidiary } = this.currentUser;
 
-  getSubscriptionUrl(supportLevel) {
-    return `${this.orderBaseUrl}review?products=${JSURL.stringify(
-      SUBSCRIPTION(supportLevel.replace('-', '_')),
-    )}`;
+    this.isTrusted = isTrusted;
+    this.ovhSubsidiary = ovhSubsidiary;
+
+    this.supportLevels = this.supportLevelsEnum
+      .map((level) => createSupportLevel({ level, urls, ovhSubsidiary }))
+      .sort(sortSupportLevels)
+      .filter((level) => this.isLevelActive(level))
+      .filter(({ name }) => this.availability.features[`support:${name}`]);
+
+    const supportLevelPricesToFetch = this.supportLevels.filter(
+      ({ fetchPrice }) => fetchPrice,
+    );
+
+    if (supportLevelPricesToFetch.length) {
+      const promises = supportLevelPricesToFetch.map(({ name }) =>
+        this.$q
+          .when({ data: `${name} pas cher` })
+          // this.$http
+          //   .get(`/todo/find/api/price/route/${name}`)
+          .then(({ data: price }) => {
+            this.supportLevels.find((sl) => sl.name === name).price = price;
+          }),
+      );
+      this.isLoading = true;
+      this.$q
+        .all(promises)
+        .catch((error) =>
+          this.Alerter.error(
+            this.$translate.instant(
+              'user_account_support_level_section_error',
+              { message: error.data?.message || error.message },
+            ),
+            'user_alerts_supportLevel',
+          ),
+        )
+        .finally(() => {
+          this.isLoading = false;
+        });
+    }
   }
 
   getRecommendedLevel() {
-    const currentLevelIndex = findIndex(this.supportLevels, {
-      name: this.supportLevel.level,
-    });
-
-    return get(
-      find(slice(this.supportLevels, currentLevelIndex + 1), (level) =>
-        level.isAvailable(this.currentUser.ovhSubsidiary),
-      ),
-      'name',
-    );
-  }
-
-  areAllLevelsAvailable() {
-    return !some(
-      this.supportLevels,
-      (level) => !level.isAvailable(this.currentUser.ovhSubsidiary),
-    );
+    return this.getHigherSupportLevels().find((level) =>
+      level.isAvailable(this.ovhSubsidiary),
+    )?.name;
   }
 
   isLevelActive(supportLevel) {
@@ -81,7 +78,30 @@ export default class UserAccountSupportLevelCtrl {
     return !supportLevel.isAdvancedPremium();
   }
 
-  shouldSubscribe(supportLevel) {
-    return supportLevel.name === this.partnerLevel.requiredSupportLevel;
+  hasCTA(supportLevel) {
+    return this.getHigherSupportLevels().indexOf(supportLevel) > -1;
+  }
+
+  isCurrent(supportLevel) {
+    return (
+      supportLevel.name === this.supportLevel.level &&
+      supportLevel.isAvailable(this.ovhSubsidiary)
+    );
+  }
+
+  isRecommanded(supportLevel) {
+    return (
+      !this.partnerLevel.isActive() &&
+      this.getRecommendedLevel() === supportLevel.name
+    );
+  }
+
+  getHigherSupportLevels() {
+    const currentLevelIndex = this.supportLevels.findIndex(
+      ({ name }) => name === this.supportLevel.level,
+    );
+    return this.supportLevels
+      .slice(currentLevelIndex + 1)
+      .filter((level) => level.isAvailable(this.ovhSubsidiary));
   }
 }

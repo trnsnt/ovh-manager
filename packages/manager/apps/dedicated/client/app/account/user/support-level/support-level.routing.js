@@ -1,5 +1,3 @@
-import get from 'lodash/get';
-
 import { PartnerLevel } from '@ovh-ux/manager-models';
 
 export default /* @ngInject */ ($stateProvider) => {
@@ -15,17 +13,14 @@ export default /* @ngInject */ ($stateProvider) => {
           .then(({ data: partnerLevel }) => new PartnerLevel(partnerLevel)),
       breadcrumb: /* @ngInject */ ($translate) =>
         $translate.instant('user_account_support_level_section_title'),
-      supportAvailability: /* @ngInject */ (ovhFeatureFlipping, schema) => {
-        const supportLevelsEnum = get(
-          schema.models,
-          'me.SupportLevel.LevelTypeEnum',
-        ).enum;
-        return ovhFeatureFlipping.checkFeatureAvailability(
+      availability: /* @ngInject */ (ovhFeatureFlipping, supportLevelsEnum) =>
+        ovhFeatureFlipping.checkFeatureAvailability(
           supportLevelsEnum
             .map((supportLevel) => `support:${supportLevel}`)
             .join(','),
-        );
-      },
+        ),
+      supportLevelsEnum: /* @ngInject */ (schema) =>
+        schema.models['me.SupportLevel.LevelTypeEnum'].enum,
     },
   });
 };

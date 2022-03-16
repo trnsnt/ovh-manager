@@ -1,3 +1,5 @@
+import { SupportLevel } from '@ovh-ux/manager-models';
+
 export const API_MODEL_SUPPORT_LEVEL = 'me.SupportLevel.LevelTypeEnum';
 
 export const SUBSCRIPTION = (level) => [
@@ -149,8 +151,39 @@ export const URLS = {
   },
 };
 
+export const createSupportLevel = ({ level, urls, ovhSubsidiary = 'FR' }) => {
+  const subscription = JSURL.stringify(SUBSCRIPTION(level.replace('-', '_')));
+  const expressOrderUrl = (urls[ovhSubsidiary] || urls.FR).express_order;
+  const supportLevel = new SupportLevel({
+    level,
+    url: URLS[ovhSubsidiary.toUpperCase()][level],
+  });
+  supportLevel.subscriptionUrl = supportLevel.isEnterprise()
+    ? `${supportLevel.url}#callback`
+    : `${expressOrderUrl}review?products=${subscription}`;
+  supportLevel.subscriptionAction = supportLevel.isEnterprise()
+    ? 'callback'
+    : 'order';
+  supportLevel.fetchPrice =
+    supportLevel.isEnterprise() || supportLevel.isPremium();
+  return supportLevel;
+};
+
+const levelsOrder = [
+  'standard',
+  'premium',
+  'premium-accredited',
+  'business',
+  'enterprise',
+];
+
+export const sortSupportLevels = ({ name: levelA }, { name: levelB }) =>
+  levelsOrder.indexOf(levelA) > levelsOrder.indexOf(levelB) ? 1 : -1;
+
 export default {
   API_MODEL_SUPPORT_LEVEL,
   SUBSCRIPTION,
   URLS,
+  createSupportLevel,
+  sortSupportLevels,
 };

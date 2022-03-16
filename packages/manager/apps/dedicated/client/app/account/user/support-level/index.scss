@@ -1,28 +1,73 @@
 .module-useraccount-sections-support-level {
-  $support-level-selected: #e6f9fd;
-  $support-level-current: #e0eac2;
-  $support-level-highlight: #4fcefd;
 
-  .support-level-selected {
-    background-color: $support-level-selected;
-  }
+  .oui-tile {
+    border: 2px solid #85D9FD;
+    box-shadow: none;
+    padding: 0 !important;
+    text-align: center;
 
-  .oui-chip {
-    &.support-level-current {
-      background-color: $support-level-current;
+    &.current {
+      border-color: #0050D7;
+
+      .highlight {
+        border-color: #0050D7;
+      }
     }
+
+    .oui-tile__title {
+      display: none;
+    }
+
+    header {
+      position: relative;
+
+      img {
+        border-radius: 4px 4px 0 0;
+        display: block;
+        width: 100%;
+      }
+
+      .highlight {
+        box-sizing: border-box;
+        font-weight: 700;
+        height: 30px;
+        left: 50%;
+        padding: 2px 25px;
+        position: absolute;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+
+      .highlight-current {
+        border: 2px solid black;
+        border-bottom: none;
+        border-radius: 16px 16px 0 0;
+        top: -32px;
+      }
+
+      .highlight-recommanded {
+        background: #FBFF47;
+        border-radius: 30px;
+        bottom: -26px;
+      }
+    }
+
+    .price {
+      font-weight: normal !important;
+      small {
+        color: inherit !important;
+      }
+    }
+
+    .d-flex > p {
+      line-height: 1.2rem;
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
   }
 
-  .support-level-highlight {
-    box-shadow: 0 0 5px $support-level-highlight;
-  }
-
-  .support-level-chip-highlight {
-    background-color: $support-level-highlight;
-    color: white;
-  }
-
-  .oui-tile__body {
-    height: 100%;
-  }
 }
+
+

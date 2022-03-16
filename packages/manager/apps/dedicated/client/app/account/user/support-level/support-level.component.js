@@ -3,11 +3,12 @@ import template from './support-level.html';
 
 export default {
   bindings: {
+    availability: '<',
     currentUser: '<',
     partnerLevel: '<',
     schema: '<',
-    supportAvailability: '<',
     supportLevel: '<',
+    supportLevelsEnum: '<',
   },
   controller,
   template,
