@@ -2,11 +2,13 @@ import cloneDeep from 'lodash/cloneDeep';
 import {
   REDEPLOY_CONFIG_OPTIONS,
   PRISM_CENTRAL_TYPE_ALONE,
+  PRISM_CENTRAL_TYPE_SCALE,
   PRISM_CENTRAL_TYPES,
   IPV4_REGEX,
   IPV4_BLOCK_REGEX,
   TRACKING_PREFIX,
   CLUSTER_CONFIG_TERMS,
+  IP_FOR_SCALE_REDEPLOY,
 } from './constants';
 
 export default class NutanixGeneralInfoRedeployCtrl {
@@ -53,9 +55,9 @@ export default class NutanixGeneralInfoRedeployCtrl {
   addEmptyIp(prismCentralType) {
     if (
       this.config.prismCentral?.ips?.length === 0 &&
-      prismCentralType !== PRISM_CENTRAL_TYPE_ALONE
+      prismCentralType === PRISM_CENTRAL_TYPE_SCALE
     ) {
-      this.config.prismCentral.ips = [''];
+      this.config.prismCentral.ips.length = IP_FOR_SCALE_REDEPLOY;
     }
   }
 
@@ -66,14 +68,6 @@ export default class NutanixGeneralInfoRedeployCtrl {
         : cloneDeep(this.cluster.targetSpec.prismCentral.ips);
     this.addEmptyIp(modelValue);
     return modelValue;
-  }
-
-  addPrismCentralIp() {
-    this.config.prismCentral.ips.push('');
-  }
-
-  removePrismCentralIp(index) {
-    this.config.prismCentral.ips.splice(index, 1);
   }
 
   setRedundancyFactor(modelValue) {
@@ -127,13 +121,32 @@ export default class NutanixGeneralInfoRedeployCtrl {
     };
   }
 
-  onRedeploy() {
+  checkConfigValidity() {
+    if (this.config?.prismCentral.type === PRISM_CENTRAL_TYPE_SCALE) {
+      return this.checkPrismCentralIpsValidity();
+    }
+    return true;
+  }
+
+  checkPrismCentralIpsValidity() {
+    return (
+      new Set(this.config?.prismCentral?.ips).size ===
+      this.config?.prismCentral?.ips.length
+    );
+  }
+
+  onRedeploy(form) {
+    this.customFormSubmitted =
+      this.redeployMethod === REDEPLOY_CONFIG_OPTIONS.CUSTOM;
+    if (form.$invalid || !this.checkPrismCentralIpsValidity()) {
+      return false;
+    }
     this.trackClick(
       this.redeployMethod === REDEPLOY_CONFIG_OPTIONS.CUSTOM
         ? 'confirm_personalized-configuration'
         : 'confirm_saved-configuration',
     );
-    this.goToConfirmRedeploy(
+    return this.goToConfirmRedeploy(
       this.redeployMethod,
       NutanixGeneralInfoRedeployCtrl.preparePayload(
         this.redeployMethod === REDEPLOY_CONFIG_OPTIONS.CUSTOM

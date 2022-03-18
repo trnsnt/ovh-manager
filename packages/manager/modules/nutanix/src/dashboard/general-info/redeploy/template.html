@@ -9,10 +9,7 @@
         <div data-translate="nutanix_redeploy_warning_info_5"></div>
         <div data-translate="nutanix_redeploy_warning_info_6"></div>
     </oui-message>
-    <oui-stepper
-        current-index="$ctrl.activeStep"
-        data-on-finish="$ctrl.onRedeploy(form)"
-    >
+    <oui-stepper current-index="$ctrl.activeStep">
         <oui-step-form
             data-name="method"
             data-header="{{:: 'nutanix_redeploy_step1_title' | translate}}"
@@ -43,6 +40,7 @@
             data-header="{{:: 'nutanix_redeploy_step2_title_initial_configuration' | translate}}"
             data-position="1"
             data-submit-text="{{:: 'nutanix_redeploy_button' | translate}}"
+            data-on-submit="$ctrl.onRedeploy(form)"
         >
             <ul class="list-unstyled">
                 <li>
@@ -174,7 +172,8 @@
             data-header="{{:: 'nutanix_redeploy_step2_title_custom_configuration' | translate}}"
             data-position="1"
             data-submit-text="{{:: 'nutanix_redeploy_button' | translate}}"
-            data-prevent-next="true"
+            data-on-submit="$ctrl.onRedeploy(form)"
+            data-valid="$ctrl.checkConfigValidity()"
         >
             <div class="mb-3">
                 <h5
@@ -254,37 +253,28 @@
                             data-oui-popover="{{:: 'nutanix_redeploy_prism_central_ip_description' | translate}}"
                         ></button>
                     </div>
-                    <oui-button
-                        class="ml-1"
-                        data-size="s"
-                        data-variant="primary"
-                        data-on-click="$ctrl.addPrismCentralIp()"
-                    >
-                        <span
-                            data-translate="nutanix_redeploy_custom_configuration_add_prism_central_ip"
-                        ></span>
-                    </oui-button>
                     <div
                         class="row ml-1 mt-2"
                         data-ng-repeat="item in $ctrl.config.prismCentral.ips track by $index"
                     >
-                        <input
-                            type="text"
-                            class="oui-input w-50"
-                            name="prismCentralIps{{$index}}"
-                            data-ng-model="$ctrl.config.prismCentral.ips[$index]"
-                            required
-                            data-ng-pattern="$ctrl.IPV4_REGEX"
-                        />
-                        <oui-button
-                            class="ml-2"
-                            data-size="s"
-                            data-variant="secondary"
-                            data-on-click="$ctrl.removePrismCentralIp($index)"
-                        >
-                            <span class="oui-icon oui-icon-bin"></span>
-                        </oui-button>
+                        <form name="ipForm{{$index}}" novalidate class="w-50">
+                            <input
+                                type="text"
+                                name="ip{{$index}}"
+                                class="oui-input"
+                                data-ng-class="{'oui-input_error' : ipForm{{$index}}.$invalid && ipForm{{$index}}.ip{{$index}}.$touched }"
+                                data-ng-model="$ctrl.config.prismCentral.ips[$index]"
+                                data-required
+                                data-ng-pattern="$ctrl.IPV4_REGEX"
+                            />
+                        </form>
                     </div>
+                    <small
+                        data-ng-if="$ctrl.customFormSubmitted && !$ctrl.checkPrismCentralIpsValidity()"
+                        class="form-text text-danger"
+                        data-translate="nutanix_redeploy_prism_central_ip_unique_error"
+                    >
+                    </small>
                 </div>
             </div>
             <div class="mb-3">
