@@ -3,9 +3,10 @@ import template from './fork.html';
 
 export default {
   bindings: {
-    databaseGuideUrl: '<',
     engines: '<',
     guideUrl: '<',
+    guideTrackingSectionTags: '<',
+    trackClick: '<',
     lab: '<',
     onDatabaseFork: '<',
     projectId: '<',

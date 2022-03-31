@@ -49,10 +49,6 @@ export default class {
     this.goToDeleteNotebook(notebook);
   }
 
-  onGuideLinkClick(guideName) {
-    this.trackNotebooks(`'table::guide::${guideName}`);
-  }
-
   onNotebookStartClick(notebookId) {
     this.trackNotebooks('table::options_menu::start_notebook');
     return this.startNotebook(notebookId);
