@@ -292,7 +292,8 @@ export default class PciProjectNewPaymentCtrl {
         !this.model.defaultPaymentMethod &&
         this.eligibility.isDefaultPaymentMethodChoiceRequired()) ||
       this.model.challenge.checking ||
-      this.globalLoading.finalize ||
+      (this.globalLoading.finalize &&
+        this.eligibility.isAddPaymentMethodRequired()) ||
       this.globalLoading.setDefaultPaymentMethod
     );
   }

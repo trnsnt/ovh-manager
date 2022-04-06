@@ -43,6 +43,10 @@ export default class PciProjectNewVoucherCtrl {
     return step.name === 'configuration' ? 'config' : step.name;
   }
 
+  disablePaymentMethods(status) {
+    this.globalLoading.finalize = status;
+  }
+
   /* -----  End of Helpers  ------ */
 
   /* =============================
@@ -55,13 +59,14 @@ export default class PciProjectNewVoucherCtrl {
 
   onVoucherFormSubmit() {
     this.loading.check = true;
+    this.disablePaymentMethods(true);
 
     return this.checkVoucherValidity(this.model.voucher.value)
       .then((eligibilityOpts) => {
         this.model.voucher.setInfos(eligibilityOpts.voucher);
-        this.setVoucherFormState();
-
         this.eligibility.setOptions(eligibilityOpts);
+        this.setVoucherFormState();
+        this.model.paymentMethod = null;
 
         return this.model.voucher.valid
           ? this.pciProjectNew.setCartProjectItemVoucher(
@@ -71,6 +76,7 @@ export default class PciProjectNewVoucherCtrl {
           : eligibilityOpts.voucher;
       })
       .catch(() => {
+        this.disablePaymentMethods(false);
         this.model.voucher.valid = false;
         this.setVoucherFormState();
       })
