@@ -1,9 +1,12 @@
 <div class="pci-project-new-payment-method-add">
-
     <!--Info about save payment mean-->
     <div class="mb-3">
-        <span data-translate="pci_project_new_payment_method_save_explain_part_1"></span>
-        <span data-translate="pci_project_new_payment_method_save_explain_part_2"></span>
+        <span
+            data-translate="pci_project_new_payment_method_save_explain_part_1"
+        ></span>
+        <span
+            data-translate="pci_project_new_payment_method_save_explain_part_2"
+        ></span>
     </div>
 
     <div class="row">
@@ -41,18 +44,18 @@
         ></span>
     </oui-message>
 
-    <!--PAYPAL charged tax info banner-->
-    <oui-message
-        data-type="warning"
-        data-ng-if="$ctrl.isDisplayablePaypalChargeBanner && $ctrl.model.paymentMethod.type.isPaypal()"
-    >
-        <span
-            data-translate="pci_project_new_payment_method_add_warning_paypal_account"
-            data-translate-values="{ amount: ($ctrl.getPayPalChargeAmount() + $ctrl.customerCurrency) }"
-        ></span>
-    </oui-message>
-
     <div data-ng-if="$ctrl.model.paymentMethod.paymentType !== 'CREDIT'">
+        <!--PAYPAL charged tax info banner-->
+        <oui-message
+            data-type="warning"
+            data-ng-if="$ctrl.isDisplayablePaypalChargeBanner && $ctrl.model.paymentMethod.type.isPaypal()"
+        >
+            <span
+                data-translate="pci_project_new_payment_method_add_warning_paypal_account"
+                data-translate-values="{ amount: ($ctrl.getPayPalChargeAmount() + $ctrl.customerCurrency) }"
+            ></span>
+        </oui-message>
+
         <oui-message
             data-type="warning"
             data-ng-if="$ctrl.model.paymentMethod.type.isBankAccount()"
