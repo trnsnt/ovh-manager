@@ -60,6 +60,12 @@ export function initShell(): Promise<Shell> {
       .registerPlugin('navigation', navigationPlugin(environment));
     // Register Tracking plugin
     const trackingPlugin = new TrackingPlugin();
+    // TODO: config of tracking plugin
+    trackingPlugin.configureTracking(
+      environment.getRegion(),
+      environment.getUser(),
+    );
+
     shell
       .getPluginManager()
       .registerPlugin(

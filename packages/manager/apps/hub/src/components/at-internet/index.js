@@ -14,8 +14,7 @@ export const initHubAtInternet = (trackingPlugin) => {
     ])
     .config(
       /* @ngInject */ (atInternetConfigurationProvider) => {
-        atInternetConfigurationProvider.setTrackingPlugin(trackingPlugin);
-        atInternetConfigurationProvider.setConfig(TRACKING);
+        trackingPlugin.setConfig(TRACKING);
         atInternetConfigurationProvider.setPrefix('hub');
       },
     );

@@ -2,15 +2,15 @@ import { isEmpty } from 'lodash-es';
 import { CountryCode } from '@ovh-ux/manager-config/types/locale/country-code.enum';
 
 // eslint-disable-next-line prettier/prettier
-type levelKey<Num extends number> = `level${Num}`;
+export type levelKey<Num extends number> = `level${Num}`;
 type chapterKey<Num extends number> = `chapter${Num}`;
 
 export interface PageData {
   name: string;
   [key: levelKey<number>]: string; // the project id (required)
   [key: chapterKey<number>]: string; // section id (optional)
-  visitorId: number; // identified visitor id (optional)
-  customObject: Record<string, unknown>; // custom javascript data (optional)
+  visitorId?: number | string; // identified visitor id (optional)
+  customObject?: Record<string, unknown>; // custom javascript data (optional)
   customVars: Record<string, unknown>;
 }
 
@@ -19,14 +19,14 @@ export interface ClickData extends PageData {
 }
 
 export interface OrderData extends PageData {
-  page: string;
-  price: number;
-  priceTaxFree: number;
-  orderId: number;
-  quantity: number;
-  status: number;
-  countryCode: CountryCode;
-  currencyCode: CountryCode;
+  page?: string;
+  price?: number;
+  priceTaxFree?: number;
+  orderId?: number;
+  quantity?: number;
+  status?: number;
+  countryCode?: CountryCode;
+  currencyCode?: CountryCode;
 }
 
 export interface ImpressionData extends PageData {

@@ -14,10 +14,6 @@ export default class atInternetConfigurationProvider {
     this.trackingPlugin = trackingPlugin;
   }
 
-  getTrackingPlugin() {
-    return this.trackingPlugin;
-  }
-
   setReplacementRules(rules) {
     this.stateRules = [...this.stateRules, ...rules];
   }

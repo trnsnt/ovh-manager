@@ -8,6 +8,7 @@ import {
   PageData,
 } from '@ovh-ux/ovh-at-internet/types/config';
 import ShellClient from '../../client/shell-client';
+import { RegionsTrackingConfig } from './tracking';
 
 export interface TrackingAPI {
   init(): PromiseLike<void>;
@@ -33,6 +34,10 @@ export interface TrackingAPI {
   getDefaults(): PromiseLike<PageData>;
   setDefaults(def: PageData): PromiseLike<PageData>;
   isDefaultSet(): PromiseLike<boolean>;
+  setReplacementRules(rules: unknown[]): PromiseLike<void>;
+  setPrefix(prefix: string): PromiseLike<void>;
+  getPrefix(): PromiseLike<string>;
+  setConfig(config: RegionsTrackingConfig): PromiseLike<void>;
 }
 
 export function exposeTrackingAPI(shellClient: ShellClient): TrackingAPI {
@@ -162,6 +167,29 @@ export function exposeTrackingAPI(shellClient: ShellClient): TrackingAPI {
         plugin: 'tracking',
         method: 'setRegion',
         args: [region],
+      }),
+    setReplacementRules: (rules: unknown[]) =>
+      shellClient.invokePluginMethod<void>({
+        plugin: 'tracking',
+        method: 'setReplacementRules',
+        args: [rules],
+      }),
+    setPrefix: (prefix: string) =>
+      shellClient.invokePluginMethod<void>({
+        plugin: 'tracking',
+        method: 'setPrefix',
+        args: [prefix],
+      }),
+    getPrefix: () =>
+      shellClient.invokePluginMethod<string>({
+        plugin: 'tracking',
+        method: 'getPrefix',
+      }),
+    setConfig: (config: RegionsTrackingConfig) =>
+      shellClient.invokePluginMethod<void>({
+        plugin: 'tracking',
+        method: 'setConfig',
+        args: [config],
       }),
   };
 }

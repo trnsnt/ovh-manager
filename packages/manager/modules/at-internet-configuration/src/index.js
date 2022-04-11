@@ -6,7 +6,7 @@ import { isTopLevelApplication } from '@ovh-ux/manager-config';
 import '@ovh-ux/ng-at-internet-ui-router-plugin';
 
 import provider from './provider';
-import { CUSTOM_VARIABLES, USER_ID } from './config.constants';
+import { USER_ID } from './config.constants';
 
 const moduleName = 'ovhManagerAtInternetConfiguration';
 
@@ -47,6 +47,7 @@ angular
   )
   .run(
     /* @ngInject */ ($cookies, $rootScope, $window, atInternet) => {
+      if (!isTopLevelApplication()) return;
       $rootScope.$on(
         'cookie-policy:decline',
         async (event, { fromModal } = { fromModal: false }) => {
@@ -103,31 +104,6 @@ angular
           }
         },
       );
-    },
-  )
-  .run(
-    /* @ngInject */ (
-      $cookies,
-      $q,
-      atInternet,
-      atInternetConfiguration,
-      coreConfig,
-    ) => {
-      const referrerSite = $cookies.get('OrderCloud');
-      const data = {
-        ...CUSTOM_VARIABLES,
-        ...atInternetConfiguration.getConfig(coreConfig.getRegion()),
-        ...(referrerSite ? { referrerSite } : {}),
-      };
-      const me = coreConfig.getUser();
-      const atInternetDefaultConfig = {
-        ...data,
-        countryCode: me.country,
-        currencyCode: me.currency && me.currency.code,
-        visitorId: me.customerCode,
-      };
-
-      atInternet.setDefaults(atInternetDefaultConfig);
     },
   );
 
