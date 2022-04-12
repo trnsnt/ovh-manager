@@ -1,0 +1,27 @@
+<div class="oui-modal oui-modal_shadow">
+    <form name="editNameForm" data-ng-submit="$ctrl.submit()" novalidate>
+        <oui-modal
+            data-primary-label="{{:: ('nasha_dashboard_edit_name_primary' | translate) }}"
+            data-primary-disabled="!$ctrl.canSubmit"
+            data-secondary-label="{{:: ('nasha_dashboard_edit_name_secondary' | translate) }}"
+            data-secondary-action=":: $ctrl.dismiss()"
+            data-on-dismiss=":: $ctrl.dismiss()"
+            data-loading="$ctrl.isSubmitting"
+            data-heading="{{:: ('nasha_dashboard_edit_name_title' | translate) }}"
+        >
+            <oui-field
+                data-label="{{:: ('nasha_dashboard_edit_name_label' | translate) }}"
+            >
+                <input
+                    class="oui-input"
+                    type="text"
+                    name="name"
+                    id="name"
+                    data-ng-model="$ctrl.name"
+                    data-ng-pattern="/^[^<>]+$/"
+                    required
+                />
+            </oui-field>
+        </oui-modal>
+    </form>
+</div>
