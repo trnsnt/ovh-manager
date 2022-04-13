@@ -22,6 +22,7 @@ export default class VpsUpgradeCtrl {
     OvhApiOrder,
     OvhApiVps,
     stateVps,
+    rebootRescueLink,
   ) {
     // dependencies injections
     this.$q = $q;
@@ -32,6 +33,7 @@ export default class VpsUpgradeCtrl {
     this.OvhApiOrder = OvhApiOrder;
     this.OvhApiVps = OvhApiVps;
     this.stateVps = stateVps;
+    this.rebootRescueLink = rebootRescueLink;
 
     // other attributes used in view
     this.serviceName = this.stateVps.name;
@@ -288,12 +290,22 @@ export default class VpsUpgradeCtrl {
         );
       })
       .catch((error) => {
-        this.CucCloudMessage.error(
-          [
-            this.$translate.instant('vps_configuration_upgradevps_fail'),
-            get(error, 'data.message'),
-          ].join(' '),
-        );
+        if (error?.status === 400 && this.stateVps.state === 'rescued') {
+          this.CucCloudMessage.error({
+            textHtml: `${this.$translate.instant(
+              'vps_upgrade_fail_vps_in_rescue_info',
+            )} <a href="${this.rebootRescueLink}">${this.$translate.instant(
+              'vps_upgrade_fail_vps_in_rescue_action',
+            )}</a>`,
+          });
+        } else {
+          this.CucCloudMessage.error(
+            [
+              this.$translate.instant('vps_configuration_upgradevps_fail'),
+              get(error, 'data.message'),
+            ].join(' '),
+          );
+        }
       })
       .finally(() => {
         this.loading.init = false;
