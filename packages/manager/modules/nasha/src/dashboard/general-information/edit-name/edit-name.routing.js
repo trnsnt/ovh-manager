@@ -9,10 +9,8 @@ export default /* @ngInject */ ($stateProvider) => {
     layout: 'modal',
     resolve: {
       breadcrumb: () => null,
-      close: /* @ngInject */ (goToDashboard) => (success) =>
-        goToDashboard({ success }),
-      dismiss: /* @ngInject */ (goToDashboard) => (error) =>
-        goToDashboard({ error }),
+      close: /* @ngInject */ (goBack) => goBack,
+      dismiss: /* @ngInject */ (goBack) => goBack,
     },
   });
 };

@@ -1,12 +1,22 @@
-<span
-    class="cloud-space-meter-space-left__text"
-    data-ng-class="{
-        'cloud-space-meter-space-left__text_hoverable': $ctrl.tooltip,
-        'cloud-space-meter-space-left__text_strong': $ctrl.strong
-    }"
-    data-tooltip-class="cloud-space-meter-space-left__tooltip"
-    data-tooltip-enable="{{ $ctrl.tooltip ? 'true' : 'false' }}"
-    data-uib-tooltip-template="'cucCloudSpaceMeterSpaceLeft/tooltip.html'"
->
-    {{ $ctrl.usage | cucSpaceMeterSpaceLeft }}
-</span>
+<div class="d-flex">
+    <span
+        class="cloud-space-meter-space-left__text mr-2"
+        data-ng-class="{
+            'cloud-space-meter-space-left__text_hoverable': $ctrl.tooltip,
+            'cloud-space-meter-space-left__text_strong': $ctrl.strong
+        }"
+        data-tooltip-class="cloud-space-meter-space-left__tooltip"
+        data-tooltip-enable="{{ $ctrl.tooltip ? 'true' : 'false' }}"
+        data-uib-tooltip-template="'cucCloudSpaceMeterSpaceLeft/tooltip.html'"
+    >
+        {{ $ctrl.usage | cucSpaceMeterSpaceLeft }}
+    </span>
+    <em
+        data-ng-if="$ctrl.help"
+        class="oui-icon pointer oui-icon-help-circle"
+        data-uib-popover="{{:: ('nasha_components_space_meter_space_left_help' | translate) }}"
+        data-popover-placement="top"
+        data-popover-trigger="outsideClick"
+    >
+    </em>
+</div>

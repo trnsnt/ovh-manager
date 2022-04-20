@@ -1,0 +1,25 @@
+<form name="$ctrl.form" role="form" data-ng-submit="$ctrl.submit()" novalidate>
+    <oui-modal
+        data-primary-label="{{:: ('nasha_components_partition_edit_size_submit' | translate) }}"
+        data-primary-disabled="$ctrl.form.$invalid"
+        data-secondary-label="{{:: ('nasha_components_partition_edit_size_cancel' | translate) }}"
+        data-secondary-action=":: $ctrl.dismiss()"
+        data-on-dismiss=":: $ctrl.dismiss()"
+        data-loading="$ctrl.isSubmitting"
+        data-heading="{{:: ('nasha_components_partition_edit_size_title' | translate) }}"
+    >
+        <oui-field
+            data-label="{{:: ('nasha_components_partition_edit_size_label' | translate) }}"
+            data-help-text="{{:: ('nasha_components_partition_edit_size_rules' | translate: { min: $ctrl.sizeMin, max: $ctrl.sizeMax }) }}"
+        >
+            <oui-numeric
+                data-id="size"
+                data-name="size"
+                data-min="$ctrl.sizeMin"
+                data-max="$ctrl.sizeMax"
+                data-model="$ctrl.model.size"
+            >
+            </oui-numeric>
+        </oui-field>
+    </oui-modal>
+</form>

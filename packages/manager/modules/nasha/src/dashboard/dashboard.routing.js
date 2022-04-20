@@ -5,40 +5,55 @@ export default /* @ngInject */ ($stateProvider) => {
     redirectTo: 'nasha.dashboard.general-information',
     resolve: {
       breadcrumb: /* @ngInject */ (serviceName) => serviceName,
-      editName: /* @ngInject */ ($uibModal, nasha, goToDashboard) => () => {
-        const md = $uibModal.open({
+      editName: /* @ngInject */ ($uibModal, nasha, goBack) => () => {
+        const modal = $uibModal.open({
           template: `
             <nasha-components-edit-name
-              close="close"
-              dismiss="dismiss"
-              nasha="nasha"
+              data-close="close"
+              data-dismiss="dismiss"
+              data-nasha="nasha"
             ></nasha-components-edit-name>
           `,
-          controller: /* @ngInject */ ($scope) => {
-            $scope.close = (success) => md.close() + goToDashboard({ success });
-            $scope.dismiss = md.dismiss;
+          controller: /* @ngInject */ ($scope, $state) => {
+            $scope.close = ({ success }) => {
+              modal.close(success);
+              goBack({ success, stateName: $state.current.name });
+            };
+            $scope.dismiss = modal.dismiss;
             $scope.nasha = nasha;
           },
         });
-        return md;
+        return modal;
       },
-      goBack: /* @ngInject */ (goToDashboard) => () => goToDashboard(),
-      goToDashboard: /* @ngInject */ (
+      goBack: /* @ngInject */ (
         $state,
         serviceName,
         alertSuccess,
         alertError,
-      ) => ({ success, error } = {}) => {
-        const params = { serviceName };
-        const options = { reload: !!success };
-        return $state.go('nasha.dashboard', params, options).then((result) => {
-          if (success) alertSuccess(success);
-          if (error) alertError(error);
-          return result;
-        });
-      },
+      ) => ({
+        success,
+        error,
+        stateName = '',
+        stateParams = {},
+        reload = false,
+      } = {}) =>
+        $state
+          .go(
+            stateName || '^',
+            { ...stateParams, serviceName },
+            { reload: !!success || reload },
+          )
+          .then((result) => {
+            if (success) alertSuccess(success);
+            if (error) alertError(error);
+            return result;
+          }),
+      goToDashboard: /* @ngInject */ ($state, serviceName) => (reload) =>
+        $state.go('nasha.dashboard', { serviceName }, { reload }),
       goToGeneralInformation: /* @ngInject */ ($state, serviceName) => () =>
         $state.go('nasha.dashboard.general-information', { serviceName }),
+      goToPartitions: /* @ngInject */ ($state, serviceName) => () =>
+        $state.go('nasha.dashboard.partitions', { serviceName }),
       nasha: /* @ngInject */ (
         OvhApiDedicatedNasha,
         serviceName,
@@ -48,6 +63,8 @@ export default /* @ngInject */ ($stateProvider) => {
         aapi.resetCache();
         return aapi.get({ serviceName }).$promise.then(prepareNasha);
       },
+      reload: /* @ngInject */ ($state, goBack) => () =>
+        goBack({ stateName: $state.current.name, reload: true }),
       serviceInfo: /* @ngInject */ ($http, serviceName) =>
         $http
           .get(`/dedicated/nasha/${serviceName}/serviceInfos`)

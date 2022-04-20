@@ -1,27 +1,30 @@
-<div class="oui-modal oui-modal_shadow">
-    <form name="editNameForm" data-ng-submit="$ctrl.submit()" novalidate>
-        <oui-modal
-            data-primary-label="{{:: ('nasha_dashboard_edit_name_primary' | translate) }}"
-            data-primary-disabled="!$ctrl.canSubmit"
-            data-secondary-label="{{:: ('nasha_dashboard_edit_name_secondary' | translate) }}"
-            data-secondary-action=":: $ctrl.dismiss()"
-            data-on-dismiss=":: $ctrl.dismiss()"
-            data-loading="$ctrl.isSubmitting"
-            data-heading="{{:: ('nasha_dashboard_edit_name_title' | translate) }}"
+<form name="$ctrl.form" role="form" data-ng-submit="$ctrl.submit()" novalidate>
+    <oui-modal
+        data-primary-label="{{:: ('nasha_components_edit_name_primary' | translate) }}"
+        data-primary-disabled="$ctrl.form.$invalid"
+        data-secondary-label="{{:: ('nasha_components_edit_name_secondary' | translate) }}"
+        data-secondary-action=":: $ctrl.dismiss()"
+        data-on-dismiss=":: $ctrl.dismiss()"
+        data-loading="$ctrl.isSubmitting"
+        data-heading="{{:: ('nasha_components_edit_name_title' | translate) }}"
+    >
+        <oui-field
+            data-label="{{:: ('nasha_components_edit_name_label' | translate) }}"
+            data-help-text="{{:: ('nasha_components_edit_name_rules' | translate) }}"
+            data-error-messages="{
+                mismatch: ('nasha_components_edit_name_mismatch' | translate),
+            }"
         >
-            <oui-field
-                data-label="{{:: ('nasha_dashboard_edit_name_label' | translate) }}"
-            >
-                <input
-                    class="oui-input"
-                    type="text"
-                    name="name"
-                    id="name"
-                    data-ng-model="$ctrl.name"
-                    data-ng-pattern="/^[^<>]+$/"
-                    required
-                />
-            </oui-field>
-        </oui-modal>
-    </form>
-</div>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                class="oui-input"
+                data-ng-model="$ctrl.model.name"
+                data-ng-pattern="$ctrl.namePattern"
+                data-mismatch="{{:: $ctrl.model.name }}"
+                required
+            />
+        </oui-field>
+    </oui-modal>
+</form>
