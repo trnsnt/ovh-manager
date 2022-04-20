@@ -17,6 +17,8 @@ import { getShellClient, setShellClient } from './shell';
 
 attachPreloader(findAvailableLocale(detectUserLocale()));
 
+console.log('hub');
+
 useShellClient('hub')
   .then((client) => {
     setShellClient(client);
