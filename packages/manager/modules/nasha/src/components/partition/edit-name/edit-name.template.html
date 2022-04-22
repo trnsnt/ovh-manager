@@ -1,18 +1,19 @@
 <form name="$ctrl.form" role="form" data-ng-submit="$ctrl.submit()" novalidate>
     <oui-modal
-        data-primary-label="{{:: ('nasha_components_edit_name_primary' | translate) }}"
+        data-primary-label="{{:: ('nasha_components_partition_edit_name_primary' | translate) }}"
         data-primary-disabled="$ctrl.form.$invalid"
-        data-secondary-label="{{:: ('nasha_components_edit_name_secondary' | translate) }}"
+        data-secondary-label="{{:: ('nasha_components_partition_edit_name_secondary' | translate) }}"
         data-secondary-action=":: $ctrl.dismiss()"
         data-on-dismiss=":: $ctrl.dismiss()"
         data-loading="$ctrl.isSubmitting"
-        data-heading="{{:: ('nasha_components_edit_name_title' | translate) }}"
+        data-heading="{{:: ('nasha_components_partition_edit_name_title' | translate) }}"
     >
         <oui-field
-            data-label="{{:: ('nasha_components_edit_name_label' | translate) }}"
-            data-help-text="{{:: ('nasha_components_edit_name_rules' | translate) }}"
+            data-label="{{:: ('nasha_components_partition_edit_name_label' | translate) }}"
+            data-help-text="{{:: ('nasha_components_partition_edit_name_rules' | translate) }}"
             data-error-messages="{
-                forbid: ('nasha_components_edit_name_forbid' | translate: { name: $ctrl.forbid }),
+                forbid: ('nasha_components_partition_edit_name_forbid' | translate: { name: $ctrl.forbid }),
+                forbidValues: $ctrl.forbidValuesMessage
             }"
         >
             <input
@@ -23,6 +24,7 @@
                 data-ng-model="$ctrl.model.name"
                 data-ng-pattern="$ctrl.namePattern"
                 data-forbid="{{:: $ctrl.forbid }}"
+                data-forbid-values="$ctrl.forbidValues"
                 required
             />
         </oui-field>

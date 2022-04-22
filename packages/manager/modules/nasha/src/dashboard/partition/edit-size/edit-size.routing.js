@@ -1,12 +1,15 @@
 export default /* @ngInject */ ($stateProvider) => {
-  $stateProvider.state('nasha.dashboard.general-information.edit-name', {
-    url: 'edit-name',
+  $stateProvider.state('nasha.dashboard.partition.edit-size', {
+    url: '/edit-size',
+    layout: 'modal',
     views: {
       modal: {
-        component: 'nashaComponentsEditName',
+        component: 'nashaComponentsPartitionEditSize',
       },
     },
-    layout: 'modal',
+    params: {
+      partition: null,
+    },
     resolve: {
       breadcrumb: () => null,
       close: /* @ngInject */ (goBack) => goBack,

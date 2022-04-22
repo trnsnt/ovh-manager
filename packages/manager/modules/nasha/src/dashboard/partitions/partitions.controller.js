@@ -59,7 +59,9 @@ export default class NashaDashboardPartitionsController {
 
     return this.$q
       .all({
-        partitions: aapi.partitions({ serviceName }).$promise,
+        partitions: aapi
+          .partitions({ serviceName })
+          .$promise.then((partitions) => partitions.map(this.preparePartition)),
         tasks: this.iceberg(`/dedicated/nasha/${serviceName}/task`)
           .query()
           .expand('CachedObjectList-Pages')
@@ -81,12 +83,17 @@ export default class NashaDashboardPartitionsController {
     inCreationTasks.forEach(({ partitionName }) => {
       partitions.push({ partitionName, inCreation: true });
     });
-    return partitions.map(this.preparePartition).map((item) => ({
-      ...item,
-      tasks: tasks
-        .filter(({ partitionName }) => partitionName === item.partitionName)
-        .filter(({ operation }) => operations.includes(operation)),
-    }));
+    return partitions
+      .map((item) => ({
+        ...item,
+        tasks: tasks
+          .filter(({ partitionName }) => partitionName === item.partitionName)
+          .filter(({ operation }) => operations.includes(operation)),
+      }))
+      .map((item) => ({
+        ...item,
+        inDeletion: this.hasOperation(item, 'Delete'),
+      }));
   }
 
   startPolls(partitions) {
@@ -102,7 +109,7 @@ export default class NashaDashboardPartitionsController {
             namespace: STATE_NAME,
             successRule: ({ status }) => !statuses.includes(status),
           },
-        ).finally(this.reload),
+        ).then(this.reload),
       ),
     }));
   }
@@ -114,5 +121,12 @@ export default class NashaDashboardPartitionsController {
       data: partitions,
       meta: { totalCount },
     };
+  }
+
+  hasOperation(partition, operation) {
+    const tasks = partition.tasks.filter(
+      (task) => task.operation === this.NashaTask.operation[operation],
+    );
+    return tasks.length > 0;
   }
 }

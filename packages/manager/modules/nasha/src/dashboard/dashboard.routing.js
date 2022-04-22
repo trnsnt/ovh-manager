@@ -1,8 +1,8 @@
 export default /* @ngInject */ ($stateProvider) => {
-  $stateProvider.state('nasha.dashboard', {
+  const dashboardStateName = 'nasha.dashboard';
+  $stateProvider.state(dashboardStateName, {
     url: '/:serviceName',
     component: 'nashaDashboard',
-    redirectTo: 'nasha.dashboard.general-information',
     resolve: {
       breadcrumb: /* @ngInject */ (serviceName) => serviceName,
       editName: /* @ngInject */ ($uibModal, nasha, goBack) => () => {
@@ -48,12 +48,12 @@ export default /* @ngInject */ ($stateProvider) => {
             if (error) alertError(error);
             return result;
           }),
-      goToDashboard: /* @ngInject */ ($state, serviceName) => (reload) =>
-        $state.go('nasha.dashboard', { serviceName }, { reload }),
-      goToGeneralInformation: /* @ngInject */ ($state, serviceName) => () =>
-        $state.go('nasha.dashboard.general-information', { serviceName }),
+      goToEditName: /* @ngInject */ ($state, serviceName) => () =>
+        $state.go(`${dashboardStateName}.edit-name`, { serviceName }),
       goToPartitions: /* @ngInject */ ($state, serviceName) => () =>
-        $state.go('nasha.dashboard.partitions', { serviceName }),
+        $state.go(`${dashboardStateName}.partitions`, { serviceName }),
+      isDashboardState: /* @ngInject */ ($state) => () =>
+        $state.current.name === dashboardStateName,
       nasha: /* @ngInject */ (
         OvhApiDedicatedNasha,
         serviceName,
@@ -71,6 +71,7 @@ export default /* @ngInject */ ($stateProvider) => {
           .then(({ data }) => data),
       serviceName: /* @ngInject */ ($transition$) =>
         $transition$.params().serviceName,
+      user: /* @ngInject */ (coreConfig) => coreConfig.getUser(),
     },
   });
 };

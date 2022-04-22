@@ -1,0 +1,28 @@
+<form name="$ctrl.form" role="form" data-ng-submit="$ctrl.submit()" novalidate>
+    <oui-modal
+        data-primary-label="{{:: ('nasha_components_partition_edit_description_primary' | translate) }}"
+        data-primary-disabled="$ctrl.form.$invalid"
+        data-secondary-label="{{:: ('nasha_components_partition_edit_description_secondary' | translate) }}"
+        data-secondary-action=":: $ctrl.dismiss()"
+        data-on-dismiss=":: $ctrl.dismiss()"
+        data-loading="$ctrl.isSubmitting"
+        data-heading="{{:: ('nasha_components_partition_edit_description_title' | translate) }}"
+    >
+        <oui-field
+            data-label="{{:: ('nasha_components_partition_edit_description_label' | translate) }}"
+            data-help-text="{{:: ('nasha_components_partition_edit_description_rules' | translate: { max: $ctrl.descriptionMax }) }}"
+            data-error-messages="{ forbid: ('nasha_components_partition_edit_description_forbid' | translate) }"
+        >
+            <input
+                type="text"
+                id="description"
+                name="description"
+                class="oui-input"
+                maxlength="{{:: $ctrl.descriptionMax }}"
+                data-ng-model="$ctrl.model.description"
+                data-forbid="{{:: $ctrl.model.description }}"
+                required
+            />
+        </oui-field>
+    </oui-modal>
+</form>

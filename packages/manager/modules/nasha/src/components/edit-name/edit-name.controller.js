@@ -8,17 +8,22 @@ export default class NashaComponentsEditNameController {
     this.$http = $http;
     this.isSubmitting = false;
     this.model = { name: '' };
+    this.forbid = '';
     this.namePattern = NAME_PATTERN;
   }
 
   $onInit() {
-    this.model.name = this.nasha.customName;
+    const { customName } = this.nasha;
+    this.model.name = customName;
+    this.forbid = customName;
   }
 
   submit() {
     const { name: customName } = this.model;
     const { serviceName } = this.nasha;
+
     this.isSubmitting = true;
+
     this.$http
       .put(`/dedicated/nasha/${serviceName}`, { customName })
       .then(() =>

@@ -9,7 +9,7 @@ export const Task = {
     SnapshotCreate: 'clusterLeclercCustomSnapCreate',
     SnapshotUpdate: 'clusterLeclercSnapshotUpdate',
     Update: 'clusterLeclercPartitionUpdate',
-    ZFSOptions: 'clusterLeclercZfsOptions',
+    ZfsOptions: 'clusterLeclercZfsOptions',
   },
   status: {
     Doing: 'doing',
