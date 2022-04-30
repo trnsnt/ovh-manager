@@ -41,7 +41,7 @@ export default /* @ngInject */ ($stateProvider) => {
           .go(
             stateName || '^',
             { ...stateParams, serviceName },
-            { reload: !!success || reload },
+            { reload: reload || !!success },
           )
           .then((result) => {
             if (success) alertSuccess(success);
@@ -63,8 +63,15 @@ export default /* @ngInject */ ($stateProvider) => {
         aapi.resetCache();
         return aapi.get({ serviceName }).$promise.then(prepareNasha);
       },
-      reload: /* @ngInject */ ($state, goBack) => () =>
-        goBack({ stateName: $state.current.name, reload: true }),
+      reload: /* @ngInject */ ($state, goBack) => ({ success, error }) =>
+        goBack({
+          stateName: $state.current.name,
+          reload: true,
+          success,
+          error,
+        }),
+      schema: /* @ngInject */ ($http) =>
+        $http.get('/dedicated/nasha.json').then(({ data }) => data),
       serviceInfo: /* @ngInject */ ($http, serviceName) =>
         $http
           .get(`/dedicated/nasha/${serviceName}/serviceInfos`)

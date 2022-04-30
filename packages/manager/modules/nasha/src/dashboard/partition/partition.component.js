@@ -1,3 +1,4 @@
+import controller from './partition.controller';
 import template from './partition.template.html';
 
 export default {
@@ -10,6 +11,10 @@ export default {
     isPartitionState: '<',
     nasha: '<',
     partition: '<',
+    reload: '<',
+    serviceName: '<',
+    tasks: '<',
   },
+  controller,
   template,
 };
