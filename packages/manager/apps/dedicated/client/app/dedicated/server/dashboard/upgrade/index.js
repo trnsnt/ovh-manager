@@ -4,6 +4,8 @@ import 'oclazyload';
 import '@ovh-ux/ng-translate-async-loader';
 import 'angular-translate';
 
+import './index.scss';
+
 const moduleName = 'ovhManagerDedicatedServerDashboardUpgrade';
 
 angular
