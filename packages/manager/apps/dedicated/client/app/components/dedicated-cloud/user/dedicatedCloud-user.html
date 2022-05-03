@@ -69,8 +69,30 @@
     >
         <oui-datagrid-column
             data-title=":: 'dedicatedCloud_USER_name' | translate"
-            data-property="name"
         >
+            <span
+                data-ng-if="!$row.activeDirectoryId"
+                data-ng-bind="$row.login"
+            >
+            </span>
+            <span data-ng-if="$row.activeDirectoryId">
+                <span data-ng-if="$row.activeDirectoryType === 'group'">
+                    <span class="fa fa-users" aria-hidden="true"></span>
+                    <span data-ng-bind="$row.loginUsername"> </span>
+                    <span
+                        class="font-italic text-muted"
+                        data-ng-bind="'('+$row.loginDomain+')'"
+                    >
+                    </span>
+                </span>
+                <span data-ng-if="$row.activeDirectoryType !== 'group'">
+                    <span data-ng-bind="$row.loginUsername"> </span
+                    ><span
+                        class="font-italic text-muted"
+                        data-ng-bind="'@'+$row.loginDomain"
+                    ></span>
+                </span>
+            </span>
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'dedicatedCloud_USER_firstname' | translate"
@@ -137,7 +159,6 @@
         <oui-datagrid-column
             data-title=":: 'dedicatedCloud_USER_nsx' | translate"
             data-ng-if="$ctrl.nsxOptions === 'enabled'"
-            data-name="nsx"
         >
             <span data-translate="common_yes" data-ng-if="$row.nsxRight">
             </span>
@@ -145,7 +166,7 @@
             </span>
         </oui-datagrid-column>
         <oui-datagrid-column
-            data-title=":: 'dedicatedCloud_USER_connection_type' | translate"
+            data-title=":: 'dedicatedCloud_USER_state' | translate"
         >
             <span
                 data-ng-if="$ctrl.dedicatedCloud.solution !== 'SYSTEMCENTER' || $row.name !== 'infraadmin'"
@@ -212,6 +233,7 @@
                 ></span>
             </oui-action-menu-item>
             <oui-action-menu-item
+                data-ng-if="!$row.activeDirectoryId"
                 data-on-click="$ctrl.passwordReset($row, $ctrl.passwordPolicy)"
                 ><span
                     data-translate="dedicatedCloud_USER_change_password"

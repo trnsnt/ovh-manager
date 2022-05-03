@@ -1,3 +1,35 @@
+## [5.1.1](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contact@5.1.0...@ovh-ux/ng-ovh-contact@5.1.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* **ng-ovh-contact:** remove ng-bind-html ([2b65d92](https://github.com/ovh/manager/commit/2b65d92840dc94c46b89dcbc4c9ec4a95d4d5804))
+
+
+
+# [5.1.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contact@5.0.6...@ovh-ux/ng-ovh-contact@5.1.0) (2022-03-09)
+
+
+### Bug Fixes
+
+* **telecom:** remove unused package ([583fdf0](https://github.com/ovh/manager/commit/583fdf01a471ea62fd5f7efcf89d7d71049a02a2))
+
+
+### Features
+
+* **ng-ovh-contact:** use new version package to switch to vanilla js ([4ec0aee](https://github.com/ovh/manager/commit/4ec0aeed94cd4c74d7fab8901a83cd374294d213))
+
+
+
+## [5.0.6](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contact@5.0.5...@ovh-ux/ng-ovh-contact@5.0.6) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
 ## [5.0.5](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contact@5.0.4...@ovh-ux/ng-ovh-contact@5.0.5) (2021-10-26)
 
 

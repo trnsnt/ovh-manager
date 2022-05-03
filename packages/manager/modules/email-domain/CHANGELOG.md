@@ -1,3 +1,21 @@
+## [1.0.6](https://github.com/ovh/manager/compare/@ovh-ux/manager-email-domain@1.0.5...@ovh-ux/manager-email-domain@1.0.6) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [1.0.5](https://github.com/ovh/manager/compare/@ovh-ux/manager-email-domain@1.0.4...@ovh-ux/manager-email-domain@1.0.5) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
 ## [1.0.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-email-domain@1.0.3...@ovh-ux/manager-email-domain@1.0.4) (2021-12-28)
 
 

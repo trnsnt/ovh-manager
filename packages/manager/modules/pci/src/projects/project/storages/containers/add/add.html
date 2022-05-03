@@ -1,7 +1,28 @@
-<h1
-    data-translate="pci_projects_project_storages_containers_add_title"
-    data-ng-if="!$ctrl.archive"
-></h1>
+<div data-ng-if="!$ctrl.archive">
+    <h1
+        class="mb-1"
+        data-translate="pci_projects_project_storages_containers_add_title"
+    ></h1>
+    <h2 class="oui-header__description mb-5">
+        <div
+            data-translate="pci_projects_project_storages_containers_add_description"
+        ></div>
+        <a
+            href="{{:: $ctrl.storagePricesLink }}"
+            class="oui-link_icon"
+            rel="noreferrer"
+            target="_blank"
+        >
+            <span
+                data-translate="pci_projects_project_storages_containers_add_description_link"
+            ></span>
+            <span
+                class="oui-icon oui-icon-external-link"
+                aria-hidden="true"
+            ></span>
+        </a>
+    </h2>
+</div>
 <h1
     data-translate="pci_projects_project_storages_containers_add_archive_title"
     data-ng-if="$ctrl.archive"
@@ -37,17 +58,9 @@
                     data-description="{{:: ('pci_projects_project_storages_containers_add_offer_' + offerName + '_description') | translate }}"
                     data-values="[offerName]"
                     data-variant="light"
+                    data-on-change="$ctrl.onContainerSolutionChange()"
                     data-required
                 >
-                    <oui-select-picker-picture
-                        data-ng-if="$ctrl.OBJECT_CONTAINER_OFFERS_LABELS[offerName]"
-                    >
-                        <span
-                            ng-class=":: 'oui-badge oui-badge_s oui-badge_' + $ctrl.OBJECT_CONTAINER_OFFERS_LABELS[offerName]"
-                            data-translate="{{:: 'pci_projects_project_storages_containers_add_offer_label_' + $ctrl.OBJECT_CONTAINER_OFFERS_LABELS[offerName] }}"
-                        >
-                        </span>
-                    </oui-select-picker-picture>
                 </oui-select-picker>
             </div>
         </div>
@@ -64,6 +77,7 @@
                     data-description="{{ ('pci_projects_project_storages_containers_add_offer_' + $ctrl.container.offer + '_description') | translate }}"
                     data-values="[$ctrl.container.offer]"
                     data-variant="light"
+                    data-on-change="$ctrl.onContainerSolutionChange()"
                     data-required
                 >
                 </oui-select-picker>
@@ -72,12 +86,14 @@
     </oui-step-form>
 
     <oui-step-form
+        data-name="storage_container_add_region"
         data-header="{{:: 'pci_projects_project_storages_containers_add_region_title' | translate }}"
         data-navigation="$ctrl.container.region"
         data-on-focus="$ctrl.onRegionsFocus()"
         data-on-submit="$ctrl.onRegionChange()"
         data-editable="!$ctrl.isLoading"
-        name="storage_container_add_region"
+        data-valid="$ctrl.container.region"
+        data-prevent-next
     >
         <pci-project-regions-list
             data-ng-if="$ctrl.archive || $ctrl.currrentStep > 0"

@@ -1,3 +1,45 @@
+# [7.10.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-telecom-universe-components@7.9.2...@ovh-ux/ng-ovh-telecom-universe-components@7.10.0) (2022-04-28)
+
+
+### Features
+
+* **api:** replace apiv7 calls by v6 and iceberg ([#6307](https://github.com/ovh/manager/issues/6307)) ([b2e86fd](https://github.com/ovh/manager/commit/b2e86fd91d9accad4d670f441a4af04d3ef65b67))
+
+
+
+## [7.9.2](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-telecom-universe-components@7.9.1...@ovh-ux/ng-ovh-telecom-universe-components@7.9.2) (2022-04-06)
+
+
+### Bug Fixes
+
+* **telephony.abbreviated-numbers:** fix number deletion data ([#6776](https://github.com/ovh/manager/issues/6776)) ([64b653f](https://github.com/ovh/manager/commit/64b653f8574b3bb92f94b5f4a53a4f53b871be38))
+* **tuc.editable-service-name:** add restriction to name edition ([d0b38ce](https://github.com/ovh/manager/commit/d0b38ce20e657d718c2ae33e6b3cd45092622459))
+
+
+
+## [7.9.1](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-telecom-universe-components@7.9.0...@ovh-ux/ng-ovh-telecom-universe-components@7.9.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [7.9.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-telecom-universe-components@7.8.2...@ovh-ux/ng-ovh-telecom-universe-components@7.9.0) (2022-02-23)
+
+
+### Bug Fixes
+
+* **telephony:** replace billingAccount apiv7 call ([#6460](https://github.com/ovh/manager/issues/6460)) ([6f6ed13](https://github.com/ovh/manager/commit/6f6ed13253cd6fe3a01e7536b10f1056d292286a))
+
+
+### Features
+
+* tracking for nasha add and telephone line solution change page ([#6437](https://github.com/ovh/manager/issues/6437)) ([3e7c68e](https://github.com/ovh/manager/commit/3e7c68e3d3391f4b184320d9573c5f6fb65452da))
+
+
+
 ## [7.8.2](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-telecom-universe-components@7.8.1...@ovh-ux/ng-ovh-telecom-universe-components@7.8.2) (2022-01-25)
 
 

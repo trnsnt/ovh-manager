@@ -10,6 +10,10 @@ export default {
     instanceId: '<',
     instance: '<',
     instancePrice: '<',
+    steins: '<',
+    customerRegions: '<',
+    instancesRegions: '<',
+    catalogEndpoint: '<',
 
     instanceLink: '<',
     consoleLink: '<',

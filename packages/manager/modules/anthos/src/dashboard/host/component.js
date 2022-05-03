@@ -11,6 +11,8 @@ export default {
     serviceName: '<',
     trackClick: '<',
     hostHitTracking: '<',
+    availableOptions: '<',
+    packInfo: '<',
   },
   controller,
   template,

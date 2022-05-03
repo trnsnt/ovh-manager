@@ -11,7 +11,7 @@
   "dedicatedCloud_USER_ip": "IP",
   "dedicatedCloud_USER_ipfo": "IP FailOver",
   "dedicatedCloud_USER_nsx": "Interfaccia NSX",
-  "dedicatedCloud_USER_connection_type": "Diagnostica",
+  "dedicatedCloud_USER_state": "Stato",
   "dedicatedCloud_USER_state_CREATING": "Creazione in corso...",
   "dedicatedCloud_USER_state_DELETING": "Eliminazione in corso...",
   "dedicatedCloud_USER_state_DELIVERED": "Attivo",

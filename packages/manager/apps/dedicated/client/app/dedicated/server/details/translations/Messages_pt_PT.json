@@ -1196,5 +1196,12 @@
   "server_configuration_intervention_deactivate_success": "A intervenção no local está desativada no servidor {{serverName}}",
   "server_configuration_intervention_deactivate_failed": "Ocorreu um erro aquando da desativação da intervenção no local no servidor {{serverName}}",
   "server_configuration_intervention_activate_success": "A intervenção no local está ativa no servidor {{serverName}}",
-  "server_configuration_intervention_activate_failed": "Ocorreu um erro aquando da ativação das intervenções no local no servidor {{serverName}}"
+  "server_configuration_intervention_activate_failed": "Ocorreu um erro aquando da ativação das intervenções no local no servidor {{serverName}}",
+  "server_configuration_installation_FAT_16": "FAT16",
+  "server_configuration_installation_VMFS_5": "VMFS5",
+  "server_configuration_installation_VMFS_6": "VMFS6",
+  "server_configuration_installation_VMFSL": "VMFSL",
+  "server_nutanix_cluster_node_warning_1": "Este servidor dedicado faz parte de um cluster Nutanix: {{clusterName}}.",
+  "server_nutanix_cluster_node_warning_2": "Recomendamos que efetue todas as alterações de configuração diretamente no painel de controlo do servidor associado ao seu cluster Nutanix: {{clusterNodeDashboardLink}}",
+  "server_nutanix_cluster_node_warning_3": "Todas as ações de faturação relacionadas com este servidor são visíveis no seu cluster Nutanix: {{clusterDashboardLink}}"
 }

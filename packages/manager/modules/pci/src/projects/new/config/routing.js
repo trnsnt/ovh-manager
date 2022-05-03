@@ -1,5 +1,5 @@
 import component from './component';
-import { PCI_PROJECT_ORDER_CART } from '../constants';
+import { PCI_PROJECT_ORDER_CART, PCI_PROJECT_STEPS } from '../constants';
 import { PCI_HDS_ADDON } from '../../project/project.constants';
 
 export default /* @ngInject */ ($stateProvider) => {
@@ -19,8 +19,15 @@ export default /* @ngInject */ ($stateProvider) => {
 
       'voucher@pci.projects.new.config': 'pciProjectNewVoucher',
     },
-    onEnter: /* @ngInject */ (activeStep, step) => {
+    atInternet: {
+      ignore: true, // this tell AtInternet to not track this state
+    },
+    onEnter: /* @ngInject */ (atInternet, activeStep, step, numProjects) => {
       activeStep(step.name);
+      atInternet.trackPage({
+        name: 'PublicCloud::pci::projects::new::config',
+        pciCreationNumProjects: numProjects,
+      });
     },
     resolve: {
       getActionHref: /* @ngInject */ ($state) => (action) => {
@@ -34,6 +41,9 @@ export default /* @ngInject */ ($stateProvider) => {
         $state.go('pci.projects.new.payment', {
           cartId: cart.cartId,
         }),
+
+      projectsLink: /* @ngInject */ ($state) => () =>
+        $state.href('pci.projects'),
 
       hds: /* @ngInject */ (
         hdsAddonOption,
@@ -58,7 +68,39 @@ export default /* @ngInject */ ($stateProvider) => {
           PCI_HDS_ADDON.planCode,
         ),
 
-      step: /* @ngInject */ (getStep) => getStep('configuration'),
+      step: /* @ngInject */ (getStep) =>
+        getStep(PCI_PROJECT_STEPS.CONFIGURATION),
+
+      setCartProjectItem: /* @ngInject */ (
+        $q,
+        model,
+        cart,
+        pciProjectNew,
+      ) => () => {
+        if (model.description && !cart.projectItem.descriptionConfiguration) {
+          return pciProjectNew.setCartProjectItemDescription(
+            cart,
+            model.description,
+          );
+        }
+
+        return $q.when();
+      },
+
+      onProgressStepClick: /* @ngInject */ (
+        hds,
+        model,
+        setCartProjectItem,
+        goToPayment,
+      ) => ({ name, active }) => {
+        if (name === PCI_PROJECT_STEPS.PAYMENT && !active) {
+          if (model.agreements || hds.isInprogressRequest) {
+            return setCartProjectItem().then(() => goToPayment());
+          }
+        }
+
+        return null;
+      },
 
       summary: /* @ngInject */ (cart, getSummary) => getSummary(),
 

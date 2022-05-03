@@ -1,3 +1,22 @@
+## [4.6.1](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-sso-auth@4.6.0...@ovh-ux/ng-ovh-sso-auth@4.6.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
+# [4.6.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-sso-auth@4.5.2...@ovh-ux/ng-ovh-sso-auth@4.6.0) (2022-02-23)
+
+
+### Features
+
+* **ng-sso-auth:** add login & logout callbacks ([937bce2](https://github.com/ovh/manager/commit/937bce2fcaabe7d86ab132626623aba592be4346))
+* **sso-auth:** handle iframe application ([34630f7](https://github.com/ovh/manager/commit/34630f70177bf102a45851f1981f415b2d944433))
+
+
+
 ## [4.5.2](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-sso-auth@4.5.1...@ovh-ux/ng-ovh-sso-auth@4.5.2) (2021-10-27)
 
 

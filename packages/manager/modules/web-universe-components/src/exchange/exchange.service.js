@@ -619,9 +619,8 @@ export default class Exchange {
     );
     delete accountToUpdate.deleteOutlook;
 
-    accountToUpdate.displayName = account.displayName
-      ? account.displayName.trim()
-      : undefined;
+    accountToUpdate.displayName =
+      account.displayName != null ? account.displayName.trim() : undefined;
     const { password } = accountToUpdate;
     delete accountToUpdate.password;
     if (accountToUpdate.accountLicense) {
@@ -840,8 +839,7 @@ export default class Exchange {
   /**
    * Add an account alias
    */
-  addAlias(organization, serviceName, account, aliasModel) {
-    const completeAlias = `${aliasModel.alias}@${aliasModel.domain.name}`;
+  addAlias(organization, serviceName, account, alias) {
     return this.services.OvhHttp.post(
       '/email/exchange/{organization}/service/{exchange}/account/{account}/alias',
       {
@@ -852,7 +850,7 @@ export default class Exchange {
           account,
         },
         data: {
-          alias: completeAlias,
+          alias,
         },
       },
     ).then((data) => {

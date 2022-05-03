@@ -271,7 +271,7 @@
   "server_configuration_mitigation_statistics_mode_date": "On a specified date",
   "server_configuration_mitigation_statistics_input": "Input",
   "server_configuration_mitigation_statistics_output": "Output",
-  "server_configuration_mitigation_statistics_unit_B": "b/s",
+  "server_configuration_mitigation_statistics_unit_B": "B/s",
   "server_configuration_mitigation_statistics_unit_KB": "Kb/s",
   "server_configuration_mitigation_statistics_unit_MB": "Mb/s",
   "server_configuration_mitigation_statistics_unit_GB": "Gb/s",
@@ -1196,5 +1196,12 @@
   "server_configuration_intervention_deactivate_success": "On-site intervention is disabled on server {{serverName}}",
   "server_configuration_intervention_deactivate_failed": "An error has occurred disabling on-site interventions on the server {{serverName}}",
   "server_configuration_intervention_activate_success": "On-site intervention is enabled on server {{serverName}}",
-  "server_configuration_intervention_activate_failed": "An error has occurred enabling on-site interventions on server {{serverName}}"
+  "server_configuration_intervention_activate_failed": "An error has occurred enabling on-site interventions on server {{serverName}}",
+  "server_configuration_installation_FAT_16": "FAT16",
+  "server_configuration_installation_VMFS_5": "VMFS5",
+  "server_configuration_installation_VMFS_6": "VMFS6",
+  "server_configuration_installation_VMFSL": "VMFSL",
+  "server_nutanix_cluster_node_warning_1": "This dedicated server is part of a Nutanix cluster: {{clusterName}}.",
+  "server_nutanix_cluster_node_warning_2": "We recommend making all of the configuration changes directly in the dashboard of the server linked to your Nutanix cluster: {{clusterNodeDashboardLink}}",
+  "server_nutanix_cluster_node_warning_3": "All billing actions linked to this server are visible on your Nutanix cluster: {{clusterDashboardLink}}"
 }

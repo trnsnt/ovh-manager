@@ -38,6 +38,7 @@ export const getLink = (column, tracker) => `
     data-ng-href="{{ $ctrl.getServiceNameLink($row) }}"
     data-ng-bind="$row.${column.property}"
     ${tracker ? `data-track-on="click" data-track-name="${tracker}"` : ''}
+    target="_top"
   ></a>
 `;
 
@@ -87,12 +88,21 @@ const getTypeOptions = (schema, type, column, columnType) => {
 export const getSorting = ({ sort, sortOrder }, property) =>
   sort === property ? sortOrder.toLowerCase() : true;
 
-export const parseConfig = (columns, model, schema, sorting, tracking) =>
+export const parseConfig = (
+  columns,
+  model,
+  schema,
+  sorting,
+  tracking,
+  customizeColumnsMap = {},
+) =>
   map(columns, (column) => {
     const propertyType = get(model.properties[column.property], 'type');
     const type = getMatchingType(propertyType);
+    const customizeColumn = customizeColumnsMap[column.property] || {};
+
     return {
-      title: column.label,
+      title: customizeColumn?.title || column.label,
       property: column.property,
       ...(column.serviceLink ? { template: getLink(column, tracking) } : {}),
       ...(column.format ? { template: generateTemplate(column) } : {}),
@@ -280,10 +290,13 @@ export const stateResolves = {
     sortOrder,
   ) => {
     let serviceNameTracker;
+    let customizeColumnsMap;
     try {
       serviceNameTracker = $transition$.injector().get('serviceNameTracker');
+      customizeColumnsMap = $transition$.injector().get('customizeColumnsMap');
     } catch (error) {
       serviceNameTracker = null;
+      customizeColumnsMap = {};
     }
 
     return parseConfig(
@@ -292,6 +305,7 @@ export const stateResolves = {
       schema,
       { sort, sortOrder },
       serviceNameTracker,
+      customizeColumnsMap,
     );
   },
   formatters: /* @ngInject */ (configuration) => {

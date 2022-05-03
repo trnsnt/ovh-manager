@@ -7,11 +7,15 @@ import {
   SCALE_DEFAULT_VALUES,
   VERSION_ENUM_KEY,
 } from './kubernetes.constants';
+import { PCI_FEATURES } from '../../projects.constant';
 
 export default /* @ngInject */ ($stateProvider) => {
   $stateProvider.state('pci.projects.project.kubernetes', {
     url: '/kubernetes?id',
     component: 'ovhManagerPciProjectKubernetes',
+    onEnter: /* @ngInject */ (pciFeatureRedirect) => {
+      return pciFeatureRedirect(PCI_FEATURES.PRODUCTS.KUBERNETES);
+    },
     redirectTo: (transition) =>
       transition
         .injector()
@@ -51,6 +55,29 @@ export default /* @ngInject */ ($stateProvider) => {
         }
 
         return promise;
+      },
+
+      getKubeApiErrorId: /* @ngInject */ () => (error) => {
+        try {
+          const errorMessage = error.data?.message;
+          const errorStatus = error.status;
+          if (errorStatus === 412) {
+            return errorMessage.slice(
+              errorMessage.indexOf('[') + 1,
+              errorMessage.indexOf(']'),
+            );
+          }
+          return null;
+        } catch (e) {
+          return null;
+        }
+      },
+
+      getQuotaBuildUrl: /* @ngInject */ (coreURLBuilder, projectId) => () => {
+        return coreURLBuilder.buildURL(
+          'public-cloud',
+          `#/pci/projects/${projectId}/quota`,
+        );
       },
 
       clusterId: /* @ngInject */ ($transition$) => $transition$.params().id,

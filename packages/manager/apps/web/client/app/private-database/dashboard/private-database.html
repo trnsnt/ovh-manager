@@ -59,6 +59,7 @@
                                     data-event-blur="ctrl.newDisplayName.value = ''"
                                     data-ng-maxlength="250"
                                     data-ng-model="ctrl.newDisplayName.value"
+                                    data-ng-pattern="/^[^<>]+$/"
                                 />
                                 <button
                                     class="oui-button"
@@ -165,6 +166,7 @@
                                         data-ng-href="{{:: ctrl.contactManagementLink }}"
                                         data-translate="contacts_management"
                                         data-ng-hide="database.isExpired"
+                                        target="_top"
                                     >
                                     </a>
                                 </li>

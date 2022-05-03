@@ -14,6 +14,7 @@
         <a
             data-translate="telephony_group_billing_dashboard_suspended_info_link"
             data-ng-href="{{ DashboardCtrl.billingDepositLink }}"
+            target="_top"
         >
         </a>
     </oui-message>
@@ -385,12 +386,6 @@
             </div>
         </div>
     </div>
-    <!-- advices -->
-    <ovh-advices
-        service-type="voip"
-        service-name="{{ ::DashboardCtrl.billingAccountId }}"
-    >
-    </ovh-advices>
     <!-- /.widget-presentation -->
 </div>
 <!-- /.telephony-group-dashboard -->

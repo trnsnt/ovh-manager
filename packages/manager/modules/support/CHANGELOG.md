@@ -1,3 +1,53 @@
+## [1.9.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-support@1.9.0...@ovh-ux/manager-support@1.9.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **pci.notebooks:** fix notebook informations resources ([#6676](https://github.com/ovh/manager/issues/6676)) ([0de1933](https://github.com/ovh/manager/commit/0de19333642b53f0eb3c3d0e27557f244611f3ba))
+
+
+
+# [1.9.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-support@1.8.4...@ovh-ux/manager-support@1.9.0) (2022-04-21)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1584] ([30b4a3d](https://github.com/ovh/manager/commit/30b4a3dab51147950f938402b43883838a650ee6))
+
+
+### Features
+
+* **tickets.new-ticket:** new ticket service types ([3bce752](https://github.com/ovh/manager/commit/3bce75218acc5e2f87fa2e7aac5d5ae3666cc824))
+
+
+
+## [1.8.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-support@1.8.3...@ovh-ux/manager-support@1.8.4) (2022-04-06)
+
+
+### Bug Fixes
+
+* **support.tickets.new:** remove permissive filter ([064369e](https://github.com/ovh/manager/commit/064369e44fdf50ac93242b8072eb7b6288bfd554))
+
+
+
+## [1.8.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-support@1.8.2...@ovh-ux/manager-support@1.8.3) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [1.8.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-support@1.8.1...@ovh-ux/manager-support@1.8.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* **ticket.message:** improve readability ([#6394](https://github.com/ovh/manager/issues/6394)) ([76b63ac](https://github.com/ovh/manager/commit/76b63ac1ef04e2fc80b9693043ee4a0805122e86))
+
+
+
 ## [1.8.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-support@1.8.0...@ovh-ux/manager-support@1.8.1) (2021-12-28)
 
 

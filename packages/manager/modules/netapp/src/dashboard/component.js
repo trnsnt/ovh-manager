@@ -1,4 +1,3 @@
-import controller from './controller';
 import template from './template.html';
 
 export default {
@@ -6,16 +5,10 @@ export default {
     currentActiveLink: '<',
     dashboardLink: '<',
     storage: '<',
-    goToCreateVolume: '<',
     snapshotPoliciesLink: '<',
     volumesLink: '<',
-    isCommitmentAvailable: '<',
-    isCreateVolumeAvailable: '<',
-    canManageSubscription: '<',
-    canCreateVolume: '<',
     isSnapshotPoliciesAvailable: '<',
     trackClick: '<',
   },
-  controller,
   template,
 };

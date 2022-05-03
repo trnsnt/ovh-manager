@@ -1,3 +1,30 @@
+## [1.6.5](https://github.com/ovh/manager/compare/@ovh-ux/manager-dbaas-logs@1.6.4...@ovh-ux/manager-dbaas-logs@1.6.5) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [1.6.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-dbaas-logs@1.6.3...@ovh-ux/manager-dbaas-logs@1.6.4) (2022-04-06)
+
+
+### Bug Fixes
+
+* **dbaas-logs:** disallow HTML chars in name edition ([41e089f](https://github.com/ovh/manager/commit/41e089f5c15e4c457cb490cc609eeaeb17c1cb40))
+
+
+
+## [1.6.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-dbaas-logs@1.6.2...@ovh-ux/manager-dbaas-logs@1.6.3) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
 ## [1.6.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-dbaas-logs@1.6.1...@ovh-ux/manager-dbaas-logs@1.6.2) (2021-10-26)
 
 

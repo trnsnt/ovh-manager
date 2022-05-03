@@ -24,7 +24,13 @@ export default {
     trackDashboard: '<',
     trackDatabases: '<',
     isFeatureActivated: '<',
+    steins: '<',
+    customerRegions: '<',
+    databasesRegions: '<',
     queryStatisticsLink: '<',
+    namespacesLink: '<',
+    connectorsLink: '<',
+    advancedConfigurationLink: '<',
   },
   template,
 };

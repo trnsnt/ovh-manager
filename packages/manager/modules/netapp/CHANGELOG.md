@@ -1,3 +1,106 @@
+## [1.2.5](https://github.com/ovh/manager/compare/@ovh-ux/manager-netapp@1.2.4...@ovh-ux/manager-netapp@1.2.5) (2022-04-20)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([82697f0](https://github.com/ovh/manager/commit/82697f0b914cea21ff58f1ecda1ee70d41e31b94))
+* **i18n:** add missing translations [CDS 1557] ([6bf4bf7](https://github.com/ovh/manager/commit/6bf4bf7aeda1592c457c842ba28b3a89bf53a9d7))
+
+
+
+## [1.2.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-netapp@1.2.3...@ovh-ux/manager-netapp@1.2.4) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [1.2.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-netapp@1.2.2...@ovh-ux/manager-netapp@1.2.3) (2022-04-06)
+
+
+### Bug Fixes
+
+* **dashboard:** prevent components loading ([#6769](https://github.com/ovh/manager/issues/6769)) ([ec37117](https://github.com/ovh/manager/commit/ec3711771a8900ccb8a83c31f0f567d824d1a271))
+* remove unused translations [CDS] ([cf232dc](https://github.com/ovh/manager/commit/cf232dcff3532bb6c8f0e270737ebe3713c454a5))
+* **snapshot-policies.create:** display consistent button label ([#6780](https://github.com/ovh/manager/issues/6780)) ([3d0a6c4](https://github.com/ovh/manager/commit/3d0a6c45d3a53f70555655586e70d14e5963eb7c))
+
+
+
+## [1.2.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-netapp@1.2.1...@ovh-ux/manager-netapp@1.2.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [1.2.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-netapp@1.2.0...@ovh-ux/manager-netapp@1.2.1) (2022-03-09)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([392275b](https://github.com/ovh/manager/commit/392275be32d68088c6ac31cf46806bdc1909d476))
+* **i18n:** add missing translations [CDS 1496] ([28de037](https://github.com/ovh/manager/commit/28de037cae6dd646f59f809c2f6515886f5aeb4b))
+
+
+
+# [1.2.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-netapp@1.1.2...@ovh-ux/manager-netapp@1.2.0) (2022-03-02)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([#6609](https://github.com/ovh/manager/issues/6609)) ([250b8ee](https://github.com/ovh/manager/commit/250b8eed193b5235dc96e030a4f1de207bcf0439))
+* **i18n:** add missing translations [CDS 1460] ([c4aebf4](https://github.com/ovh/manager/commit/c4aebf426e92bd8eb183eab4d4c800f6e6aee348))
+* **i18n:** add missing translations [CDS 1490] ([c63131e](https://github.com/ovh/manager/commit/c63131e46494c8f7281350739b3a2d723e59a39f))
+* **module.netapp:** remove onboarding translation duplicate keys ([8b645ae](https://github.com/ovh/manager/commit/8b645ae149340c3725cb200eeb1cc99779b9a1b8))
+* **module.netapp:** rename order netapp cta ([da6cbba](https://github.com/ovh/manager/commit/da6cbbac67156f165df9e39fd0dac30d052bb9dd))
+* **module.netapp:** rename order netapp title ([e599e35](https://github.com/ovh/manager/commit/e599e35d7ed7cfd48106abdc0708118dfa963d7d))
+* **netapp:** applied specific volume success and error message ([#6268](https://github.com/ovh/manager/issues/6268)) ([d653dbb](https://github.com/ovh/manager/commit/d653dbb3799f6d91372cd8e79705c2c72390b0f7))
+* **netapp:** replace quick netapp panel start link ([#6302](https://github.com/ovh/manager/issues/6302)) ([60a98b6](https://github.com/ovh/manager/commit/60a98b64c8959de897ebf6df58cda8a3caf7d379))
+* **netapp:** set min minutes field to 0 ([#6253](https://github.com/ovh/manager/issues/6253)) ([3a7ebcd](https://github.com/ovh/manager/commit/3a7ebcd4add525855e02574fe53f69b94664d158))
+* **netapp:** set min width to avoid hide content ([#6264](https://github.com/ovh/manager/issues/6264)) ([03169c1](https://github.com/ovh/manager/commit/03169c1e97a0e0edde3cced9155dfd6e8c8154cb))
+* **netapp:** update bytes usage params ([01d83bb](https://github.com/ovh/manager/commit/01d83bb7e9b2f77b02dfa7d684ba9528f6da6b81))
+* **netapp:** update intro content to create a snap policy rule ([#6252](https://github.com/ovh/manager/issues/6252)) ([7666946](https://github.com/ovh/manager/commit/76669463bcf1918cbd34fdb7d00416d934fa3ac0))
+* **netapp:** use cucBytes to get right value and unit ([#6251](https://github.com/ovh/manager/issues/6251)) ([fb654b7](https://github.com/ovh/manager/commit/fb654b78d24b792201c2b58169d1cc2d37c6be08))
+* **netapp.dashboard:** fix tracking ([#6476](https://github.com/ovh/manager/issues/6476)) ([88ecbce](https://github.com/ovh/manager/commit/88ecbce09399b2ede29b8603828ad1ac82ee8247))
+* **netapp.order:** avoid te re-select default plan if already selected ([bab2864](https://github.com/ovh/manager/commit/bab28649b458f109cc35f96061bbec803262aa34))
+* **netapp.order:** fix monthly commitment express order issue ([284d79c](https://github.com/ovh/manager/commit/284d79c9c2417ec00e702c30b3b3ab509ef82ea7))
+* **netapp.order:** fix the negative saved amount ([e0f8ff8](https://github.com/ovh/manager/commit/e0f8ff8377f2dc86903d1debd0e818edb44f4e6f))
+* **netapp.order:** update commitment step if plan change ([8938321](https://github.com/ovh/manager/commit/8938321844f55e7808ea8522b7a0e4c5562909ad))
+* **netapp.order:** update payment step if commitment option change ([045af2a](https://github.com/ovh/manager/commit/045af2a5b5cb252f9f3d4f7a5557276fe4bee0f6))
+* **netapp.volumes.snapshots:** grayed apply policy btn for default snap ([43fe639](https://github.com/ovh/manager/commit/43fe639904c3c577528bf3162c7892e5bdf998ae))
+
+
+### Features
+
+* **module.netapp:** add netapp order cta ([16e2740](https://github.com/ovh/manager/commit/16e274084f0d320214c1e6e1f219476b7bb4addb))
+* **module.netapp:** add netapp order cta ([55f7957](https://github.com/ovh/manager/commit/55f795791b4c4701e1cd9d4d9af2e8b7b0bdead1))
+* **module.netapp:** define custom headers name ([0a17490](https://github.com/ovh/manager/commit/0a1749053b6e009eb9a7c36d8d65e4432e1414c0))
+* **module.netapp:** define custom headers name ([945dac0](https://github.com/ovh/manager/commit/945dac029f2c0c31c4747adf07e50646e0944a3d))
+* **module.netapp:** update header list page name ([8fb945d](https://github.com/ovh/manager/commit/8fb945da81a068b27a9eef7f655b34806f0d6fa3))
+* **module.netapp:** update header list page name ([6e9d832](https://github.com/ovh/manager/commit/6e9d8320008c919a6490684fda74e26935211244))
+* **modules.netapp:** add service-type query param for tracking ([3974510](https://github.com/ovh/manager/commit/3974510cb561b78f8fd751ed183210b6de02e023))
+* **modules.netapp:** snapshot policies tracking ([12ac498](https://github.com/ovh/manager/commit/12ac4985da19ac865480d30f41a69f5d45b51a67))
+* **modules.netapp:** update button content ([749362a](https://github.com/ovh/manager/commit/749362a1206371cb8ac72fe807ed1bb3e6c7eec6))
+* **modules.netapp:** volumes acl tracking ([35dd49d](https://github.com/ovh/manager/commit/35dd49d04cd20c1cf2fb9ece2c0e2ea873a99256))
+* **netapp:** add a tooltip to access column ([e495e37](https://github.com/ovh/manager/commit/e495e3739a7bfdfb97d01c290a8eacf79273639b))
+* **netapp:** add quantity volumes info ([a4ff283](https://github.com/ovh/manager/commit/a4ff28302a354e617197dd0edd5661e849d3501e))
+* **netapp:** preselect option if one only ([e79b2c5](https://github.com/ovh/manager/commit/e79b2c569ca0216eb39cf1d32af8477caa8bd15f))
+* **netapp.acl:** add extra acl explanation ([7242581](https://github.com/ovh/manager/commit/724258131d317d1ca28f47721bde6cb6ebbcbed3))
+* **netapp.dashboard:** add tracking on delete a snapshot rule ([b198971](https://github.com/ovh/manager/commit/b1989715cf972c857de3646ef43433960fd1718c))
+* **netapp.order:** hide discount value ([580fc00](https://github.com/ovh/manager/commit/580fc00c789be2b8c611632affd6314c9e6b17be))
+* **netapp.order:** order by size and display item horizontally ([a201715](https://github.com/ovh/manager/commit/a201715b9cced28e34e6fdc801ec5c598bb30b40))
+* **netapp.order:** preselect a first region ([121a14e](https://github.com/ovh/manager/commit/121a14ef1d906faf24d4bf40e1401e3cd094fe41))
+* **netapp.order:** preselect default duration ([9202e38](https://github.com/ovh/manager/commit/9202e38c0f49fa6a80b2f52782e713495d86a8d5))
+* **netapp.order:** remove price info ([4a21f3e](https://github.com/ovh/manager/commit/4a21f3ecc321198e71c80069f83ebf4d37da0a07))
+* **netapp.snapshot-policies:** disable default option ([49ff428](https://github.com/ovh/manager/commit/49ff428d6e53ebba31b176590f807ff796b63a7d))
+* **netapp.volumes:** translate volume status ([617490c](https://github.com/ovh/manager/commit/617490c70bc40a797a7df0cf97f459111cf89942))
+
+
+
 ## [1.1.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-netapp@1.1.1...@ovh-ux/manager-netapp@1.1.2) (2021-12-14)
 
 

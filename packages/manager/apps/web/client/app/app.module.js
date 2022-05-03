@@ -40,7 +40,6 @@ import 'script-loader!clipboard/dist/clipboard.min.js';
 import 'ng-ckeditor';
 
 /* eslint-enable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
-
 import filter from 'lodash/filter';
 import forEach from 'lodash/forEach';
 import get from 'lodash/get';
@@ -76,7 +75,6 @@ import ovhManagerAccountMigration from '@ovh-ux/manager-account-migration';
 import ovhManagerBanner from '@ovh-ux/manager-banner';
 import ovhManagerCookiePolicy from '@ovh-ux/manager-cookie-policy';
 import ovhManagerCatalogPrice from '@ovh-ux/manager-catalog-price';
-import ovhManagerIncidentBanner from '@ovh-ux/manager-incident-banner';
 import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 import ovhManagerProductOffers from '@ovh-ux/manager-product-offers';
 import uiRouter, { RejectType } from '@uirouter/angularjs';
@@ -89,6 +87,7 @@ import office from '@ovh-ux/manager-office';
 import sharepoint from '@ovh-ux/manager-sharepoint';
 import { detach as detachPreloader } from '@ovh-ux/manager-preloader';
 import WebPaas from '@ovh-ux/manager-web-paas';
+import '@ovh-ux/manager-filters';
 
 import getConfig from './config/config';
 import domain from './domain';
@@ -169,11 +168,11 @@ export default (containerEl, environment) => {
         ovhManagerBanner,
         ovhManagerCookiePolicy,
         ovhManagerCatalogPrice,
-        ovhManagerIncidentBanner,
         ovhManagerNavbar,
         ovhManagerProductOffers,
         ovhNotificationsSidebar,
         'oui',
+        'ovhManagerFilters',
         emailpro,
         exchange,
         office,

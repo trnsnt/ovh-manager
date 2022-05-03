@@ -1,3 +1,62 @@
+## [2.20.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-vps@2.20.3...@ovh-ux/manager-vps@2.20.4) (2022-04-26)
+
+
+### Bug Fixes
+
+* **dashboard:** display region icon by adding missing class separator ([#6972](https://github.com/ovh/manager/issues/6972)) ([4fb8916](https://github.com/ovh/manager/commit/4fb8916be0b9f81d77bac4f4794a735638f12e31))
+
+
+
+## [2.20.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-vps@2.20.2...@ovh-ux/manager-vps@2.20.3) (2022-04-22)
+
+
+### Bug Fixes
+
+* **veeam.order:** fix order duration ([#6759](https://github.com/ovh/manager/issues/6759)) ([163e17a](https://github.com/ovh/manager/commit/163e17a59a56042b5f652b33f9e0c6a57fd0ce42))
+
+
+
+## [2.20.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-vps@2.20.1...@ovh-ux/manager-vps@2.20.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [2.20.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-vps@2.20.0...@ovh-ux/manager-vps@2.20.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [2.20.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-vps@2.19.1...@ovh-ux/manager-vps@2.20.0) (2022-03-23)
+
+
+### Features
+
+* add tracking enhancements ([#6613](https://github.com/ovh/manager/issues/6613)) ([e41bc29](https://github.com/ovh/manager/commit/e41bc294a001ebf5d3c009c65b9da64d2c26e050))
+
+
+### Performance Improvements
+
+* remove calls to /incident/* ([#6564](https://github.com/ovh/manager/issues/6564)) ([e949a3d](https://github.com/ovh/manager/commit/e949a3d52bc7bd6b5a7260e8a7cbf4c33f3df2cf))
+
+
+
+## [2.19.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-vps@2.19.0...@ovh-ux/manager-vps@2.19.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dashboard.migrate:** fix price issue for vps migration funnel ([#6522](https://github.com/ovh/manager/issues/6522)) ([2b47da6](https://github.com/ovh/manager/commit/2b47da67759ec788f64b420992a2f96fafcc2321))
+
+
+
 # [2.19.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-vps@2.18.1...@ovh-ux/manager-vps@2.19.0) (2022-01-11)
 
 

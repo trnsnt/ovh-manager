@@ -15,6 +15,8 @@ export default {
     goToRemovePrivateIp: '<',
     trackClick: '<',
     ipHitTracking: '<',
+    availableOptions: '<',
+    packInfo: '<',
   },
   controller,
   template,

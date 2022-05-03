@@ -1,7 +1,7 @@
 <oui-tile
     class="h-100"
     heading="{{:: 'dedicated_server_dashboard_technical_details_heading' | translate }}"
-    loading="$ctrl.loading"
+    loading="$ctrl.loading || $ctrl.loadingTechnicalDetails"
 >
     <oui-tile-definition
         term="{{:: 'dedicated_server_dashboard_technical_details_cpu' | translate }}"
@@ -57,6 +57,7 @@
     </oui-tile-button>
     <oui-tile-definition
         term="{{:: 'dedicated_server_dashboard_technical_details_extension_card_many' | translate }}"
+        data-ng-if="$ctrl.formattedExtensionCard"
     >
         <oui-tile-description>
             <span data-ng-bind=":: $ctrl.formattedExtensionCard"></span>

@@ -1,3 +1,48 @@
+## [2.6.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-office@2.6.1...@ovh-ux/manager-office@2.6.2) (2022-04-06)
+
+
+### Bug Fixes
+
+* **office.dashboard:** disallow HTML chars in name edition ([4461fcb](https://github.com/ovh/manager/commit/4461fcb489b33d8a0e0b5debcccdcea672f1088d))
+
+
+
+## [2.6.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-office@2.6.0...@ovh-ux/manager-office@2.6.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [2.6.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-office@2.5.1...@ovh-ux/manager-office@2.6.0) (2022-03-23)
+
+
+### Features
+
+* cross-sell and up-sell updates ([#6494](https://github.com/ovh/manager/issues/6494)) ([5018416](https://github.com/ovh/manager/commit/501841638ba08c1854429bfd7dd4e65f3c6b4832))
+
+
+
+## [2.5.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-office@2.5.0...@ovh-ux/manager-office@2.5.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
+# [2.5.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-office@2.4.2...@ovh-ux/manager-office@2.5.0) (2022-03-03)
+
+
+### Features
+
+* **office.dashboard:** officeprepaid api for ms office prepaid licenses ([#6589](https://github.com/ovh/manager/issues/6589)) ([df07171](https://github.com/ovh/manager/commit/df071719f9acdee71846b39bbc874f2a558975c2))
+
+
+
 ## [2.4.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-office@2.4.1...@ovh-ux/manager-office@2.4.2) (2021-10-26)
 
 

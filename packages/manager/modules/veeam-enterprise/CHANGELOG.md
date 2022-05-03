@@ -1,3 +1,21 @@
+# [1.3.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-veeam-enterprise@1.2.4...@ovh-ux/manager-veeam-enterprise@1.3.0) (2022-04-06)
+
+
+### Features
+
+* add some tracking ([#6765](https://github.com/ovh/manager/issues/6765)) ([99952d9](https://github.com/ovh/manager/commit/99952d9d5e6d02d7a07733ed0f40bab611521c29))
+
+
+
+## [1.2.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-veeam-enterprise@1.2.3...@ovh-ux/manager-veeam-enterprise@1.2.4) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
 ## [1.2.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-veeam-enterprise@1.2.2...@ovh-ux/manager-veeam-enterprise@1.2.3) (2021-10-26)
 
 

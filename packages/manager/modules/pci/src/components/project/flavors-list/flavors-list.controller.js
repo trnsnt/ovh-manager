@@ -21,7 +21,7 @@ export default class FlavorsListController {
     this.flavorCount = this.flavorCount || 1;
     return this.$q
       .all({
-        flavors: this.getFlavors(),
+        flavors: this.getFlavors(this.catalogEndpoint),
         me: this.coreConfig.getUser(),
       })
       .then(({ me }) => {
@@ -68,6 +68,7 @@ export default class FlavorsListController {
       flavorsPromise = this.PciProjectFlavors.getFlavors(
         this.serviceName,
         get(this.region, 'name'),
+        this.catalogEndpoint,
       );
     }
     return flavorsPromise.then((flavors) => {
@@ -153,6 +154,6 @@ export default class FlavorsListController {
   }
 
   formatStorage(capacity) {
-    return this.$filter('cucBytes')(capacity, 2, false, 'GB');
+    return this.$filter('bytes')(capacity, 2, false, 'GB');
   }
 }

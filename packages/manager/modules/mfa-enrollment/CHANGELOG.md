@@ -1,3 +1,21 @@
+## [2.1.2](https://github.com/ovh/manager/compare/@ovh-ux/mfa-enrollment@2.1.1...@ovh-ux/mfa-enrollment@2.1.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [2.1.1](https://github.com/ovh/manager/compare/@ovh-ux/mfa-enrollment@2.1.0...@ovh-ux/mfa-enrollment@2.1.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
 # [2.1.0](https://github.com/ovh/manager/compare/@ovh-ux/mfa-enrollment@2.0.3...@ovh-ux/mfa-enrollment@2.1.0) (2021-08-25)
 
 

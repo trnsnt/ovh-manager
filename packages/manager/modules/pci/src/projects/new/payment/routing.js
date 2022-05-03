@@ -2,6 +2,9 @@ import filter from 'lodash/filter';
 import find from 'lodash/find';
 import get from 'lodash/get';
 
+import { CREDIT_PROVISIONING } from './components/add/constants';
+import { PCI_PROJECT_STEPS } from '../constants';
+
 import component from './component';
 
 export default /* @ngInject */ ($stateProvider) => {
@@ -44,11 +47,37 @@ export default /* @ngInject */ ($stateProvider) => {
           dlpStatus ? 'pciProjectNewPaymentDlp' : null,
       },
     },
-    onEnter: /* @ngInject */ (activeStep, step) => {
+    atInternet: {
+      ignore: true, // this tell AtInternet to not track this state
+    },
+    onEnter: /* @ngInject */ (atInternet, activeStep, step, numProjects) => {
       activeStep(step.name);
+      atInternet.trackPage({
+        name: 'PublicCloud::pci::projects::new::payment',
+        pciCreationNumProjects: numProjects,
+      });
     },
     resolve: {
       callback: /* @ngInject */ ($location) => $location.search(),
+
+      isDisplayablePaypalChargeBanner: /* @ngInject */ (ovhFeatureFlipping) => {
+        const paypalChargeId = 'public-cloud:paypal-charge';
+        return ovhFeatureFlipping
+          .checkFeatureAvailability(paypalChargeId)
+          .then((feature) => feature.isFeatureAvailable(paypalChargeId));
+      },
+
+      creditProvisioningPlan: /* @ngInject */ ($http, coreConfig) =>
+        $http
+          .get('/order/catalog/public/cloud', {
+            params: { ovhSubsidiary: coreConfig.getUser().ovhSubsidiary },
+          })
+          .then(({ data: catalog }) => catalog)
+          .then((catalog) => {
+            return catalog.plans.find(
+              ({ planCode }) => planCode === CREDIT_PROVISIONING.PLAN_CODE,
+            );
+          }),
 
       getPaymentMethod: /* @ngInject */ (ovhPaymentMethod) => (
         paymentMethodId,
@@ -109,6 +138,8 @@ export default /* @ngInject */ ($stateProvider) => {
       getCancelHref: /* @ngInject */ ($state) => () =>
         $state.href('pci.projects'),
 
+      step1Link: /* @ngInject */ ($state) => () => $state.href('^'),
+
       reloadPayment: /* @ngInject */ ($state) => () =>
         $state.go(
           'pci.projects.new.payment',
@@ -148,7 +179,15 @@ export default /* @ngInject */ ($stateProvider) => {
         );
       },
 
-      step: /* @ngInject */ (getStep) => getStep('payment'),
+      onProgressStepClick: /* @ngInject */ ($state) => ({ name, active }) => {
+        if (name === PCI_PROJECT_STEPS.CONFIGURATION && !active) {
+          return $state.go('^');
+        }
+
+        return null;
+      },
+
+      step: /* @ngInject */ (getStep) => getStep(PCI_PROJECT_STEPS.PAYMENT),
     },
   });
 };

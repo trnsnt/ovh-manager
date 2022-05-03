@@ -81,6 +81,7 @@ import ovhContacts from '@ovh-ux/ng-ovh-contacts';
 import ovhManagerAccountSidebar from '@ovh-ux/manager-account-sidebar';
 import ovhManagerAtInternetConfiguration from '@ovh-ux/manager-at-internet-configuration';
 import { registerCoreModule } from '@ovh-ux/manager-core';
+import { serverBandwidth } from '@ovh-ux/manager-components';
 import ovhManagerCookiePolicy from '@ovh-ux/manager-cookie-policy';
 import ovhManagerBanner from '@ovh-ux/manager-banner';
 import ovhManagerBilling from '@ovh-ux/manager-billing';
@@ -93,7 +94,6 @@ import ovhManagerNetapp from '@ovh-ux/manager-netapp';
 import ovhManagerServerSidebar from '@ovh-ux/manager-server-sidebar';
 import ovhManagerSupport from '@ovh-ux/manager-support';
 import ovhPaymentMethod from '@ovh-ux/ng-ovh-payment-method';
-import ovhManagerIncidentBanner from '@ovh-ux/manager-incident-banner';
 import uiRouter, { RejectType } from '@uirouter/angularjs';
 import chartjs from 'angular-chart.js';
 
@@ -111,8 +111,8 @@ import ovhManagerCloudConnect from '@ovh-ux/manager-cloud-connect';
 import { detach as detachPreloader } from '@ovh-ux/manager-preloader';
 import ovhNotificationsSidebar from '@ovh-ux/manager-notifications-sidebar';
 import ovhManagerAccountMigration from '@ovh-ux/manager-account-migration';
+import ovhManagerNutanix from '@ovh-ux/manager-nutanix';
 import { pollingService } from '@ovh-ux/manager-bm-server-components';
-import { serverBandwidth } from '@ovh-ux/manager-components';
 import account from './account';
 import cdn from './cdn';
 import moduleLicense from './license';
@@ -197,12 +197,12 @@ export default (containerEl, environment) => {
         'ovh-api-services',
         ovhManagerAccountMigration,
         ovhManagerDbaasLogs,
-        ovhManagerIncidentBanner,
         ovhManagerIplb,
         ovhManagerServerSidebar,
         ovhManagerSupport,
         ovhManagerVeeamEnterprise,
         ovhManagerVeeamCloudConnect,
+        ovhManagerNutanix,
         ovhNotificationsSidebar,
         ovhManagerFilters,
         ngTailLogs,
@@ -316,6 +316,7 @@ export default (containerEl, environment) => {
             'app.hpc',
             'app.dedicatedCloud',
             'veeam-enterprise',
+            'nutanix',
           ];
           const IGNORE_STATES = [
             'app.configuration',
@@ -351,6 +352,7 @@ export default (containerEl, environment) => {
         });
 
         $state.defaultErrorHandler((error) => {
+          console.log(error);
           if (error.type === RejectType.ERROR && !error.handled) {
             $rootScope.$emit('ovh::sidebar::hide');
             $state.go(

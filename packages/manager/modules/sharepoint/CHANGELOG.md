@@ -1,3 +1,39 @@
+## [2.5.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-sharepoint@2.5.2...@ovh-ux/manager-sharepoint@2.5.3) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [2.5.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-sharepoint@2.5.1...@ovh-ux/manager-sharepoint@2.5.2) (2022-04-06)
+
+
+### Bug Fixes
+
+* **sharepoint.dashboard:** disallow HTML chars in name edition ([0c89923](https://github.com/ovh/manager/commit/0c899231b56315f580f9420c9e3c25eca1673fd5))
+
+
+
+## [2.5.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-sharepoint@2.5.0...@ovh-ux/manager-sharepoint@2.5.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [2.5.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-sharepoint@2.4.2...@ovh-ux/manager-sharepoint@2.5.0) (2022-03-23)
+
+
+### Features
+
+* cross-sell and up-sell updates ([#6494](https://github.com/ovh/manager/issues/6494)) ([5018416](https://github.com/ovh/manager/commit/501841638ba08c1854429bfd7dd4e65f3c6b4832))
+
+
+
 ## [2.4.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-sharepoint@2.4.1...@ovh-ux/manager-sharepoint@2.4.2) (2021-10-26)
 
 

@@ -37,15 +37,21 @@ export const NOTEBOOK_FRAMEWORK_INFO = {
 };
 
 export const NOTEBOOK_AUTOMATION_INFO = {
-  DEFAULT: 'https://docs.ovh.com/gb/en/ai-training/overview-cli/',
+  DEFAULT: 'https://docs.ovh.com/gb/en/publiccloud/ai/cli/overview-cli/',
 };
 
 export const NOTEBOOK_STORAGE_INFO = {
-  DEFAULT: 'https://docs.ovh.com/gb/en/ai-training/data/',
-  CA: 'https://docs.ovh.com/ca/en/ai-training/data/',
+  DEFAULT: 'https://docs.ovh.com/gb/en/publiccloud/ai/data/',
+  CA: 'https://docs.ovh.com/ca/en/publiccloud/ai/data/',
 };
 
 export const NOTEBOOK_MULTIPLY_SIGN = ' × ';
+
+export const NOTEBOOK_FREE_WORKSPACE_STORAGE_DEFAULT = 10737418420;
+
+export const NOTEBOOK_MINUTES_IN_HOUR = 60;
+
+export const NOTEBOOK_MAX_PROGRESS_VALUE = 100;
 
 export default {
   NOTEBOOK_TAGS,
@@ -58,4 +64,7 @@ export default {
   NOTEBOOK_POLLER_NAMESPACES,
   NOTEBOOK_FRAMEWORK_INFO,
   NOTEBOOK_MULTIPLY_SIGN,
+  NOTEBOOK_FREE_WORKSPACE_STORAGE_DEFAULT,
+  NOTEBOOK_MINUTES_IN_HOUR,
+  NOTEBOOK_MAX_PROGRESS_VALUE,
 };

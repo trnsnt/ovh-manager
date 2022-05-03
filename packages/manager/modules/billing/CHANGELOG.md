@@ -1,3 +1,136 @@
+# [0.13.0-alpha.6](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.13.0-alpha.5...@ovh-ux/manager-billing@0.13.0-alpha.6) (2022-04-20)
+
+
+### Bug Fixes
+
+* **billing.fidelity:** fix duplicate issues on data refresh ([07b8b88](https://github.com/ovh/manager/commit/07b8b88577c34869a76bc2e25e03f22e4cbbd7b1))
+
+
+
+# [0.13.0-alpha.5](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.13.0-alpha.4...@ovh-ux/manager-billing@0.13.0-alpha.5) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+# [0.13.0-alpha.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.13.0-alpha.3...@ovh-ux/manager-billing@0.13.0-alpha.4) (2022-04-12)
+
+
+### Code Refactoring
+
+* **billing:** kill payments requests apiv7 ([#6464](https://github.com/ovh/manager/issues/6464)) ([6d865ab](https://github.com/ovh/manager/commit/6d865ab9525462b33c0e979aa354d79f652479c6))
+
+
+### BREAKING CHANGES
+
+* **billing:** BillingBill service has been removed
+
+
+
+# [0.13.0-alpha.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.13.0-alpha.2...@ovh-ux/manager-billing@0.13.0-alpha.3) (2022-03-29)
+
+
+### Bug Fixes
+
+* **dedicated:** replace billing payments apiv7 calls with iceberg ([#3657](https://github.com/ovh/manager/issues/3657)) ([b55e13a](https://github.com/ovh/manager/commit/b55e13adef4a2b0f98aa638e67a45cc51f9d80a0))
+
+
+
+# [0.13.0-alpha.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.13.0-alpha.1...@ovh-ux/manager-billing@0.13.0-alpha.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [0.13.0-alpha.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.13.0-alpha.0...@ovh-ux/manager-billing@0.13.0-alpha.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1510] ([#6662](https://github.com/ovh/manager/issues/6662)) ([d2e3a4b](https://github.com/ovh/manager/commit/d2e3a4bfa7dedd918053a21625a653756cfc9aa4))
+
+
+
+# [0.13.0-alpha.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.12.0-alpha.2...@ovh-ux/manager-billing@0.13.0-alpha.0) (2022-03-15)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1506] ([14e17e0](https://github.com/ovh/manager/commit/14e17e0125ccb0598c7fc760cf1f6a92b8266739))
+
+
+### Features
+
+* nutanix service ui ([5d9d1fd](https://github.com/ovh/manager/commit/5d9d1fd5dd10dd614df4068c3cfc84d44791b739))
+
+
+
+# [0.12.0-alpha.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.12.0-alpha.1...@ovh-ux/manager-billing@0.12.0-alpha.2) (2022-03-09)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1496] ([28de037](https://github.com/ovh/manager/commit/28de037cae6dd646f59f809c2f6515886f5aeb4b))
+* remove unused translations [CDS] ([97969a5](https://github.com/ovh/manager/commit/97969a565df95942e4761feaa0b0b73acc1aee61))
+
+
+
+# [0.12.0-alpha.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.12.0-alpha.0...@ovh-ux/manager-billing@0.12.0-alpha.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **payment.method.add:** fix sepa direct help links ([#6480](https://github.com/ovh/manager/issues/6480)) ([a888daf](https://github.com/ovh/manager/commit/a888dafb7ef79f87d8a46c72ca3d1c032d89077a))
+* **payment.method.add:** navigate to payment methods list page ([#6625](https://github.com/ovh/manager/issues/6625)) ([2cd394f](https://github.com/ovh/manager/commit/2cd394f90764e713dc1d0f40b71620f3836067b9))
+
+
+
+# [0.12.0-alpha.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.11.0-alpha.2...@ovh-ux/manager-billing@0.12.0-alpha.0) (2022-03-02)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1460] ([c4aebf4](https://github.com/ovh/manager/commit/c4aebf426e92bd8eb183eab4d4c800f6e6aee348))
+
+
+### Features
+
+* **billing.autorenew:** set netapp service name ([f1498b1](https://github.com/ovh/manager/commit/f1498b1e7c8d1cf8ab2be55d93a3189f05cab1b9))
+
+
+
+# [0.11.0-alpha.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.11.0-alpha.1...@ovh-ux/manager-billing@0.11.0-alpha.2) (2022-02-23)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([6381fc1](https://github.com/ovh/manager/commit/6381fc18ed75a041150e415c019bb73984ef9db3))
+* **i18n:** add missing translations [CDS 1431] ([670fa37](https://github.com/ovh/manager/commit/670fa378e8a449315126fa9d5d02cf06c15e5f7f))
+
+
+
+# [0.11.0-alpha.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.11.0-alpha.0...@ovh-ux/manager-billing@0.11.0-alpha.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1409] ([e303b25](https://github.com/ovh/manager/commit/e303b252f55b770f29ecabcbe43b94fa4daef295))
+* **i18n:** add missing translations [CDS 1412] ([1c6dc65](https://github.com/ovh/manager/commit/1c6dc6504965bdebe4c8118999f5793fb1dc3835))
+* **i18n:** add missing translations [CDS 1417] ([f9fb30b](https://github.com/ovh/manager/commit/f9fb30bdccf4aed9cf5b601b152b0da060bb1b41))
+* **i18n:** add missing translations [CDS 1422] ([b3ecea8](https://github.com/ovh/manager/commit/b3ecea81cc637a671d31408d443a8946253e886b))
+* **i18n:** add missing translations [CDS 1428] ([eab4d70](https://github.com/ovh/manager/commit/eab4d703e3ab487ceff0cf2869cb74202fb900a0))
+* **payment.method:** removal of unnecessary message ([#6423](https://github.com/ovh/manager/issues/6423)) ([a036aa0](https://github.com/ovh/manager/commit/a036aa06af716940a9087678c9f35b427c1b012a))
+* remove unused translations [CDS] ([22c7cef](https://github.com/ovh/manager/commit/22c7cef38976469d684d25efbf71761105fc0611))
+* **payment.method:** do not fallback guide ([#6350](https://github.com/ovh/manager/issues/6350)) ([ff5dc9d](https://github.com/ovh/manager/commit/ff5dc9de6058e6723f5460ebfdc67b2d1c86886f))
+
+
+
 # [0.11.0-alpha.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing@0.10.0-alpha.1...@ovh-ux/manager-billing@0.11.0-alpha.0) (2022-01-28)
 
 

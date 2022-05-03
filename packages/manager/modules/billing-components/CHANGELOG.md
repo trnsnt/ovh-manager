@@ -1,3 +1,47 @@
+## [3.8.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing-components@3.8.1...@ovh-ux/manager-billing-components@3.8.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [3.8.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing-components@3.8.0...@ovh-ux/manager-billing-components@3.8.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [3.8.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing-components@3.7.2...@ovh-ux/manager-billing-components@3.8.0) (2022-03-02)
+
+
+### Bug Fixes
+
+* **billing:** add missed netapp storage service key ([#6273](https://github.com/ovh/manager/issues/6273)) ([4febeea](https://github.com/ovh/manager/commit/4febeea4a378bee634c49a3e8b34c2ddc6fc0ea8))
+* **i18n:** add missing translations [CDS 1460] ([c4aebf4](https://github.com/ovh/manager/commit/c4aebf426e92bd8eb183eab4d4c800f6e6aee348))
+
+
+### Features
+
+* **commitment-duration:** allow default duration preselection ([bf63bfa](https://github.com/ovh/manager/commit/bf63bfa4d579863d3bd3d8d11d74ea38f36631a6))
+* **modules.billing-component:** take quantity in account ([4b08133](https://github.com/ovh/manager/commit/4b081332aa51e9635256e669d5a659e825258e43))
+* **modules.commitment-pricing-mode:** allow to hidden discount ([7a25ab7](https://github.com/ovh/manager/commit/7a25ab7f8eff0d2ef52deb1b61587263b50afaf3))
+
+
+
+## [3.7.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing-components@3.7.1...@ovh-ux/manager-billing-components@3.7.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1428] ([eab4d70](https://github.com/ovh/manager/commit/eab4d703e3ab487ceff0cf2869cb74202fb900a0))
+
+
+
 ## [3.7.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-billing-components@3.7.0...@ovh-ux/manager-billing-components@3.7.1) (2021-12-28)
 
 

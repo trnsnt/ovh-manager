@@ -66,6 +66,7 @@
                                     data-track-on="click"
                                     data-track-name="{{:: $ctrl.constructor.getTrackName() }}"
                                     data-track-type="action"
+                                    target="_top"
                                 >
                                     <span
                                         data-translate="sms_statictics_credit_reload"
@@ -125,17 +126,6 @@
                     </div>
                 </div>
             </oui-tile>
-        </div>
-    </div>
-    <!-- /.row -->
-    <!-- advices -->
-    <div class="row d-md-flex">
-        <div class="col-md-6 mb-3">
-            <ovh-advices
-                service-type="sms"
-                service-name="{{ ::$ctrl.serviceName }}"
-            >
-            </ovh-advices>
         </div>
     </div>
 </section>

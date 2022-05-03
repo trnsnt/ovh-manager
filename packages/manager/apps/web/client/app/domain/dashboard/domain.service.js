@@ -299,7 +299,7 @@ angular.module('services').service(
      * @param {string} id
      */
     getNameServerStatus(serviceName, id) {
-      return this.OvhHttp.post(
+      return this.OvhHttp.get(
         `/domain/${serviceName}/nameServer/${id}/status`,
         {
           rootPath: 'apiv6',
@@ -1286,17 +1286,17 @@ angular.module('services').service(
      * @param {string} host
      */
     deleteGlueRecord(serviceName, host) {
-      return this.OvhHttp.delete(`/domain/${serviceName}/glueRecord/${host}`, {
-        rootPath: 'apiv6',
-      }).then((task) => {
-        if (task) {
-          this.pollDomainHost(serviceName, {
-            taskId: task.id,
-            taskFunction: task.function,
-          });
-        }
-        return task;
-      });
+      return this.$http
+        .delete(`/domain/${serviceName}/glueRecord/${host}`)
+        .then(({ data: task }) => {
+          if (task) {
+            this.pollDomainHost(serviceName, {
+              taskId: task.id,
+              taskFunction: task.function,
+            });
+          }
+          return task;
+        });
     }
 
     /**
@@ -1449,6 +1449,16 @@ angular.module('services').service(
     }
 
     /**
+     * Get DNS Anycast details
+     * @param {string} serviceName
+     */
+    getDnsAnycastDetails(serviceName) {
+      return this.$http
+        .get(`/domain/zone/${serviceName}/option/anycast/serviceInfos`)
+        .then(({ data }) => data);
+    }
+
+    /**
      * Get DNS Anycast status
      * @param {string} serviceName
      */
@@ -1461,6 +1471,19 @@ angular.module('services').service(
         }
         return null;
       });
+    }
+
+    /**
+     * Terminate DNS Anycast
+     * @param {string} serviceName
+     */
+    terminateDnsAnycast(serviceName, renew) {
+      return this.$http.put(
+        `/domain/zone/${serviceName}/option/anycast/serviceInfos`,
+        {
+          renew,
+        },
+      );
     }
 
     /**

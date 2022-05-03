@@ -1,3 +1,58 @@
+## [2.3.3](https://github.com/ovh/manager/compare/@ovh-ux/sign-up@2.3.2...@ovh-ux/sign-up@2.3.3) (2022-04-06)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1533] ([11d6c54](https://github.com/ovh/manager/commit/11d6c547e0baafcb51e8b970291caa645f26adad))
+
+
+
+## [2.3.2](https://github.com/ovh/manager/compare/@ovh-ux/sign-up@2.3.1...@ovh-ux/sign-up@2.3.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [2.3.1](https://github.com/ovh/manager/compare/@ovh-ux/sign-up@2.3.0...@ovh-ux/sign-up@2.3.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1527] ([1cf25fd](https://github.com/ovh/manager/commit/1cf25fd2718c02e6af0cc7b61e87940216ccaafb))
+* **i18n:** add missing translations [CDS 1531] ([cbf6abc](https://github.com/ovh/manager/commit/cbf6abc0d0594f8200986fc1f233c0379f83c2ef))
+
+
+
+# [2.3.0](https://github.com/ovh/manager/compare/@ovh-ux/sign-up@2.2.5...@ovh-ux/sign-up@2.3.0) (2022-03-16)
+
+
+### Features
+
+* **signup:** add india areas ([#6674](https://github.com/ovh/manager/issues/6674)) ([7288458](https://github.com/ovh/manager/commit/7288458aae50362000901c65477b5f626e5446e6))
+
+
+
+## [2.2.5](https://github.com/ovh/manager/compare/@ovh-ux/sign-up@2.2.4...@ovh-ux/sign-up@2.2.5) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
+## [2.2.4](https://github.com/ovh/manager/compare/@ovh-ux/sign-up@2.2.3...@ovh-ux/sign-up@2.2.4) (2022-02-09)
+
+
+### Bug Fixes
+
+* **sign-up:** retrieve ovh sub from local storage if undefined ([bacca7e](https://github.com/ovh/manager/commit/bacca7ee193dadd91ddd53a6f78c601e9eabc8dd))
+
+
+
 ## [2.2.3](https://github.com/ovh/manager/compare/@ovh-ux/sign-up@2.2.2...@ovh-ux/sign-up@2.2.3) (2021-12-28)
 
 

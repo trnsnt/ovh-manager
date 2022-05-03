@@ -3,8 +3,14 @@ import filter from 'lodash/filter';
 import get from 'lodash/get';
 import map from 'lodash/map';
 import sortBy from 'lodash/sortBy';
+import { API_GUIDES } from '../../../project.constants';
 
-import { NAME_PATTERN, MAX_NAME_LENGTH } from './add.constants';
+import {
+  NAME_PATTERN,
+  MAX_NAME_LENGTH,
+  MIN_NAME_LENGTH,
+} from './add.constants';
+import { ENGINES_STATUS } from '../../../../../components/project/storages/databases/engines.constants';
 
 export default class {
   /* @ngInject */
@@ -23,6 +29,7 @@ export default class {
     this.DatabaseService = DatabaseService;
     this.Poller = Poller;
     this.NAME_PATTERN = NAME_PATTERN;
+    this.MIN_NAME_LENGTH = MIN_NAME_LENGTH;
     this.MAX_NAME_LENGTH = MAX_NAME_LENGTH;
   }
 
@@ -49,7 +56,13 @@ export default class {
       id: '',
       name: this.$translate.instant('pci_database_common_none'),
     };
+    this.apiGuideUrl =
+      API_GUIDES[this.user.ovhSubsidiary] || API_GUIDES.DEFAULT;
     this.trackDatabases('configuration', 'page');
+  }
+
+  checkPattern(value) {
+    return this.NAME_PATTERN.test(value);
   }
 
   acceptLab(accepted) {
@@ -160,7 +173,6 @@ export default class {
         (region) => region.region === this.model.subnet?.ipPools[0].region,
       )?.openstackId,
       subnetId: this.model.subnet?.id,
-      nodesList: null,
       nodesPattern: {
         flavor: this.model.flavor.name,
         number: this.model.plan.nodesCount,
@@ -169,6 +181,8 @@ export default class {
       plan: this.model.plan.name,
       version: this.model.engine.selectedVersion.version,
     };
+
+    this.orderAPIUrl = `POST /cloud/project/${this.projectId}/database/${this.model.engine.name}`;
   }
 
   createDatabase() {
@@ -180,14 +194,23 @@ export default class {
       'action',
       false,
     );
-    return this.DatabaseService.activateLab(this.projectId, this.lab)
-      .then(() =>
-        this.DatabaseService.createDatabase(
-          this.projectId,
-          this.model.engine.name,
-          this.orderData,
-        ),
-      )
+    // We only need to check the lab for BETA status
+    const createDatabasePromise =
+      this.model.engine.selectedVersion.status === ENGINES_STATUS.BETA
+        ? this.DatabaseService.activateLab(this.projectId, this.lab).then(() =>
+            this.DatabaseService.createDatabase(
+              this.projectId,
+              this.model.engine.name,
+              this.orderData,
+            ),
+          )
+        : this.DatabaseService.createDatabase(
+            this.projectId,
+            this.model.engine.name,
+            this.orderData,
+          );
+
+    return createDatabasePromise
       .then((databaseInfo) => {
         this.trackDatabases(
           `config_create_database_validated::${this.model.engine.name}`,

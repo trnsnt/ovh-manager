@@ -408,6 +408,13 @@ export const DEDICATED_NETWORK_CONFIG = {
           namespace: [undefined, HPC_NAMESPACE],
         },
       ],
+      children: [
+        {
+          id: 'cloud_connect_all_order_follow_up',
+          state: 'cloud-connect.index',
+          app: [DEDICATED],
+        },
+      ],
       icon: 'oui-icon oui-icon-line-communicating_concept',
       app: [DEDICATED],
       namespace: [undefined, HPC_NAMESPACE],
@@ -443,6 +450,43 @@ export const STORAGE_BACKUP_CONFIG = {
   ],
 };
 
+export const NUTANIX_CONFIG = {
+  id: 'nutanix',
+  children: [
+    {
+      id: 'nutanix_clusters_all',
+      state: 'nutanix.index',
+      icon: 'oui-icon oui-icon-nutanix_concept nutanix-icon_small',
+      app: [DEDICATED],
+      namespace: HPC_NAMESPACE,
+    },
+  ],
+  types: [
+    {
+      path: '/nutanix',
+      state: 'nutanix.dashboard',
+      stateParams: ['serviceName'],
+      icon: 'oui-icon oui-icon-nutanix_concept nutanix-icon_small',
+      app: [DEDICATED],
+      namespace: HPC_NAMESPACE,
+      types: [
+        {
+          path: '/nutanix/:serviceName',
+          state: 'nutanix.dashboard.nodes.node',
+          stateParams: ['serviceName', 'nodeId'],
+          app: [DEDICATED],
+          namespace: HPC_NAMESPACE,
+        },
+      ],
+    },
+  ],
+  loadOnState: 'nutanix',
+  icon: 'oui-icon oui-icon-nutanix_concept nutanix-icon_small',
+  app: [DEDICATED],
+  feature: 'nutanix',
+  namespace: HPC_NAMESPACE,
+};
+
 export const SIDEBAR_CONFIG = [
   DEDICATED_SERVER_CONFIG,
   VPS_CONFIG,
@@ -451,6 +495,7 @@ export const SIDEBAR_CONFIG = [
   ANTHOS_CONFIG,
   NETWORKS_CONFIG,
   ENTERPRISE_CLOUD_DATABASE,
+  NUTANIX_CONFIG,
 
   // CLOUD IMPORT
   PAAS_CONFIG,

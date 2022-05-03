@@ -15,14 +15,13 @@ import sortBy from 'lodash/sortBy';
 export default /* @ngInject */ (
   $q,
   $filter,
+  $http,
   OvhApiTelephony,
-  OvhApiPackXdslVoipLine,
   VoipScheduler,
   VoipTimeCondition,
   TelephonyGroupLinePhone,
   TelephonyGroupLineClick2Call,
   TelephonyGroupLineOffer,
-  VoipLineOldOffers,
 ) => {
   /*= ==================================
     =            CONSTRUCTOR            =
@@ -58,6 +57,7 @@ export default /* @ngInject */ (
 
     this.infrastructure = options.infrastructure;
     this.offers = options.offers || [];
+    this.hasFaxCapabilities = options.hasFaxCapabilities;
     this.getPublicOffer = options.getPublicOffer;
     this.simultaneousLines = options.simultaneousLines;
     this.phone = options.phone;
@@ -100,13 +100,7 @@ export default /* @ngInject */ (
     // helper
     this.isPlugNFax = some(
       this.offers,
-      (offer) =>
-        angular.isString(offer) &&
-        (offer.indexOf('fax') >= 0 ||
-          some(
-            VoipLineOldOffers.oldOffers.sipNFax,
-            (old) => offer.indexOf(old) > -1,
-          )),
+      (offer) => angular.isString(offer) && offer.indexOf('fax') >= 0,
     );
   }
 
@@ -447,11 +441,10 @@ export default /* @ngInject */ (
   TelephonyGroupLine.prototype.isIncludedInXdslPack = function isIncludedInXdslPack() {
     const self = this;
 
-    return OvhApiPackXdslVoipLine.v7()
-      .services()
-      .aggregate('packName')
-      .execute()
-      .$promise.then((lines) => some(lines, { key: self.serviceName }));
+    return $http
+      .get(`/pack/xdsl/search?pattern=${self.serviceName}`)
+      .then(() => true)
+      .catch(() => false);
   };
 
   /* ----------  OPTIONS  ----------*/

@@ -1,5 +1,6 @@
 import angular from 'angular';
 import '@ovh-ux/manager-core';
+import '@ovh-ux/manager-filters';
 import '@uirouter/angularjs';
 import 'angular-translate';
 import '@ovh-ux/ng-ovh-utils';
@@ -11,6 +12,7 @@ import '@ovh-ux/manager-billing-components';
 import component from './component';
 import routing from './routing';
 
+import index from './index/module';
 import snapshotPolicies from './snapshot-policies';
 import volumes from './volumes';
 
@@ -21,6 +23,7 @@ angular
     'ngOvhFeatureFlipping',
     'ovhManagerBilling',
     'ovhManagerCore',
+    'ovhManagerFilters',
     'ovhManagerAdvices',
     'ngAtInternet',
     'pascalprecht.translate',
@@ -28,6 +31,7 @@ angular
     'ngOvhUtils',
     snapshotPolicies,
     volumes,
+    index,
   ])
   .config(routing)
   .component('ovhManagerNetAppDashboard', component)

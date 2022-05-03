@@ -76,7 +76,7 @@
   "privateDatabase_configuration_event_scheduler": "Status menedżera wydarzeń",
   "privateDatabase_configuration_interactive_timeout": "Liczba sekund, podczas których serwer czeka zanim zamknie połączenie, gdy nie ma aktywności podczas połączenia w wierszu poleceń.",
   "privateDatabase_configuration_wait_timeout": "Liczba sekund, podczas których serwer czeka zanim zamknie połączenie, gdy nie ma aktywności podczas połączenia zewnętrznego.",
-  "privateDatabase_configuration_field_autocommit": "Definiuje, czy transakcje SLQ są wykonywane automatycznie czy nie.",
+  "privateDatabase_configuration_field_autocommit": "Określa, czy transakcje SQL są wykonywane automatycznie czy nie.",
   "privateDatabase_configuration_field_event_scheduler": "Pozwala aktywować wykonywanie zaplanowanych zapytań bezpośrednio na serwerze MySQL.",
   "privateDatabase_configuration_field_innodb_buffer_pool_size": "Wybierz rozmiar bufora (w MB).",
   "privateDatabase_configuration_field_interactive_timeout": "Czas (w sekundach) oczekiwania serwera na działanie w interaktywnym połączeniu przed zamknięciem połączenia.",
@@ -480,5 +480,7 @@
   "privateDatabase_tabs_list_extensions_enable_error": "Wystąpił błąd podczas aktywowania rozszerzenia.",
   "privateDatabase_tabs_list_extensions_disable_success": "Rozszerzenie poprawnie dezaktywowane.",
   "privateDatabase_tabs_list_extensions_disable_error": "Wystąpił błąd podczas aktywowania rozszerzenia.",
-  "privateDatabase_order_sql_period_sub_title": "Jak długo chcesz korzystać z bazy?"
+  "privateDatabase_order_sql_period_sub_title": "Jak długo chcesz korzystać z bazy?",
+  "privateDatabase_configuration_field_sql_mode": "Opcja \"sql_mode\" wpływa na obsługiwaną składnię SQL oraz sprawdzanie poprawności danych przez MySQL/MariaDB.",
+  "privateDatabase_configuration_documentation": "Więcej informacji na temat tych opcji"
 }

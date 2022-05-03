@@ -3,25 +3,34 @@ import get from 'lodash/get';
 
 export default class BmServerComponentsTechnicalDetailsController {
   /* @ngInject */
-  constructor($translate, ovhFeatureFlipping) {
+  constructor($translate, ovhFeatureFlipping, $q) {
     this.$translate = $translate;
     this.ovhFeatureFlipping = ovhFeatureFlipping;
+    this.$q = $q;
   }
 
   $onInit() {
-    this.formattedCPU = this.formatCPU();
-    this.formattedRAM = this.formatRAM();
-    this.formattedDataDisks = this.formatDisks('data');
-    this.formattedCacheDisks = this.formatDisks('cache');
-    this.formattedOsDisks = this.formatDisks('os');
-    this.formattedExtensionCard = get(
-      this.technicalDetails,
-      'storage.raid',
-      '-',
-    );
-    this.upgradeWithTicketAvailable = false;
-    this.loading = true;
-    this.loadData();
+    this.$q
+      .resolve(this.technicalDetails)
+      .then((technicalDetails) => {
+        this.technicalDetails = technicalDetails;
+        this.formattedCPU = this.formatCPU();
+        this.formattedRAM = this.formatRAM();
+        this.formattedDataDisks = this.formatDisks('data');
+        this.formattedCacheDisks = this.formatDisks('cache');
+        this.formattedOsDisks = this.formatDisks('os');
+        this.formattedExtensionCard =
+          this.technicalDetails.storage?.raid !== 'none'
+            ? this.technicalDetails.storage.raid
+            : '';
+        this.upgradeWithTicketAvailable = false;
+        if (this.goToManualUpgrade) {
+          this.loadData();
+        }
+      })
+      .finally(() => {
+        this.loadingTechnicalDetails = false;
+      });
   }
 
   isRamUpgradable() {

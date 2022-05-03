@@ -27,9 +27,10 @@
             data-selected-flavor="$ctrl.model.flavorGroup"
             data-display-selected-flavor="$ctrl.displaySelectedFlavor"
             data-selected-category="{{:: $ctrl.selectedCategory }}"
-            data-exclude-categories="$ctrl.excludeCategories"
             data-include-categories="$ctrl.includeCategories"
+            data-exclude-categories="$ctrl.excludeCategories"
             data-on-change="$ctrl.onFlavorCategorySelect(flavor, category)"
+            data-catalog-endpoint="$ctrl.catalogEndpoint"
         >
         </pci-project-flavors-list>
     </oui-step-form>
@@ -233,6 +234,7 @@
                 <a
                     data-ng-href="{{:: $ctrl.quotaLink }}"
                     data-translate="pci_projects_project_instances_add_numInstances_quotaLink_label"
+                    target="_top"
                 ></a>
             </div>
         </oui-field>
@@ -332,6 +334,7 @@
                 <a
                     data-ng-href="{{:: $ctrl.addPrivateNetworksLink }}"
                     data-translate="pci_projects_project_instances_add_privateNetwork_add"
+                    target="_top"
                 ></a>
             </p>
         </oui-field>
@@ -405,6 +408,9 @@
             data-offer="$ctrl.offer"
         >
         </pci-project-flavor-billing>
+
+        <pci-trusted-zone-banner data-ng-if="$ctrl.isTrustedZone">
+        </pci-trusted-zone-banner>
     </oui-step-form>
 </oui-stepper>
 

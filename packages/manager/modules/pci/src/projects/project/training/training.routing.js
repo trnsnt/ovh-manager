@@ -1,7 +1,12 @@
+import { PCI_FEATURES } from '../../projects.constant';
+
 export default /* @ngInject */ ($stateProvider) => {
   $stateProvider.state('pci.projects.project.training', {
     url: '/training',
     component: 'pciProjectTraining',
+    onEnter: /* @ngInject */ (pciFeatureRedirect) => {
+      return pciFeatureRedirect(PCI_FEATURES.PRODUCTS.TRAINING);
+    },
     redirectTo: (transition) =>
       Promise.all([
         transition.injector().getAsync('lab'),
@@ -114,6 +119,10 @@ export default /* @ngInject */ ($stateProvider) => {
         }
         return PciProjectTrainingJobService.getAll(projectId);
       },
+
+      jobListRegions: /* @ngInject */ (jobList) =>
+        Array.from(new Set(jobList.map(({ spec }) => spec.region))),
+
       currentActiveLink: /* @ngInject */ ($transition$, $state) => () =>
         $state.href($state.current.name, $transition$.params()),
       allUsers: /* @ngInject */ (PciProjectTrainingService, projectId) => () =>

@@ -107,6 +107,11 @@ export default /* @ngInject */ function TelecomTelephonyLineCtrl(
           ),
         };
 
+        // check if has fax option
+        self.disableFaxOptionTab =
+          !(self.line.isPlugNFax || self.fax || self.line.hasFaxCapabilities) ||
+          self.line.isTrunk();
+
         return $q.all(promises);
       })
       .finally(() => {

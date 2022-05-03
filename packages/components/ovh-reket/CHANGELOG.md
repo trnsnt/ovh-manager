@@ -1,3 +1,21 @@
+## [0.1.1](https://github.com/ovh/manager/compare/@ovh-ux/ovh-reket@0.1.0...@ovh-ux/ovh-reket@0.1.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
+# [0.1.0](https://github.com/ovh/manager/compare/@ovh-ux/ovh-reket@0.0.2...@ovh-ux/ovh-reket@0.1.0) (2022-02-23)
+
+
+### Features
+
+* **reket:** export redirection functions ([55eef82](https://github.com/ovh/manager/commit/55eef82425d5eed3a67b9e2462d2968fe3b6d711))
+
+
+
 ## [0.0.2](https://github.com/ovh/manager/compare/@ovh-ux/ovh-reket@0.0.1...@ovh-ux/ovh-reket@0.0.2) (2021-10-26)
 
 

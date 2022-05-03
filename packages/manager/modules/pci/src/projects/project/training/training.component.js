@@ -5,6 +5,7 @@ export default {
   controller,
   template,
   bindings: {
+    pciFeatureRedirect: '<',
     jobInfoLink: '<',
     jobsLink: '<',
     registriesLink: '<',
@@ -23,5 +24,8 @@ export default {
     userLink: '<',
     getPrice: '<',
     getTax: '<',
+    steins: '<',
+    customerRegions: '<',
+    jobListRegions: '<',
   },
 };

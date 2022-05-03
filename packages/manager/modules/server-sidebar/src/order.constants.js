@@ -129,6 +129,23 @@ export const ORDER_URLS = {
       PL: 'https://www.ovh.pl/serwery_dedykowane',
       PT: 'https://www.ovh.pt/servidores_dedicados',
     },
+    dedicatedEcoRangeOrder: {
+      CZ: 'https://eco.ovhcloud.com/en-ie/',
+      DE: 'https://eco.ovhcloud.com/de/',
+      ES: 'https://eco.ovhcloud.com/es-es/',
+      FI: 'https://eco.ovhcloud.com/en-ie/',
+      FR: 'https://eco.ovhcloud.com/fr/',
+      GB: 'https://eco.ovhcloud.com/en-gb/',
+      IE: 'https://eco.ovhcloud.com/en-ie/',
+      IT: 'https://eco.ovhcloud.com/it/',
+      LT: 'https://eco.ovhcloud.com/en-ie/',
+      NL: 'https://eco.ovhcloud.com/nl/',
+      PL: 'https://eco.ovhcloud.com/pl/',
+      PT: 'https://eco.ovhcloud.com/pt/',
+      MA: 'https://eco.ovhcloud.com/fr-ma/',
+      SN: 'https://eco.ovhcloud.com/fr-sn/',
+      TN: 'https://eco.ovhcloud.com/fr-tn/',
+    },
     express_review_base: {
       CZ: 'https://www.ovh.cz/order/express/#/express/review',
       DE: 'https://www.ovh.de/order/express/#/express/review',
@@ -275,6 +292,56 @@ export const ORDER_URLS = {
     dbaas_logs: {
       EU: 'https://www.ovh.com/manager/dedicated/#/dbaas/logs/welcome',
     },
+    faxOrder: {
+      FR: 'https://www.ovhtelecom.fr/fax/',
+    },
+    smsHlr: {
+      FR: 'https://www.ovhtelecom.fr/sms/home-location-register/',
+    },
+    office365_business: {
+      ES: 'https://www.ovh.es/office-365/',
+      FR: 'https://www.ovhtelecom.fr/office-365-business/',
+    },
+    office365_sharepoint: {
+      ES: 'https://www.ovh.es/sharepoint/?range=mail',
+      FR: 'https://www.ovhtelecom.fr/sharepoint/?range=mail',
+    },
+    email_exchange: {
+      ES: 'https://www.ovh.es/emails/hosted-exchange/',
+      FR: 'https://www.ovh.com/fr/emails/hosted-exchange/',
+    },
+    email_sharepoint: {
+      ES: 'https://www.ovh.es/sharepoint/?range=mail',
+      FR: 'https://www.ovhtelecom.fr/sharepoint/?range=mail',
+    },
+    telephony_voip: {
+      FR: 'https://www.ovhtelecom.fr/telephonie/voip/',
+    },
+    telephony_siptrunk: {
+      FR: 'https://www.ovhtelecom.fr/telephonie/sip-trunk/',
+    },
+    telephony_siptrunkCall: {
+      FR: 'https://www.ovhtelecom.fr/telephonie/sip-trunk-forfait-inclus/',
+    },
+    internet_xdsl: {
+      FR: 'https://www.ovhtelecom.fr/adsl/',
+    },
+    internet_fiber: {
+      FR: 'https://www.ovhtelecom.fr/fibre/',
+    },
+    internet_sdsl: {
+      FR: 'https://www.ovhtelecom.fr/sdsl/',
+    },
+    internet_adsl_creation: {
+      FR: 'https://www.ovhtelecom.fr/adsl/ouvrir-une-ligne.xml',
+    },
+    internet_otb: {
+      FR: 'https://www.ovhtelecom.fr/overthebox/tarifs.xml',
+    },
+    domain: {
+      ES: 'https://www.ovh.es/dominios/',
+      FR: 'https://www.ovh.com/fr/domaines/tarifs/',
+    },
   },
   CA: {
     DEDICATED: {
@@ -372,6 +439,15 @@ export const ORDER_URLS = {
       WE: 'https://www.ovh.com/world/dedicated-servers',
       WS: 'https://www.ovh.com/world/dedicated-servers',
     },
+    dedicatedEcoRangeOrder: {
+      ASIA: 'https://eco.ovhcloud.com/asia/',
+      AU: 'https://eco.ovhcloud.com/en-au/',
+      CA: 'https://eco.ovhcloud.com/en-ca/',
+      QC: 'https://eco.ovhcloud.com/fr-ca/',
+      SG: 'https://eco.ovhcloud.com/en-sg/',
+      WE: 'https://eco.ovhcloud.com/en/',
+      WS: 'https://eco.ovhcloud.com/en/',
+    },
     cloudProjectOrder: {
       ASIA: 'https://ca.ovh.com/manager/cloud/index.html#/iaas/pci/project/new',
       AU: 'https://ca.ovh.com/manager/cloud/index.html#/iaas/pci/project/new',
@@ -437,6 +513,9 @@ export const ORDER_URLS = {
     },
     dedicatedOrder: {
       US: 'https://us.ovhcloud.com/bare-metal/prices/',
+    },
+    dedicatedEcoRangeOrder: {
+      US: 'https://eco.ovhcloud.com/en/',
     },
     cloudProjectOrder: {
       US: 'https://us.ovhcloud.com/manager/cloud/#/iaas/pci/offer',
@@ -627,6 +706,17 @@ export const SIDEBAR_ORDER_CONFIG = [
     external: true,
     app: [DEDICATED],
     tracker: 'dedicated::orders::ovh-cloud-connect::order',
+  },
+  {
+    id: 'order-dedicated-server-eco',
+    title: 'dedicated_server_eco',
+    feature: 'dedicated-server:ecoRangeOrder',
+    icon: 'oui-icon oui-icon-server_concept',
+    linkId: 'dedicatedEcoRangeOrder',
+    target: '_blank',
+    external: true,
+    app: [DEDICATED],
+    tracker: 'dedicated::orders::dedicated-servers-eco::order',
   },
 ];
 

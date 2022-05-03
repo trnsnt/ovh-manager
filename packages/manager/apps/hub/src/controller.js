@@ -1,4 +1,6 @@
 import { isString } from 'lodash-es';
+import { isTopLevelApplication } from '@ovh-ux/manager-config';
+import { getShellClient } from './shell';
 
 export default class HubController {
   /* @ngInject */
@@ -10,6 +12,7 @@ export default class HubController {
     $rootScope,
     coreConfig,
     ovhFeatureFlipping,
+    liveChatService,
   ) {
     this.$document = $document;
     this.$http = $http;
@@ -19,10 +22,13 @@ export default class HubController {
     this.chatbotEnabled = false;
     this.coreConfig = coreConfig;
     this.ovhFeatureFlipping = ovhFeatureFlipping;
+    this.isTopLevelApplication = isTopLevelApplication();
+    this.shell = getShellClient();
+    this.isAccountSidebarVisible = false;
+    this.liveChatService = liveChatService;
   }
 
-  $onInit() {
-    this.servicesImpactedWithIncident = [];
+  async $onInit() {
     this.navbarOptions = {
       universe: this.coreConfig.getUniverse(),
       toggle: {
@@ -40,6 +46,7 @@ export default class HubController {
             CHATBOT_FEATURE,
           );
           if (this.chatbotEnabled) {
+            this.showLivechat = this.liveChatService.getShowLivechat();
             this.$rootScope.$broadcast(
               'ovh-chatbot:enable',
               this.chatbotEnabled,
@@ -48,8 +55,7 @@ export default class HubController {
         });
       unregisterListener();
     });
-
-    return this.getServicesImpactedByIncident();
+    this.isAccountSidebarVisible = await this.shell.ux.isAccountSidebarVisible();
   }
 
   /**
@@ -62,22 +68,5 @@ export default class HubController {
       const [element] = this.$document.find(`#${id}`);
       element.focus();
     }
-  }
-
-  getServicesImpactedByIncident() {
-    return this.$http
-      .get('/incident-status', {
-        serviceType: 'aapi',
-      })
-      .then(({ data }) => {
-        this.servicesImpactedWithIncident = data;
-      })
-      .catch(() => []);
-  }
-
-  goToIncidentStatus() {
-    return this.$state.go('app.dashboard.incident.status', {
-      incidentName: 'SBG',
-    });
   }
 }

@@ -1,3 +1,48 @@
+# [9.6.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-web-universe-components@9.5.0...@ovh-ux/ng-ovh-web-universe-components@9.6.0) (2022-04-21)
+
+
+### Features
+
+* **web.exchange.account:** make display_name required ([88755e2](https://github.com/ovh/manager/commit/88755e271d0bbbe27f635ca43f5c5b26eb476c77))
+
+
+
+# [9.5.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-web-universe-components@9.4.1...@ovh-ux/ng-ovh-web-universe-components@9.5.0) (2022-04-20)
+
+
+### Features
+
+* **web:** addition of x500 alias for exchange email ([922a540](https://github.com/ovh/manager/commit/922a5403dd5c30eca8fc617da3c54a3fb690d7e7))
+
+
+
+## [9.4.1](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-web-universe-components@9.4.0...@ovh-ux/ng-ovh-web-universe-components@9.4.1) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+# [9.4.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-web-universe-components@9.3.4...@ovh-ux/ng-ovh-web-universe-components@9.4.0) (2022-04-06)
+
+
+### Features
+
+* **domain:** update dns anycast order ([#2743](https://github.com/ovh/manager/issues/2743)) ([0917f63](https://github.com/ovh/manager/commit/0917f638db7eb150186266b57808b0e2d5fc3421))
+
+
+
+## [9.3.4](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-web-universe-components@9.3.3...@ovh-ux/ng-ovh-web-universe-components@9.3.4) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
 ## [9.3.3](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-web-universe-components@9.3.2...@ovh-ux/ng-ovh-web-universe-components@9.3.3) (2022-01-25)
 
 

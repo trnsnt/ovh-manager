@@ -30,7 +30,16 @@
                 data-ng-bind-html="'privateDatabase_configurations_general_' + configurationsCtrl.database.type | translate"
             ></h2>
 
-            <p data-translate="privateDatabase_configuration_alert"></p>
+            <div class="mb-4">
+                <p data-translate="privateDatabase_configuration_alert"></p>
+                <a
+                    data-translate="privateDatabase_configuration_documentation"
+                    href="{{:: configurationsCtrl.configuration_guide }}"
+                    rel="noopener"
+                    target="_blank"
+                >
+                </a>
+            </div>
 
             <form
                 name="configurationsCtrl.dbConfigurationForm"
@@ -42,7 +51,27 @@
                 >
                     <oui-field
                         data-label="{{:: configuration.key}}"
-                        data-size="m"
+                        data-size="xxl"
+                        data-ng-if="configuration.type === 'toggle'"
+                        data-help-text="{{:: configuration.description}}"
+                    >
+                        <oui-radio-toggle-group
+                            data-model="configuration.selectedValue.id"
+                        >
+                            <oui-radio
+                                data-ng-repeat="item in configuration.availableValues track by item.id"
+                                data-value="item.id"
+                                ><span data-ng-bind=":: item.text"></span
+                            ></oui-radio>
+                        </oui-radio-toggle-group>
+                    </oui-field>
+                </div>
+                <div
+                    data-ng-repeat="configuration in configurationsCtrl.configurations track by $index"
+                >
+                    <oui-field
+                        data-label="{{:: configuration.key}}"
+                        data-size="xxl"
                         data-ng-if="configuration.type === 'select'"
                         data-help-text="{{:: configuration.description}}"
                     >
@@ -56,26 +85,6 @@
                         >
                             <span data-ng-bind="$item.text"></span>
                         </oui-select>
-                    </oui-field>
-                </div>
-                <div
-                    data-ng-repeat="configuration in configurationsCtrl.configurations track by $index"
-                >
-                    <oui-field
-                        data-label="{{:: configuration.key}}"
-                        data-size="s"
-                        data-ng-if="configuration.type === 'toggle'"
-                        data-help-text="{{:: configuration.description}}"
-                    >
-                        <oui-radio-toggle-group
-                            data-model="configuration.selectedValue.id"
-                        >
-                            <oui-radio
-                                data-ng-repeat="item in configuration.availableValues track by item.id"
-                                data-value="item.id"
-                                ><span data-ng-bind=":: item.text"></span
-                            ></oui-radio>
-                        </oui-radio-toggle-group>
                     </oui-field>
                 </div>
                 <oui-form-actions

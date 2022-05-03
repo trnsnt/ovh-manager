@@ -1,4 +1,11 @@
 <div class="pci_projects_onboarding w-100 h-100" style="overflow: auto;">
+    <!--Trusted zone badge-->
+    <div class="text-center mt-3">
+        <ovh-manager-trusted-nic-label
+            data-ng-if="$ctrl.isTrustedZone"
+        ></ovh-manager-trusted-nic-label>
+    </div>
+
     <div class="row">
         <div class="col-md-6 p-5">
             <account-migration-notification></account-migration-notification>
@@ -7,7 +14,9 @@
             <p data-translate="pci_projects_onboarding_description2"></p>
             <p data-translate="pci_projects_onboarding_description3"></p>
 
+            <!--Create a project-->
             <a
+                data-ng-if="!$ctrl.isTrustedZone"
                 class="oui-button oui-button_primary"
                 data-ui-sref="pci.projects.new"
                 data-track-on="click"
@@ -18,6 +27,18 @@
                     data-translate="pci_projects_onboarding_create_project"
                 ></span>
             </a>
+
+            <!--Call customer-->
+            <div data-ng-if="$ctrl.isTrustedZone">
+                <p
+                    class="m-0 font-weight-bold"
+                    data-translate="pci_projects_onboarding_banner_trusted_customer_info_1"
+                ></p>
+                <p
+                    class="m-0 font-weight-bold"
+                    data-translate="pci_projects_onboarding_banner_trusted_customer_info_2"
+                ></p>
+            </div>
         </div>
     </div>
     <img

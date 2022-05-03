@@ -1,3 +1,35 @@
+# [5.0.0](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contacts@4.0.8...@ovh-ux/ng-ovh-contacts@5.0.0) (2022-03-29)
+
+
+### Code Refactoring
+
+* **ovh-contacts:** kill /me/contact v7 call ([c3f020a](https://github.com/ovh/manager/commit/c3f020a5be5f1dd3395183d10421952cfba0dc85))
+
+
+### BREAKING CHANGES
+
+* **ovh-contacts:** The @ovh-ux/ng-ovh-api-wrappers package is added to the peer dependencies
+
+
+
+## [4.0.8](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contacts@4.0.7...@ovh-ux/ng-ovh-contacts@4.0.8) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [4.0.7](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contacts@4.0.6...@ovh-ux/ng-ovh-contacts@4.0.7) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
 ## [4.0.6](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-contacts@4.0.5...@ovh-ux/ng-ovh-contacts@4.0.6) (2021-10-26)
 
 

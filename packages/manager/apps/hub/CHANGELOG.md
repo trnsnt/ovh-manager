@@ -1,3 +1,63 @@
+## [3.20.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub-app@3.20.2...@ovh-ux/manager-hub-app@3.20.3) (2022-04-05)
+
+
+### Bug Fixes
+
+* name controller ([#6818](https://github.com/ovh/manager/issues/6818)) ([b17c4d1](https://github.com/ovh/manager/commit/b17c4d1900bc1bddf203c5c930f6bc572b42c34e))
+
+
+
+## [3.20.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub-app@3.20.1...@ovh-ux/manager-hub-app@3.20.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [3.20.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub-app@3.20.0...@ovh-ux/manager-hub-app@3.20.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([e8edc25](https://github.com/ovh/manager/commit/e8edc2548971de95752b5f006be19df633265509))
+
+
+### Performance Improvements
+
+* remove calls to /incident/* ([#6564](https://github.com/ovh/manager/issues/6564)) ([e949a3d](https://github.com/ovh/manager/commit/e949a3d52bc7bd6b5a7260e8a7cbf4c33f3df2cf))
+
+
+
+# [3.20.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub-app@3.19.0...@ovh-ux/manager-hub-app@3.20.0) (2022-03-09)
+
+
+### Features
+
+* add option to open chatbot directly by using a link ([#6498](https://github.com/ovh/manager/issues/6498)) ([1fda4e5](https://github.com/ovh/manager/commit/1fda4e52706fed90cb5160e598c2b6a0e76a6d15))
+
+
+
+# [3.19.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub-app@3.18.7...@ovh-ux/manager-hub-app@3.19.0) (2022-02-23)
+
+
+### Bug Fixes
+
+* **uxplugin:** separate toggle from show function ([b7be3c2](https://github.com/ovh/manager/commit/b7be3c2c78f887adc0a25bad98893972ab0a60d1))
+* reload top window when locale change ([1c75306](https://github.com/ovh/manager/commit/1c75306f0238d53360b9c312b5a7d89522a9a5ff))
+
+
+### Features
+
+* **app-shell:** integrate ux plugin ([85018e1](https://github.com/ovh/manager/commit/85018e1d09c08a53e133034e519da390acd3ecf8))
+* **hub:** use i18n shell plugin ([c6c5e52](https://github.com/ovh/manager/commit/c6c5e529442c33ca4612b9e150d599be79515c8a))
+* **hub:** use ovh-shell ([aa4b7ad](https://github.com/ovh/manager/commit/aa4b7ad0f6355fe55defa550c52c0d1744de586a))
+* **hub:** use shell authentication plugin ([c3c7dc9](https://github.com/ovh/manager/commit/c3c7dc9edf795e2b14b847dfc6ed0c30b642edc7))
+* **uxplugin:** integrate plugin in shell and hub ([4fd51aa](https://github.com/ovh/manager/commit/4fd51aa3eda219b80e96d2e18bcf530d6972bd28))
+
+
+
 ## [3.18.7](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub-app@3.18.6...@ovh-ux/manager-hub-app@3.18.7) (2022-01-25)
 
 

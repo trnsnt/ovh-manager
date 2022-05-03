@@ -1,5 +1,6 @@
 import { GUIDES_URL } from '../../components/project/guides-header/guides-header.constants';
-import { LEGACY_PLAN_CODES } from './project.constants';
+import { ACTIONS, LEGACY_PLAN_CODES, LINKS } from './project.constants';
+import { PCI_FEATURES } from '../projects.constant';
 
 const isLegacy = (planCode) => LEGACY_PLAN_CODES.includes(planCode);
 
@@ -8,6 +9,9 @@ export default /* @ngInject */ ($stateProvider) => {
     url: '/{projectId:[0-9a-zA-Z]{32}}',
     views: {
       '@pci': 'pciProject',
+    },
+    onEnter: /* @ngInject */ (pciFeatureRedirect) => {
+      return pciFeatureRedirect(PCI_FEATURES.SETTINGS.PROJECT);
     },
     redirectTo: (transition) => {
       const projectPromise = transition.injector().getAsync('project');
@@ -57,8 +61,6 @@ export default /* @ngInject */ ($stateProvider) => {
       breadcrumb: /* @ngInject */ (project) =>
         project.status !== 'creating' ? project.description : null,
 
-      user: /* @ngInject */ (SessionService) => SessionService.getUser(),
-
       getQuotaUrl: /* @ngInject */ ($state) => () =>
         $state.href('pci.projects.project.quota'),
 
@@ -91,8 +93,41 @@ export default /* @ngInject */ ($stateProvider) => {
             ),
           ),
 
+      /**
+       * Available links
+       */
+      links: /* @ngInject */ (pciFeatures) =>
+        LINKS.filter(({ feature }) => pciFeatures.isFeatureAvailable(feature)),
+
+      /**
+       * Available actions
+       */
+      actions: /* @ngInject */ (pciFeatures) =>
+        ACTIONS.filter(({ feature }) =>
+          pciFeatures.isFeatureAvailable(feature),
+        ),
+
       customerRegions: /* @ngInject */ (PciProject, projectId) =>
         PciProject.getCustomerRegions(projectId),
+
+      trackClick: /* @ngInject */ (atInternet) => (hit) => {
+        return atInternet.trackClick({
+          name: hit,
+          type: 'action',
+        });
+      },
+
+      onCreateProjectClick: /* @ngInject */ (trackClick, goToCreateProject) => (
+        hit,
+      ) => {
+        trackClick(hit);
+
+        return goToCreateProject();
+      },
+
+      goToCreateProject: /* @ngInject */ ($state) => () => {
+        return $state.go('pci.projects.new');
+      },
 
       goToProjectInactive: /* @ngInject */ ($state, projectId) => (project) =>
         $state.go('pci.projects.project.inactive', {

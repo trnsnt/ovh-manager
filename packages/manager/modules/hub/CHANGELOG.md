@@ -1,3 +1,72 @@
+## [3.3.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.3.2...@ovh-ux/manager-hub@3.3.3) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [3.3.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.3.1...@ovh-ux/manager-hub@3.3.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [3.3.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.3.0...@ovh-ux/manager-hub@3.3.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1522] ([e041d95](https://github.com/ovh/manager/commit/e041d954ce054957607e904294f05467faa2bc6a))
+
+
+
+# [3.3.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.2.9...@ovh-ux/manager-hub@3.3.0) (2022-03-15)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1506] ([14e17e0](https://github.com/ovh/manager/commit/14e17e0125ccb0598c7fc760cf1f6a92b8266739))
+
+
+### Features
+
+* nutanix service ui ([5d9d1fd](https://github.com/ovh/manager/commit/5d9d1fd5dd10dd614df4068c3cfc84d44791b739))
+
+
+
+## [3.2.9](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.2.8...@ovh-ux/manager-hub@3.2.9) (2022-03-09)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([392275b](https://github.com/ovh/manager/commit/392275be32d68088c6ac31cf46806bdc1909d476))
+
+
+
+## [3.2.8](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.2.7...@ovh-ux/manager-hub@3.2.8) (2022-03-02)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1460] ([c4aebf4](https://github.com/ovh/manager/commit/c4aebf426e92bd8eb183eab4d4c800f6e6aee348))
+* **modules.hub:** update netapp product name ([#6377](https://github.com/ovh/manager/issues/6377)) ([cd15ce0](https://github.com/ovh/manager/commit/cd15ce05a0c814bc912123b4a9b20e0cf6b3c5c3))
+
+
+
+## [3.2.7](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.2.6...@ovh-ux/manager-hub@3.2.7) (2022-02-23)
+
+
+### Bug Fixes
+
+* **components.products:** add missing translation ([#6375](https://github.com/ovh/manager/issues/6375)) ([0bc611b](https://github.com/ovh/manager/commit/0bc611bc46cf862f6b4299f3277bd03bbd8138ab))
+
+
+
 ## [3.2.6](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@3.2.5...@ovh-ux/manager-hub@3.2.6) (2022-01-25)
 
 

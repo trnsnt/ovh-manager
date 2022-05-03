@@ -78,6 +78,7 @@
                                     data-toggle="collapse"
                                     data-parent="#accordion"
                                     data-ng-bind="itemFamily + ' (' + countFilter[itemFamily] + ')'"
+                                    target="_top"
                                 >
                                 </a>
                             </h4>
@@ -232,7 +233,7 @@
                         <input
                             type="checkbox"
                             data-ng-model="installation.customInstall"
-                            data-ng-disabled="informations.gabaritName != null"
+                            data-ng-disabled="informations.gabaritName != null || installation.noPartitioning"
                         />
                         <span
                             data-translate="server_configuration_installation_ovh_step1_custom"
@@ -1911,6 +1912,7 @@
                                 name="nbDiskUse"
                                 data-ng-options="nbdisk as nbdisk for nbdisk in getNbDisqueList(informations.nbDisk)"
                                 data-ng-model="installation.nbDiskUse"
+                                data-ng-disabled="installation.noPartitioning"
                             >
                             </select>
                         </div>

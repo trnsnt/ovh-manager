@@ -6,9 +6,9 @@ import Container from '../container.class';
 import {
   OBJECT_CONTAINER_NAME_PATTERN,
   OBJECT_CONTAINER_OFFERS,
-  OBJECT_CONTAINER_OFFERS_LABELS,
   OBJECT_CONTAINER_TYPE_OFFERS,
   OBJECT_CONTAINER_TYPES,
+  STORAGE_PRICES_LINK,
 } from '../containers.constants';
 
 export default class PciStoragesContainersAddController {
@@ -19,15 +19,19 @@ export default class PciStoragesContainersAddController {
     CucCloudMessage,
     PciProjectStorageBlockService,
     PciProjectStorageContainersService,
+    coreConfig,
   ) {
+    const { ovhSubsidiary } = coreConfig.getUser();
+
     this.$translate = $translate;
     this.atInternet = atInternet;
     this.CucCloudMessage = CucCloudMessage;
     this.PciProjectStorageBlockService = PciProjectStorageBlockService;
     this.PciProjectStorageContainersService = PciProjectStorageContainersService;
+    this.storagePricesLink =
+      STORAGE_PRICES_LINK[ovhSubsidiary] || STORAGE_PRICES_LINK.DEFAULT;
     this.OBJECT_CONTAINER_NAME_PATTERN = OBJECT_CONTAINER_NAME_PATTERN;
     this.OBJECT_CONTAINER_OFFERS = OBJECT_CONTAINER_OFFERS;
-    this.OBJECT_CONTAINER_OFFERS_LABELS = OBJECT_CONTAINER_OFFERS_LABELS;
     this.OBJECT_CONTAINER_TYPE_OFFERS = OBJECT_CONTAINER_TYPE_OFFERS;
   }
 
@@ -51,6 +55,7 @@ export default class PciStoragesContainersAddController {
     this.container = new Container({
       archive: this.archive,
     });
+    this.container.region = null;
   }
 
   loadMessages() {
@@ -64,6 +69,10 @@ export default class PciStoragesContainersAddController {
 
   refreshMessages() {
     this.messages = this.messageHandler.getMessages();
+  }
+
+  onContainerSolutionChange() {
+    this.container.region = null;
   }
 
   onRegionsFocus() {

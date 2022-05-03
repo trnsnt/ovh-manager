@@ -5,10 +5,9 @@ import '@ovh-ux/ng-ovh-api-wrappers'; // should be a peer dependency of ovh-api-
 import 'angular-translate';
 import 'ovh-api-services';
 import '@ovh-ux/ui-kit';
-import '@ovh-ux/manager-incident-banner';
 import ovhManagerAdvices from '@ovh-ux/manager-advices';
+import trustedNic from '@ovh-ux/manager-trusted-nic';
 
-import analyticsDataPlatform from './analytics-data-platform';
 import baremetal from './baremetal';
 import billing from './billing';
 import contacts from './contacts';
@@ -49,7 +48,7 @@ const moduleName = 'ovhManagerPciProject';
 angular
   .module(moduleName, [
     ovhManagerAdvices,
-    analyticsDataPlatform,
+    trustedNic,
     baremetal,
     billing,
     contacts,
@@ -70,7 +69,6 @@ angular
     privateRegistry,
     'oui',
     'ovhManagerCore',
-    'ovhManagerIncidentBanner',
     'ovh-api-services',
     'pascalprecht.translate',
     sshKeys,

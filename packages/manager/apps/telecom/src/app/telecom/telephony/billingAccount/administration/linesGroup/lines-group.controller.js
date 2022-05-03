@@ -14,7 +14,6 @@ export default /* @ngInject */ function TelecomTelephonyBillingAccountAdministra
   $q,
   $translate,
   TelephonyMediator,
-  TelephonySidebar,
   OvhApiTelephony,
   TucToast,
   TucToastError,
@@ -54,6 +53,7 @@ export default /* @ngInject */ function TelecomTelephonyBillingAccountAdministra
         billingAccounts: iceberg('/telephony')
           .query()
           .expand('CachedObjectList-Pages')
+          .limit(5000)
           .execute().$promise,
         numberCount: getNumberCount,
         lineCount: getLineCount,
@@ -260,7 +260,6 @@ export default /* @ngInject */ function TelecomTelephonyBillingAccountAdministra
 
         // update sidebar with fresh data
         TelephonyMediator.resetAllCache();
-        TelephonySidebar.reset();
       });
   };
 }

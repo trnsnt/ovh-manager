@@ -5,7 +5,11 @@ import map from 'lodash/map';
 import clone from 'lodash/clone';
 import sortBy from 'lodash/sortBy';
 
-import { NAME_PATTERN, MAX_NAME_LENGTH } from './fork.constants';
+import {
+  NAME_PATTERN,
+  MIN_NAME_LENGTH,
+  MAX_NAME_LENGTH,
+} from '../add/add.constants';
 
 export default class {
   /* @ngInject */
@@ -26,6 +30,7 @@ export default class {
     this.DatabaseService = DatabaseService;
     this.Poller = Poller;
     this.NAME_PATTERN = NAME_PATTERN;
+    this.MIN_NAME_LENGTH = MIN_NAME_LENGTH;
     this.MAX_NAME_LENGTH = MAX_NAME_LENGTH;
   }
 
@@ -71,6 +76,10 @@ export default class {
     this.orderData = null;
     this.prepareOrderData();
     this.trackDatabases('configuration_fork', 'page');
+  }
+
+  checkPattern(value) {
+    return this.NAME_PATTERN.test(value);
   }
 
   getAvailableNetworks(region) {
@@ -184,7 +193,6 @@ export default class {
       description: this.model.name,
       networkId: this.database?.networkId,
       subnetId: this.database?.subnetId,
-      nodesList: null,
       nodesPattern: {
         flavor: this.model.flavor.name,
         number: this.model.plan.nodesCount,
@@ -199,6 +207,10 @@ export default class {
         serviceId: this.database.id,
       };
     }
+  }
+
+  getOrderAPIUrl() {
+    return `POST /cloud/project/${this.projectId}/database/${this.model.engine.name}`;
   }
 
   createDatabase() {

@@ -1,3 +1,77 @@
+# [1.6.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.5.4...@ovh-ux/manager-cloud-connect@1.6.0) (2022-04-20)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1567] ([c312388](https://github.com/ovh/manager/commit/c312388a1647fb26076a20265ef49be708d00cd4))
+* **i18n:** add missing translations [CDS 1572] ([25f0b7e](https://github.com/ovh/manager/commit/25f0b7e7eea297a587f56e2f757ba85239ab8dc8))
+
+
+### Features
+
+* **cloud-connect:** add order follow up list and services list ([#6309](https://github.com/ovh/manager/issues/6309)) ([ba1f64f](https://github.com/ovh/manager/commit/ba1f64f04412a64113501ae9647d288b3c548db2))
+
+
+### Reverts
+
+* Revert "feat(details): add statistics" (#6529) ([608d020](https://github.com/ovh/manager/commit/608d0203677cb5f3597658579a45a99e601ddb13)), closes [#6529](https://github.com/ovh/manager/issues/6529)
+
+
+
+## [1.5.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.5.3...@ovh-ux/manager-cloud-connect@1.5.4) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [1.5.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.5.2...@ovh-ux/manager-cloud-connect@1.5.3) (2022-04-06)
+
+
+### Bug Fixes
+
+* **cloud-connect.edit-descriotion:** disallow HTML chars in name edition ([572eb5a](https://github.com/ovh/manager/commit/572eb5a43474b4d018fdf9bf849b763cef0031cb))
+
+
+
+## [1.5.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.5.1...@ovh-ux/manager-cloud-connect@1.5.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [1.5.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.5.0...@ovh-ux/manager-cloud-connect@1.5.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* fix ip range match ([#6418](https://github.com/ovh/manager/issues/6418)) ([408238b](https://github.com/ovh/manager/commit/408238bbdc3dfefd7cab9c7b7d4dd2e1c82a80bf))
+
+
+
+# [1.5.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.4.0...@ovh-ux/manager-cloud-connect@1.5.0) (2022-02-10)
+
+
+### Features
+
+* **details:** add statistics ([b4ab598](https://github.com/ovh/manager/commit/b4ab59831847ec641461230a7b3dd53dbb24023d)), closes [#5970](https://github.com/ovh/manager/issues/5970)
+
+
+
+# [1.4.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.3.1...@ovh-ux/manager-cloud-connect@1.4.0) (2022-02-09)
+
+
+### Features
+
+* **details:** add statistics ([#5970](https://github.com/ovh/manager/issues/5970)) ([a8d664d](https://github.com/ovh/manager/commit/a8d664d99880bf8cab7010323f6eb2392d8a6c27))
+
+
+
 ## [1.3.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-cloud-connect@1.3.0...@ovh-ux/manager-cloud-connect@1.3.1) (2021-11-10)
 
 

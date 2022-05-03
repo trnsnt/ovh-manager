@@ -10,20 +10,18 @@ export default /* @ngInject */ ($stateProvider) => {
     reloadOnSearch: false,
     redirectTo: 'app.dedicated-server.server.dashboard',
     resolve: {
-      resiliationCapability: /* @ngInject */ ($http, serverName) =>
-        $http
-          .get(`/incident/resiliation/${serverName}`, {
-            serviceType: 'aapi',
-          })
-          .then(({ data }) => data)
-          .catch(() => null),
       currentActiveLink: /* @ngInject */ ($transition$, $state) => () =>
         $state.href($state.current.name, $transition$.params()),
       isLegacy: /* @ngInject */ (server) => server.newUpgradeSystem === false,
       interfaces: /* @ngInject */ (
         serverName,
         DedicatedServerInterfacesService,
-      ) => DedicatedServerInterfacesService.getInterfaces(serverName),
+        specifications,
+      ) =>
+        DedicatedServerInterfacesService.getInterfaces(
+          serverName,
+          specifications,
+        ),
       features: /* @ngInject */ (ovhFeatureFlipping) =>
         ovhFeatureFlipping.checkFeatureAvailability([
           'dedicated-server:backup',
@@ -46,20 +44,9 @@ export default /* @ngInject */ ($stateProvider) => {
         ),
       serverName: /* @ngInject */ ($transition$) =>
         $transition$.params().productId,
-      serviceInfos: /* @ngInject */ (
-        $stateParams,
-        resiliationCapability,
-        Server,
-      ) =>
+      serviceInfos: /* @ngInject */ ($stateParams, Server) =>
         Server.getServiceInfos($stateParams.productId).then((serviceInfo) => ({
           ...serviceInfo,
-          status:
-            resiliationCapability?.billingInformation &&
-            serviceInfo.status === 'ok' &&
-            !serviceInfo.renew?.deleteAtExpiration
-              ? 'FORCED_MANUAL'
-              : serviceInfo.status,
-          statusHelp: resiliationCapability?.billingInformation || null,
           serviceType: SERVICE_TYPE,
         })),
       specifications: /* @ngInject */ (serverName, Server) =>
@@ -119,6 +106,16 @@ export default /* @ngInject */ ($stateProvider) => {
         $state.go('app.dedicated-server.server.dashboard.netboot', {
           productId: serverName,
         }),
+
+      nutanixCluster: /* @ngInject */ (NutanixService, serverName) =>
+        NutanixService.getClusters()
+          .then((clusters) =>
+            NutanixService.constructor.getClusterByNodeName(
+              serverName,
+              clusters,
+            ),
+          )
+          .catch(() => null),
     },
   });
 };

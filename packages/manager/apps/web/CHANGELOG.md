@@ -1,3 +1,154 @@
+# [16.10.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.9.4...@ovh-ux/manager-web@16.10.0) (2022-04-21)
+
+
+### Features
+
+* **apps:** add phone-prefix module dependency ([9ed7b55](https://github.com/ovh/manager/commit/9ed7b559d435d95d9ce0ef3fda2e65cb51637357))
+
+
+
+## [16.9.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.9.3...@ovh-ux/manager-web@16.9.4) (2022-04-20)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([82697f0](https://github.com/ovh/manager/commit/82697f0b914cea21ff58f1ecda1ee70d41e31b94))
+* **i18n:** add missing translations [CDS 1557] ([6bf4bf7](https://github.com/ovh/manager/commit/6bf4bf7aeda1592c457c842ba28b3a89bf53a9d7))
+
+
+
+## [16.9.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.9.2...@ovh-ux/manager-web@16.9.3) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [16.9.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.9.1...@ovh-ux/manager-web@16.9.2) (2022-04-11)
+
+
+### Bug Fixes
+
+* **domain.glue:** fix call to delete glue records ([#6862](https://github.com/ovh/manager/issues/6862)) ([b3c9836](https://github.com/ovh/manager/commit/b3c9836f54d35364316e6ff55d16bf4f38a95d08))
+
+
+
+## [16.9.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.9.0...@ovh-ux/manager-web@16.9.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* **domain.dashboard:** call API via `GET` method ([#6836](https://github.com/ovh/manager/issues/6836)) ([652d8b3](https://github.com/ovh/manager/commit/652d8b3c3e4f91a9eea0b50371784076334c0032))
+
+
+
+# [16.9.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.8.1...@ovh-ux/manager-web@16.9.0) (2022-04-06)
+
+
+### Bug Fixes
+
+* **hosting.dashboard:** add restriction to name edition ([e5f7f62](https://github.com/ovh/manager/commit/e5f7f62aa93350cf939d201d1431371f46c917f2))
+* **i18n:** add missing translations [CDS 1533] ([11d6c54](https://github.com/ovh/manager/commit/11d6c547e0baafcb51e8b970291caa645f26adad))
+* **private-database.dashboard:** add restriction to name edition ([9ece852](https://github.com/ovh/manager/commit/9ece8523cd286377d30f08a614ca50671c0dd9c4))
+* **web.domain.redirection.add:** clean bind html and secure input ([028a954](https://github.com/ovh/manager/commit/028a9540cad2bd7c2dd964a908d3a46d4dcd5e02))
+
+
+### Features
+
+* **domain:** update dns anycast order ([#2743](https://github.com/ovh/manager/issues/2743)) ([0917f63](https://github.com/ovh/manager/commit/0917f638db7eb150186266b57808b0e2d5fc3421))
+
+
+
+## [16.8.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.8.0...@ovh-ux/manager-web@16.8.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [16.8.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.7.1...@ovh-ux/manager-web@16.8.0) (2022-03-23)
+
+
+### Bug Fixes
+
+* **privates-database:** improve configuration management ([#6559](https://github.com/ovh/manager/issues/6559)) ([663c90a](https://github.com/ovh/manager/commit/663c90afbb5ac49b101ffbe557fa0f72d63c5c43))
+
+
+### Features
+
+* **hosting.offer:** implement detach start10M ([#6385](https://github.com/ovh/manager/issues/6385)) ([7559981](https://github.com/ovh/manager/commit/7559981f96ec95ef8288bedf0bbd93a7034c9461))
+* **private-database:** add new option description - sql_mode ([#6539](https://github.com/ovh/manager/issues/6539)) ([62efb9a](https://github.com/ovh/manager/commit/62efb9adfb9c1374a6cd733b8355b8b9aab47ce7))
+
+
+### Performance Improvements
+
+* remove calls to /incident/* ([#6564](https://github.com/ovh/manager/issues/6564)) ([e949a3d](https://github.com/ovh/manager/commit/e949a3d52bc7bd6b5a7260e8a7cbf4c33f3df2cf))
+
+
+
+## [16.7.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.7.0...@ovh-ux/manager-web@16.7.1) (2022-03-09)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([97969a5](https://github.com/ovh/manager/commit/97969a565df95942e4761feaa0b0b73acc1aee61))
+* **i18n:** add missing translations [CDS 1469] ([e966da8](https://github.com/ovh/manager/commit/e966da89f006c44149800cb6cc41cb1b2a8024f4))
+
+
+
+# [16.7.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.6.2...@ovh-ux/manager-web@16.7.0) (2022-02-28)
+
+
+### Features
+
+* **hosting:** add retention advices ([#6315](https://github.com/ovh/manager/issues/6315)) ([2210567](https://github.com/ovh/manager/commit/221056751296cb21979ad8c7d96ba151bcd5973a))
+
+
+
+## [16.6.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.6.1...@ovh-ux/manager-web@16.6.2) (2022-02-23)
+
+
+### Bug Fixes
+
+* **hosting:** warn when `php` version is EOL ([#6452](https://github.com/ovh/manager/issues/6452)) ([1f7cf6f](https://github.com/ovh/manager/commit/1f7cf6ff233c1eac09bd7da628aa469fb2593aca))
+* **hosting.dashboard:** update recommended version for `php` ([#6435](https://github.com/ovh/manager/issues/6435)) ([05e1f46](https://github.com/ovh/manager/commit/05e1f4680e1ffbf486c30482bf72c070b73f5a99))
+* **privates-database:** remove autocommit fixed value ([#6490](https://github.com/ovh/manager/issues/6490)) ([0a8eb54](https://github.com/ovh/manager/commit/0a8eb5476ba830ff9f06f149efaa7c7567071a94))
+* remove unused translations [CDS] ([6381fc1](https://github.com/ovh/manager/commit/6381fc18ed75a041150e415c019bb73984ef9db3))
+* **i18n:** add missing translations [CDS 1431] ([670fa37](https://github.com/ovh/manager/commit/670fa378e8a449315126fa9d5d02cf06c15e5f7f))
+
+
+
+## [16.6.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.6.0...@ovh-ux/manager-web@16.6.1) (2022-02-15)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1438] ([#6462](https://github.com/ovh/manager/issues/6462)) ([888459c](https://github.com/ovh/manager/commit/888459cba1db08ad6a372305637fda06e214ef98))
+
+
+
+# [16.6.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.5.1...@ovh-ux/manager-web@16.6.0) (2022-02-09)
+
+
+### Bug Fixes
+
+* remove unused translations [CDS] ([903ad5f](https://github.com/ovh/manager/commit/903ad5f1a576b60172d63746ecc8a2fff4ffea50))
+* remove unused translations [CDS] ([22c7cef](https://github.com/ovh/manager/commit/22c7cef38976469d684d25efbf71761105fc0611))
+* **i18n:** add missing translations [CDS 1409] ([e303b25](https://github.com/ovh/manager/commit/e303b252f55b770f29ecabcbe43b94fa4daef295))
+
+
+### Features
+
+* **hosting.ftp:** put forward SFTP information ([#5988](https://github.com/ovh/manager/issues/5988)) ([d14124c](https://github.com/ovh/manager/commit/d14124c614d4faf4624cee5f1b2bb79fb843a80f))
+* **privates-database:** remove database Type ([#6412](https://github.com/ovh/manager/issues/6412)) ([241789f](https://github.com/ovh/manager/commit/241789fe7dd9d87d006a4a969a9b5d879e93ddc5))
+* **privates-database:** remove Infrastructure ([#6407](https://github.com/ovh/manager/issues/6407)) ([03c4d7f](https://github.com/ovh/manager/commit/03c4d7f2191d837deb538ecb10393bde80869905))
+
+
+
 ## [16.5.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@16.5.0...@ovh-ux/manager-web@16.5.1) (2022-01-27)
 
 

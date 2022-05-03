@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import has from 'lodash/has';
 import find from 'lodash/find';
 import set from 'lodash/set';
 
@@ -8,25 +9,29 @@ import PciEligibility from './classes/eligibility.class';
 import PciVoucher from './components/voucher/voucher.class';
 import PciPaymentMethodChallenge from './payment/components/challenge/challenge.class';
 
+import { PCI_FEATURES } from '../projects.constant';
 import {
   ELIGIBILITY_ACTION_ENUM,
   ELIGIBILITY_ERROR_IMAGES_SRC,
+  PCI_PROJECT_STEPS,
 } from './constants';
 
 export default /* @ngInject */ ($stateProvider) => {
   $stateProvider.state('pci.projects.new', {
     url: '/new?cartId&voucher',
+    onEnter: /* @ngInject */ (pciFeatureRedirect) => {
+      return pciFeatureRedirect(PCI_FEATURES.OTHERS.CREATE_PROJECT);
+    },
     redirectTo: (transition) => {
-      const translatePromise = transition.injector().getAsync('$translate');
-      const windowPromise = transition.injector().getAsync('$window');
-      const coreURLBuilderPromise = transition
-        .injector()
-        .getAsync('coreURLBuilder');
-      const cartPromise = transition.injector().getAsync('cart');
-      const eligibilityPromise = transition.injector().getAsync('eligibility');
-      const newSupportTicketLink = transition
-        .injector()
-        .getAsync('newSupportTicketLink');
+      const injector = transition.injector();
+
+      const translatePromise = injector.getAsync('$translate');
+      const windowPromise = injector.getAsync('$window');
+      const coreURLBuilderPromise = injector.getAsync('coreURLBuilder');
+      const cartPromise = injector.getAsync('cart');
+      const eligibilityPromise = injector.getAsync('eligibility');
+      const newSupportTicketLink = injector.getAsync('newSupportTicketLink');
+
       return Promise.all([
         translatePromise,
         windowPromise,
@@ -39,6 +44,8 @@ export default /* @ngInject */ ($stateProvider) => {
         const redirectOptions = {
           location: false,
         };
+
+        let trackErrorMessage;
 
         if (eligibility.isAskIncreaseProjectsQuotaRequired()) {
           redirectState = 'pci.projects.project.error';
@@ -54,6 +61,8 @@ export default /* @ngInject */ ($stateProvider) => {
             ),
             submitLink: newSupportTicketLink,
           };
+          trackErrorMessage =
+            'pci_project_new_error_ask_increase_projects_quota';
         } else if (eligibility.isVerifyPaypalRequired()) {
           redirectState = 'pci.error';
           redirectParams = {
@@ -67,13 +76,19 @@ export default /* @ngInject */ ($stateProvider) => {
             image: ELIGIBILITY_ERROR_IMAGES_SRC.VERIFY_PAYPAL,
             submitLabel: null,
           };
+          trackErrorMessage = 'pci_project_new_error_verify_paypal';
         } else if (cart.cartId !== transition.params().cartId) {
           $window.location.replace(
             transition.router.stateService.href('pci.projects.new', {
               cartId: cart.cartId,
+              voucher: redirectParams.voucher,
             }),
           );
           return null;
+        }
+
+        if (trackErrorMessage) {
+          this.trackProjectCreationError('config', trackErrorMessage);
         }
 
         return transition.router.stateService.target(
@@ -94,14 +109,20 @@ export default /* @ngInject */ ($stateProvider) => {
           ? coreURLBuilder.buildURL('dedicated', '#/support/tickets/new')
           : '',
 
-      cart: /* @ngInject */ ($transition$, me, pciProjectNew) =>
-        !get($transition$.params(), 'cartId')
-          ? // just create cart - location will be reloaded to fetch the whole cart
-            pciProjectNew.createOrderCart(me.ovhSubsidiary)
+      cart: /* @ngInject */ ($transition$, me, pciProjectNew) => {
+        const hasCartId = has($transition$.params(), 'cartId');
+
+        return !hasCartId // just create cart - location will be reloaded to fetch the whole cart
+          ? pciProjectNew.createOrderCart(me.ovhSubsidiary)
           : pciProjectNew.getOrderCart(
               me.ovhSubsidiary,
               get($transition$.params(), 'cartId'),
-            ),
+            );
+      },
+
+      voucher: /* @ngInject */ ($transition$) => {
+        return $transition$.params().voucher;
+      },
 
       eligibility: /* @ngInject */ ($transition$, pciProjectNew) =>
         pciProjectNew
@@ -120,7 +141,9 @@ export default /* @ngInject */ ($stateProvider) => {
       model: /* @ngInject */ (
         cart,
         checkVoucherValidity,
+        voucher,
         eligibility,
+        pciProjectNew,
         ovhPaymentMethodHelper,
       ) => {
         const modelDef = {
@@ -139,21 +162,38 @@ export default /* @ngInject */ ($stateProvider) => {
           hds: cart.hdsItem !== undefined,
           paymentMethod: null,
           voucher: new PciVoucher({
-            value: get(cart, 'projectItem.voucherConfiguration.value'),
+            value:
+              voucher || get(cart, 'projectItem.voucherConfiguration.value'),
           }),
+          isVoucherRequirePaymentMethod:
+            eligibility.voucher?.paymentMethodRequired,
         };
 
         if (modelDef.voucher.value) {
-          return checkVoucherValidity(modelDef.voucher.value).then(
-            (eligibilityOpts) => {
+          return checkVoucherValidity(modelDef.voucher.value)
+            .then((eligibilityOpts) => {
               // update eligibility instance
               eligibility.setOptions(eligibilityOpts);
               // set some information to voucher model
               modelDef.voucher.setInfos(eligibilityOpts.voucher);
               // return the model
               return modelDef;
-            },
-          );
+            })
+            .then(() => {
+              const voucherCartPath = 'projectItem.voucherConfiguration.value';
+              const isVoucherInCart = !!get(cart, voucherCartPath);
+
+              return isVoucherInCart
+                ? pciProjectNew.removeCartProjectItemVoucher(cart)
+                : null;
+            })
+            .then(() => {
+              return pciProjectNew.setCartProjectItemVoucher(
+                cart,
+                modelDef.voucher.value,
+              );
+            })
+            .then(() => modelDef);
         }
 
         return modelDef;
@@ -162,6 +202,7 @@ export default /* @ngInject */ ($stateProvider) => {
       globalLoading: () => ({
         setDefaultPaymentMethod: false,
         finalize: false,
+        isVoucherValidating: false,
       }),
 
       /* ----------  Order steps management  ---------- */
@@ -181,11 +222,11 @@ export default /* @ngInject */ ($stateProvider) => {
 
       steps: () => [
         {
-          name: 'configuration',
+          name: PCI_PROJECT_STEPS.CONFIGURATION,
           active: false,
         },
         {
-          name: 'payment',
+          name: PCI_PROJECT_STEPS.PAYMENT,
           active: false,
         },
       ],

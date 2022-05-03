@@ -6,7 +6,6 @@
         ></h1>
         <button
             type="button"
-            data-ng-if="worldPart !== 'US'"
             data-translate-attr="{ title: 'wizard_modify' }"
             class="btn btn-icon my-auto ml-2"
             data-ui-sref="app.dedicated-server.server.dashboard.edit-display-name"
@@ -20,6 +19,30 @@
     <p
         data-ng-bind="server.reverse || ('server_configuration_reverse_not_configured' | translate)"
     ></p>
+
+    <!-- Nutanix node warning -->
+    <oui-message
+        class="mb-3"
+        data-type="warning"
+        data-ng-if="$ctrl.nutanixCluster"
+    >
+        <div
+            data-translate="server_nutanix_cluster_node_warning_1"
+            data-translate-values="{ clusterName: $ctrl.nutanixCluster.targetSpec.name }"
+        ></div>
+        <div
+            data-translate="server_nutanix_cluster_node_warning_2"
+            data-translate-values="{
+                clusterNodeDashboardLink: '<a href=' + $ctrl.getNutanixClusterNodeLink($ctrl.nutanixCluster.serviceName, server.name) + '>' + server.displayName + '</a>'
+            }"
+        ></div>
+        <div
+            data-translate="server_nutanix_cluster_node_warning_3"
+            data-translate-values="{
+                clusterDashboardLink: '<a href=' + $ctrl.getNutanixClusterDashboardLink($ctrl.nutanixCluster.serviceName) + '>' + $ctrl.nutanixCluster.serviceName + '</a>'
+            }"
+        ></div>
+    </oui-message>
 
     <oui-header-tabs>
         <oui-header-tabs-item
@@ -83,16 +106,6 @@
 </header>
 
 <div>
-    <oui-message
-        data-ng-if="$ctrl.resiliationCapability.message"
-        type="info"
-        class="mb-3"
-        dismissable
-    >
-        <span data-ng-bind-html="$ctrl.resiliationCapability.message"></span>
-    </oui-message>
-    <ovh-manager-incident-banner service-name="$ctrl.server.name">
-    </ovh-manager-incident-banner>
     <div
         class="alert alert-danger"
         role="alert"
@@ -164,6 +177,7 @@
             href="{{::RENEW_URL}}"
             data-ng-if="hasPaymentMean"
             data-translate="server_autorenew_activate"
+            target="_top"
         >
         </a>
     </div>

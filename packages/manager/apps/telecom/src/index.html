@@ -59,10 +59,13 @@
                     <div class="container-fluid h-100" data-ui-view="root">
                         <div class="row h-100">
                             <!-- SIDE MENU -->
-                            <div
-                                data-sidebar-menu
+                            <ovh-manager-server-sidebar
+                                data-ng-if="$ctrl.sidebarUniverse"
+                                universe="$ctrl.sidebarUniverse"
                                 class="col-md-3 col-lg-2"
-                            ></div>
+                            >
+                            </ovh-manager-server-sidebar>
+
                             <!-- CONTENT -->
                             <div
                                 id="content"
@@ -93,6 +96,25 @@
                                     <div
                                         class="container-fluid px-md-5 px-3 mt-3"
                                     >
+                                        <oui-message
+                                            data-ng-if="$ctrl.currentLanguage === 'en'"
+                                            type="info"
+                                            dismissable
+                                        >
+                                            <span
+                                                data-ng-bind="::$ctrl.SYSTRAN_FEEDBACK_INFO.part1"
+                                            ></span>
+                                            <a
+                                                href="{{:: $ctrl.SYSTRAN_FEEDBACK_LINK}}"
+                                                class="oui-link"
+                                                target="_blank"
+                                                rel="noopener"
+                                            >
+                                                <span
+                                                    data-ng-bind="::$ctrl.SYSTRAN_FEEDBACK_INFO.part2"
+                                                ></span>
+                                            </a>
+                                        </oui-message>
                                         <ui-router-breadcrumb></ui-router-breadcrumb>
                                         <div data-ui-view class="mt-3"></div>
                                     </div>

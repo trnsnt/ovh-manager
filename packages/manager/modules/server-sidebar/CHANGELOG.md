@@ -1,3 +1,75 @@
+# [3.21.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-server-sidebar@3.20.0...@ovh-ux/manager-server-sidebar@3.21.0) (2022-04-28)
+
+
+### Bug Fixes
+
+* **sdebar:** fix domain translation ([5a0e189](https://github.com/ovh/manager/commit/5a0e189f63d8f5eef7a29bf1e9ad1f583716540d))
+* **sidebar:** add pack prefix ([bcefdf4](https://github.com/ovh/manager/commit/bcefdf46a3ef04fa1b01a65555bfb8263c779681))
+* **sidebar:** force display search on pack and telephony ([cb38f74](https://github.com/ovh/manager/commit/cb38f74affc47212e323e610b9ba60f7f482ebde))
+* **sidebar:** update items sorting ([d744fbe](https://github.com/ovh/manager/commit/d744fbe9620e8a357d30532b2e068e1a68bb2320))
+
+
+### Features
+
+* **telecom:** manage telecom beta sidebar ([97d5c06](https://github.com/ovh/manager/commit/97d5c062a9850b926eaa78676a04825b9f9a3b18))
+* **telecom:** use server sidebar ([a0d14c8](https://github.com/ovh/manager/commit/a0d14c8179bb01a2ce31a8c64e8270aed253dd7a))
+
+
+
+# [3.20.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-server-sidebar@3.19.1...@ovh-ux/manager-server-sidebar@3.20.0) (2022-04-20)
+
+
+### Features
+
+* **cloud-connect:** add order follow up list and services list ([#6309](https://github.com/ovh/manager/issues/6309)) ([ba1f64f](https://github.com/ovh/manager/commit/ba1f64f04412a64113501ae9647d288b3c548db2))
+
+
+
+## [3.19.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-server-sidebar@3.19.0...@ovh-ux/manager-server-sidebar@3.19.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+# [3.19.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-server-sidebar@3.18.0...@ovh-ux/manager-server-sidebar@3.19.0) (2022-03-16)
+
+
+### Features
+
+* add eco range order ([#6401](https://github.com/ovh/manager/issues/6401)) ([a569802](https://github.com/ovh/manager/commit/a56980279358367aa4a0ffd759a6165b0ffc897d))
+
+
+
+# [3.18.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-server-sidebar@3.17.3...@ovh-ux/manager-server-sidebar@3.18.0) (2022-03-15)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1506] ([14e17e0](https://github.com/ovh/manager/commit/14e17e0125ccb0598c7fc760cf1f6a92b8266739))
+* **i18n:** add missing translations [CDS 1517] ([5f099ae](https://github.com/ovh/manager/commit/5f099aef0afc1578bd17381fac723dcf3600f526))
+* **i18n:** add missing translations [CDS 1518] ([94b5343](https://github.com/ovh/manager/commit/94b53430567bbfd69d7a016df8fc4804215e65c0))
+
+
+### Features
+
+* nutanix main navigation link ([18bfd32](https://github.com/ovh/manager/commit/18bfd32f29eab7cd5a9f295d1e63d31179555414))
+* nutanix service ui ([5d9d1fd](https://github.com/ovh/manager/commit/5d9d1fd5dd10dd614df4068c3cfc84d44791b739))
+* show warning message ([3241cf4](https://github.com/ovh/manager/commit/3241cf44407d2387290fb684ff306f4bf4f7eeb6))
+
+
+
+## [3.17.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-server-sidebar@3.17.2...@ovh-ux/manager-server-sidebar@3.17.3) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
 ## [3.17.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-server-sidebar@3.17.1...@ovh-ux/manager-server-sidebar@3.17.2) (2022-01-25)
 
 

@@ -7,9 +7,12 @@ export default {
   template,
   bindings: {
     callback: '<',
+    creditProvisioningPlan: '<',
+    isDisplayablePaypalChargeBanner: '<',
     cart: '<',
     reloadPayment: '<',
     getCancelHref: '<',
+    step1Link: '<',
     getPaymentMethod: '<',
     eligibility: '<',
     model: '<',
@@ -20,7 +23,10 @@ export default {
     onAskCreditPayment: '<',
     globalLoading: '<',
     paymentStatus: '<',
+    trackClick: '<',
     trackPage: '<',
     sendTrack: '<',
+    trackProjectCreationError: '<',
+    onProgressStepClick: '<',
   },
 };

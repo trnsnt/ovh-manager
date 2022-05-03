@@ -1,3 +1,67 @@
+## [9.1.8](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.7...@ovh-ux/ng-ovh-payment-method@9.1.8) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [9.1.7](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.6...@ovh-ux/ng-ovh-payment-method@9.1.7) (2022-04-04)
+
+
+### Bug Fixes
+
+* **integration:** reinit adyen after payment switch ([#6794](https://github.com/ovh/manager/issues/6794)) ([078358c](https://github.com/ovh/manager/commit/078358c703289b8094b34a067fa96ccb884e432b))
+
+
+
+## [9.1.6](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.5...@ovh-ux/ng-ovh-payment-method@9.1.6) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [9.1.5](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.4...@ovh-ux/ng-ovh-payment-method@9.1.5) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
+## [9.1.4](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.3...@ovh-ux/ng-ovh-payment-method@9.1.4) (2022-03-04)
+
+
+### Bug Fixes
+
+* **service:** restrict redirect url handling ([#6603](https://github.com/ovh/manager/issues/6603)) ([2c84729](https://github.com/ovh/manager/commit/2c847296608552d7505e20586ead7c90580637cc))
+
+
+
+## [9.1.3](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.2...@ovh-ux/ng-ovh-payment-method@9.1.3) (2022-02-24)
+
+
+### Bug Fixes
+
+* **deps:** bump `@ovh-ux/ovh-reket` to `v0.1.0` ([3dc16e2](https://github.com/ovh/manager/commit/3dc16e2ba92efda74b7fdd9e8d612f0ca1d16817)), closes [#6436](https://github.com/ovh/manager/issues/6436)
+
+
+
+## [9.1.2](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.1...@ovh-ux/ng-ovh-payment-method@9.1.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1412] ([1c6dc65](https://github.com/ovh/manager/commit/1c6dc6504965bdebe4c8118999f5793fb1dc3835))
+* **i18n:** add missing translations [CDS 1417] ([f9fb30b](https://github.com/ovh/manager/commit/f9fb30bdccf4aed9cf5b601b152b0da060bb1b41))
+
+
+
 ## [9.1.1](https://github.com/ovh/manager/compare/@ovh-ux/ng-ovh-payment-method@9.1.0...@ovh-ux/ng-ovh-payment-method@9.1.1) (2022-01-25)
 
 

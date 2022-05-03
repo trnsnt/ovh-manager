@@ -12,7 +12,7 @@ export default {
     user: '<',
     worldPart: '<',
     bringYourOwnImage: '<',
-    resiliationCapability: '<',
+    nutanixCluster: '<',
   },
   controller,
   template,

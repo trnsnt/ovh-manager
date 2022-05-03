@@ -15,20 +15,25 @@
             </oui-guide-menu>
         </oui-header>
 
-        <pci-maintenance-banner
-            data-steins="$ctrl.steins"
-            data-customer-regions="$ctrl.customerRegions"
-            data-product-regions="$ctrl.snapshotsRegions"
-        ></pci-maintenance-banner>
+        <!--Banner section messages-->
+        <div>
+            <pci-maintenance-banner
+                data-steins="$ctrl.steins"
+                data-customer-regions="$ctrl.customerRegions"
+                data-product-regions="$ctrl.snapshotsRegions"
+                data-is-list-page="true"
+                data-product-name=":: 'pci_projects_project_storages_snapshots_title' | translate"
+            ></pci-maintenance-banner>
 
-        <pci-announcement-banner
-            data-get-state-name="$ctrl.getStateName()"
-            data-on-go-to-region="$ctrl.goToRegion()"
-        ></pci-announcement-banner>
+            <pci-announcement-banner
+                data-get-state-name="$ctrl.getStateName()"
+                data-on-go-to-region="$ctrl.goToRegion()"
+            ></pci-announcement-banner>
 
-        <cui-message-container
-            data-messages="$ctrl.messages"
-        ></cui-message-container>
+            <cui-message-container
+                data-messages="$ctrl.messages"
+            ></cui-message-container>
+        </div>
 
         <oui-datagrid
             data-rows="$ctrl.snapshots"
@@ -75,7 +80,7 @@
                 data-sortable
                 data-filterable
             >
-                <span>{{ $value | cucBytes:2:true:'GiB'}}</span>
+                <span>{{ $value | bytes:2:true:'GiB'}}</span>
             </oui-datagrid-column>
             <oui-datagrid-column
                 data-title="'pci_projects_project_storages_snapshots_creationDate_label' | translate"

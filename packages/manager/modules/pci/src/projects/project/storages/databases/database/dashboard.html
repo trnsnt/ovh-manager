@@ -84,7 +84,8 @@
             data-href="{{ $ctrl.poolsLink }}"
             data-active="$ctrl.currentActiveLink() === $ctrl.poolsLink"
             ><span
-                data-translate="pci_databases_dashboard_pools_tab_title"></span>
+                data-translate="pci_databases_dashboard_pools_tab_title"
+            ></span>
         </oui-header-tabs-item>
         <oui-header-tabs-item
             data-href="{{:: $ctrl.logsLink }}"
@@ -124,6 +125,30 @@
                 data-translate="pci_databases_dashboard_replications_tab_title"
             ></span>
         </oui-header-tabs-item>
+        <oui-header-tabs-item
+            data-ng-if="$ctrl.isFeatureActivated('namespacesTab')"
+            data-href="{{ $ctrl.namespacesLink }}"
+            data-active="$ctrl.currentActiveLink() === $ctrl.namespacesLink"
+            ><span
+                data-translate="pci_databases_dashboard_namespaces_tab_title"
+            ></span>
+        </oui-header-tabs-item>
+        <oui-header-tabs-item
+            data-ng-if="$ctrl.isFeatureActivated('connectorsTab')"
+            data-href="{{ $ctrl.connectorsLink }}"
+            data-active="$ctrl.currentActiveLink() === $ctrl.connectorsLink"
+            ><span
+                data-translate="pci_databases_dashboard_connectors_tab_title"
+            ></span>
+        </oui-header-tabs-item>
+        <oui-header-tabs-item
+            data-ng-if="$ctrl.isFeatureActivated('advancedConfigurationTab')"
+            data-href="{{ $ctrl.advancedConfigurationLink }}"
+            data-active="$ctrl.currentActiveLink() === $ctrl.advancedConfigurationLink"
+            ><span
+                data-translate="pci_databases_dashboard_advanced_configuration_tab_title"
+            ></span>
+        </oui-header-tabs-item>
     </oui-header-tabs>
     <oui-guide-menu data-text="{{:: 'pci_project_guides_header' | translate }}">
         <oui-guide-menu-item href="{{ $ctrl.guideUrl }}" data-external>
@@ -134,8 +159,23 @@
         </oui-guide-menu-item>
     </oui-guide-menu>
 </oui-header>
-<oui-message data-ng-if="$ctrl.database.isProcessing()" data-type="info">
-    <span data-translate="pci_databases_dashboard_database_processing_state">
-    </span>
-</oui-message>
+
+<!--Banner section messages-->
+<section>
+    <pci-maintenance-banner
+        data-steins="$ctrl.steins"
+        data-customer-regions="$ctrl.customerRegions"
+        data-product-regions="$ctrl.databasesRegions"
+        data-is-dashboard-page="true"
+        data-product-service-name="$ctrl.database.description"
+        data-product-region="$ctrl.database.region"
+    ></pci-maintenance-banner>
+
+    <oui-message data-ng-if="$ctrl.database.isProcessing()" data-type="info">
+        <span
+            data-translate="pci_databases_dashboard_database_processing_state"
+        ></span>
+    </oui-message>
+</section>
+
 <div class="container-fluid" data-ui-view="databaseView"></div>

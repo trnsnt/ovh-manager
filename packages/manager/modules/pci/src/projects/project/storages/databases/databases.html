@@ -19,13 +19,25 @@
             </oui-guide-menu-item>
         </oui-guide-menu>
     </oui-header>
-    <cui-message-container
-        data-messages="$ctrl.messages"
-    ></cui-message-container>
 
-    <pci-project-databases-warning
-        data-ng-if="$ctrl.showPaymentWarning($ctrl.databases)"
-    ></pci-project-databases-warning>
+    <!--Banner section messages-->
+    <section>
+        <pci-maintenance-banner
+            data-steins="$ctrl.steins"
+            data-customer-regions="$ctrl.customerRegions"
+            data-product-regions="$ctrl.databasesRegions"
+            data-is-list-page="true"
+            data-product-name=":: 'pci_database_list_title' | translate"
+        ></pci-maintenance-banner>
+
+        <cui-message-container
+            data-messages="$ctrl.messages"
+        ></cui-message-container>
+
+        <pci-project-databases-warning
+            data-ng-if="$ctrl.showPaymentWarning($ctrl.databases)"
+        ></pci-project-databases-warning>
+    </section>
 
     <oui-datagrid
         id="publicCloudStorageDatabasesDatagrid"
@@ -45,6 +57,7 @@
                 data-ng-if="!$row.isDeleting()"
                 data-ng-href="{{:: $ctrl.databaseLink($row) }}"
                 data-ng-bind=":: $value"
+                target="_top"
             ></a>
             <span
                 data-ng-if="$row.isDeleting()"
@@ -68,14 +81,19 @@
             data-sortable
             data-filterable
         >
-            <img
-                ng-if="$ctrl.ENGINE_LOGOS[$row.engine]"
-                class="database-engine-logo"
-                data-ng-src="{{:: $ctrl.ENGINE_LOGOS[$row.engine]}}"
-                alt="{{:: $row.engine}}"
-            />
-            <span data-ng-bind=":: $row.getEngineLabel()"></span>
-            <span data-ng-bind=":: $row.version"></span>
+            <span class="d-flex align-items-center">
+                <img
+                    data-ng-if="$ctrl.ENGINE_LOGOS[$row.engine]"
+                    class="database-engine-logo mr-2"
+                    data-ng-src="{{:: $ctrl.ENGINE_LOGOS[$row.engine]}}"
+                    alt="{{:: $row.engine}}"
+                />
+                <span
+                    data-ng-bind=":: $row.getEngineLabel()"
+                    class="mr-1"
+                ></span>
+                <span data-ng-bind=":: $row.version"></span>
+            </span>
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'pci_database_list_plan' | translate"
@@ -102,21 +120,21 @@
                 }"
             ></span>
             <span
-                data-ng-bind="' / ' + ( 'pci_database_node_type_memory' | translate:{ 
-                    memorySize: ($ctrl.getCurrentFlavor($row).memory | cucBytes:2:false:'GB')
+                data-ng-bind="' / ' + ( 'pci_database_node_type_memory' | translate:{
+                    memorySize: ($ctrl.getCurrentFlavor($row).memory | bytes:2:false:'GB')
                 })"
             ></span>
             <span
                 ng-if="$ctrl.getCurrentFlavor($row).hasStorage && !$ctrl.getCurrentFlavor($row).isStorageRange"
-                data-ng-bind="' / ' + ( 'pci_database_node_type_storage' | translate:{ 
-                    storageSize: ($ctrl.getCurrentFlavor($row).minDiskSize | cucBytes:2:false:'GB')
+                data-ng-bind="' / ' + ( 'pci_database_node_type_storage' | translate:{
+                    storageSize: ($ctrl.getCurrentFlavor($row).minDiskSize | bytes:2:false:'GB')
                 })"
             ></span>
             <span
                 ng-if="$ctrl.getCurrentFlavor($row).hasStorage && $ctrl.getCurrentFlavor($row).isStorageRange"
-                data-ng-bind="' / ' + ( 'pci_database_node_type_storage_range' | translate:{ 
-                    storageMinSize: ($ctrl.getCurrentFlavor($row).minDiskSize | cucBytes:2:false:'GB'),
-                    storageMaxSize: ($ctrl.getCurrentFlavor($row).maxDiskSize | cucBytes:2:false:'GB')
+                data-ng-bind="' / ' + ( 'pci_database_node_type_storage_range' | translate:{
+                    storageMinSize: ($ctrl.getCurrentFlavor($row).minDiskSize | bytes:2:false:'GB'),
+                    storageMaxSize: ($ctrl.getCurrentFlavor($row).maxDiskSize | bytes:2:false:'GB')
                 })"
             ></span>
         </oui-datagrid-column>
@@ -231,4 +249,12 @@
             </button>
         </oui-datagrid-topbar>
     </oui-datagrid>
+
+    <div class="oui-box oui-box_light">
+        <p class="mt-4" data-translate="pci_database_footer_part_1"></p>
+        <p
+            data-ng-if="$ctrl.hasTypeRedis()"
+            data-translate="pci_database_footer_part_2"
+        ></p>
+    </div>
 </div>

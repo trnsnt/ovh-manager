@@ -7,6 +7,7 @@ export default {
   template,
   bindings: {
     cart: '<',
+    isValidHdsSupportLevel: '<',
     getActionHref: '<',
     goToPayment: '<',
     hds: '<',
@@ -14,5 +15,8 @@ export default {
     summary: '<',
     getSummary: '<',
     trackClick: '<',
+    projectsLink: '<',
+    setCartProjectItem: '<',
+    onProgressStepClick: '<',
   },
 };

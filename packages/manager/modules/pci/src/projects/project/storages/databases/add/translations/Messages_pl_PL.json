@@ -13,10 +13,11 @@
   "pci_database_add_select_flavor": "Wybierz model węzłów",
   "pci_database_add_step5_title": "Skonfiguruj opcje",
   "pci_database_add_name": "Nazwij usługę bazy danych",
-  "pci_database_add_name_help_text": "Nazwa musi zawierać co najmniej 3 znaki",
   "pci_database_add_network_mode_label": "Typ sieci",
   "pci_database_add_network_mode_public": "Publiczny",
   "pci_database_add_network_mode_private": "Prywatny",
+  "pci_database_add_network_mode_public_incompatible": "Wybrana oferta nie jest kompatybilna z sieciami publicznymi.",
+  "pci_database_add_network_mode_private_incompatible": "Wybrana oferta nie jest kompatybilna z sieciami prywatnymi.",
   "pci_database_add_privateNetwork_label": "Przypisana prywatna sieć",
   "pci_database_add_privateNetwork_description": "Domyślnie bazy danych mają przypisaną sieć publiczną. Możesz również dodać sieć prywatną, ale utracisz konfigurację, którą właśnie utworzyłeś.",
   "pci_database_add_privateNetwork_add": "Utwórz prywatną sieć",
@@ -29,6 +30,11 @@
   "pci_database_add_create_database_processing": "Trwa zakładanie usługi",
   "pci_database_add_create_database_success": "Trwa tworzenie usługi. Będzie ona dostępna za kilka minut.",
   "pci_database_add_create_database_error": "Wystąpił błąd podczas tworzenia usługi. Spróbuj ponownie później: {{message}} ",
-  "pci_database_add_network_mode_public_incompatible": "Wybrana oferta nie jest kompatybilna z sieciami publicznymi.",
-  "pci_database_add_network_mode_private_incompatible": "Wybrana oferta nie jest kompatybilna z sieciami prywatnymi."
+  "pci_database_add_name_min_rule": "Minimum {{min}} znaków",
+  "pci_database_add_name_max_rule": "Maksimum {{max}} znaków",
+  "pci_database_add_name_pattern_rule": "Może zawierać jedynie cyfry, litery, podkreślenia, myślniki lub kropki.",
+  "pci_database_add_command_description": "Poniższe zamówienie pozwala na utworzenie usługi za pomocą naszego API.",
+  "pci_database_add_command_documentation_link": "Kliknij tutaj, aby uzyskać dostęp do dokumentacji.",
+  "pci_database_add_footer_part_1": "Wszystkie nazwy produktów, logo i znaki towarowe należą do ich właścicieli. Wszystkie nazwy firm, produktów i usług publikowane na tej stronie internetowej służą wyłącznie do celów identyfikacji. Używanie tych nazw, logo i znaków towarowych nie wymaga uzyskania zgody.",
+  "pci_database_add_footer_part_2": "*Redis jest znakiem towarowym firmy Redis Ltd. Wszystkie prawa z nim związane są zastrzeżone dla Redis Ltd. Użycie go przez OVH SAS w jakiejkolwiek formie ma charakter wyłącznie referencyjny i nie oznacza sponsorowania, wspierania lub powiązania pomiędzy Redis a OVH SAS."
 }

@@ -19,6 +19,8 @@
             data-steins="$ctrl.steins"
             data-customer-regions="$ctrl.customerRegions"
             data-product-regions="$ctrl.storagesRegions"
+            data-is-list-page="true"
+            data-product-name=":: 'pci_projects_project_storages_blocks_title' | translate"
         ></pci-maintenance-banner>
 
         <pci-announcement-banner
@@ -75,7 +77,7 @@
                 data-sortable
                 data-filterable
             >
-                <span>{{ $value | cucBytes:2:true:'GiB'}}</span>
+                <span>{{ $value | bytes:2:true:'GiB'}}</span>
             </oui-datagrid-column>
             <oui-datagrid-column
                 data-title="'pci_projects_project_storages_blocks_attachedTo_label' | translate"
@@ -87,6 +89,7 @@
                     data-ng-repeat="instance in $row.attachedTo track by instance.id"
                     data-ng-href="{{:: $ctrl.instanceLink(instance.id) }}"
                     data-ng-bind="instance.name"
+                    target="_top"
                 ></a>
             </oui-datagrid-column>
             <oui-datagrid-column

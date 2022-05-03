@@ -1,3 +1,220 @@
+# [13.38.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.37.1...@ovh-ux/manager-telecom@13.38.0) (2022-04-28)
+
+
+### Features
+
+* **api:** replace apiv7 calls by v6 and iceberg ([#6307](https://github.com/ovh/manager/issues/6307)) ([b2e86fd](https://github.com/ovh/manager/commit/b2e86fd91d9accad4d670f441a4af04d3ef65b67))
+* **telecom:** manage telecom beta sidebar ([97d5c06](https://github.com/ovh/manager/commit/97d5c062a9850b926eaa78676a04825b9f9a3b18))
+* **telecom:** use server sidebar ([a0d14c8](https://github.com/ovh/manager/commit/a0d14c8179bb01a2ce31a8c64e8270aed253dd7a))
+
+
+
+## [13.37.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.37.0...@ovh-ux/manager-telecom@13.37.1) (2022-04-20)
+
+
+### Bug Fixes
+
+* **telephony.sva-wallet:** replace title of the kbis field ([#6928](https://github.com/ovh/manager/issues/6928)) ([f97bb2e](https://github.com/ovh/manager/commit/f97bb2e7f431468767ee04c1c5a63c004cf2617e))
+
+
+
+# [13.37.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.36.3...@ovh-ux/manager-telecom@13.37.0) (2022-04-20)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1560] ([23ac021](https://github.com/ovh/manager/commit/23ac02141679d82b82cd759e510e71d1fb80c74f))
+* **telephony.sva-wallet.kyc.identity:** update email label ([#6802](https://github.com/ovh/manager/issues/6802)) ([e1d6f2c](https://github.com/ovh/manager/commit/e1d6f2c5077857fdfd9da83965ebb1c2eee5336a))
+
+
+### Features
+
+* **pack.resiliation:** add new reasons for resiliation survey ([#6416](https://github.com/ovh/manager/issues/6416)) ([d3e034f](https://github.com/ovh/manager/commit/d3e034fa6abd0f2fbcbf79defbc9eca3f5dc5933))
+
+
+
+## [13.36.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.36.2...@ovh-ux/manager-telecom@13.36.3) (2022-04-14)
+
+
+### Bug Fixes
+
+* **modem.templates:** revert to display modem templates ([#6752](https://github.com/ovh/manager/issues/6752)) ([5ce5df9](https://github.com/ovh/manager/commit/5ce5df9a92c7a901107bd8c0bcdc8b7c2196bba6))
+
+
+
+## [13.36.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.36.1...@ovh-ux/manager-telecom@13.36.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+## [13.36.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.36.0...@ovh-ux/manager-telecom@13.36.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* **telephony.group:** line grouping random loading ([#6604](https://github.com/ovh/manager/issues/6604)) ([18d8edc](https://github.com/ovh/manager/commit/18d8edcd4656bc650efd58da8e38d2489863ddc2))
+
+
+
+# [13.36.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.35.1...@ovh-ux/manager-telecom@13.36.0) (2022-03-29)
+
+
+### Bug Fixes
+
+* **hubic:** replace apiv7 call by apiv6 ([32a1f99](https://github.com/ovh/manager/commit/32a1f99d10d829e93e04fa8d10e30e230766b025))
+
+
+### Features
+
+* **line:** replace xdsl search api call ([e9984b8](https://github.com/ovh/manager/commit/e9984b8490ab4407ea90831657b175b9af789d68))
+* **pack:** replace exchange APIv7 call ([#6586](https://github.com/ovh/manager/issues/6586)) ([e3bf999](https://github.com/ovh/manager/commit/e3bf9996f285179c4f4959a89e512f70de141693))
+* **telephony:** replace apiv7 call ([1e42e73](https://github.com/ovh/manager/commit/1e42e73d5726017814dedfd84043c49fdf9fdf5b))
+* **telephony:** replace apiv7 call ([9883861](https://github.com/ovh/manager/commit/9883861f254e6b0b4af69681d5c028aec5e1a8e1))
+
+
+### Reverts
+
+* **configuration.redirect:** kill apiv7 calls ([06d5d54](https://github.com/ovh/manager/commit/06d5d545fdc1f30055a4f7cc330f7d81f21f04ff))
+
+
+
+## [13.35.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.35.0...@ovh-ux/manager-telecom@13.35.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+* **telephony.sva-wallet.kyc.identity.form:** re-order order fields ([#6746](https://github.com/ovh/manager/issues/6746)) ([9f1c59e](https://github.com/ovh/manager/commit/9f1c59eb1305c2275d46dcba4e0ee31b6516434f))
+
+
+
+# [13.35.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.34.0...@ovh-ux/manager-telecom@13.35.0) (2022-03-23)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1508] ([7b8d19a](https://github.com/ovh/manager/commit/7b8d19abb941605e735ff0fb0bd1ae7fb2311641))
+* **sva:** add fr content for companykind ([e17a7bf](https://github.com/ovh/manager/commit/e17a7bfbe657d5374f51708104fc774396c7bfe7))
+* **sva:** fix not refreshed when iban is updated ([6092335](https://github.com/ovh/manager/commit/6092335b3ca08026642f87707cac43caae413885))
+
+
+### Features
+
+* **sva:** add additional mandatory document ([9af83a6](https://github.com/ovh/manager/commit/9af83a626142bba62f6502b1715ea71360daf75a))
+* **sva:** add crowdfunding concept ([1448ecd](https://github.com/ovh/manager/commit/1448ecdef4ecdf430f9178592120bb8eb93f90a5))
+* **sva:** add maketplace concept ([fa558d9](https://github.com/ovh/manager/commit/fa558d9006cdac7e73fcab8ee2be8b43ee92c30c))
+* cross-sell and up-sell updates ([#6494](https://github.com/ovh/manager/issues/6494)) ([5018416](https://github.com/ovh/manager/commit/501841638ba08c1854429bfd7dd4e65f3c6b4832))
+
+
+### Performance Improvements
+
+* remove calls to /incident/* ([#6564](https://github.com/ovh/manager/issues/6564)) ([e949a3d](https://github.com/ovh/manager/commit/e949a3d52bc7bd6b5a7260e8a7cbf4c33f3df2cf))
+
+
+
+# [13.34.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.33.2...@ovh-ux/manager-telecom@13.34.0) (2022-03-09)
+
+
+### Bug Fixes
+
+* **telecom:** remove unused package ([583fdf0](https://github.com/ovh/manager/commit/583fdf01a471ea62fd5f7efcf89d7d71049a02a2))
+* **telecom.telephony.billing:** wrong redirect url ([#6602](https://github.com/ovh/manager/issues/6602)) ([922793a](https://github.com/ovh/manager/commit/922793a00eaa9a24f6dc46ecb0d759951086d2b8))
+
+
+### Features
+
+* **telephony.sva-wallet:** add a field bank account holder ([#6481](https://github.com/ovh/manager/issues/6481)) ([a333079](https://github.com/ovh/manager/commit/a333079c6b35ee666c88a72e400433b064c04783))
+
+
+
+## [13.33.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.33.1...@ovh-ux/manager-telecom@13.33.2) (2022-02-25)
+
+
+### Bug Fixes
+
+* **telephony.fax.custom-domains:** ecofax domain action ([#6560](https://github.com/ovh/manager/issues/6560)) ([3c7fd62](https://github.com/ovh/manager/commit/3c7fd620222c5ee2d55a6ee080dd29af1b950e24))
+
+
+
+## [13.33.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.33.0...@ovh-ux/manager-telecom@13.33.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* **telecom.rj11_line:** fix function disableFaxOptionTab ([#6549](https://github.com/ovh/manager/issues/6549)) ([32b033a](https://github.com/ovh/manager/commit/32b033a0d415316c50f112fcac33992981a99970))
+
+
+
+# [13.33.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.32.1...@ovh-ux/manager-telecom@13.33.0) (2022-02-23)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1446] ([faf09a2](https://github.com/ovh/manager/commit/faf09a23e6e8652d316b4c1d23577db6b1bb74ce))
+* **telephony.group.line:** prevent RJ11 to be seen as fax lines ([#5759](https://github.com/ovh/manager/issues/5759)) ([5c2e41c](https://github.com/ovh/manager/commit/5c2e41c4d6440e89d5d28390cd7e82744f071fa9))
+
+
+### Features
+
+* tracking for nasha add and telephone line solution change page ([#6437](https://github.com/ovh/manager/issues/6437)) ([3e7c68e](https://github.com/ovh/manager/commit/3e7c68e3d3391f4b184320d9573c5f6fb65452da))
+
+
+
+## [13.32.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.32.0...@ovh-ux/manager-telecom@13.32.1) (2022-02-21)
+
+
+### Bug Fixes
+
+* **pack.migration:** declare missing variable $translate ([#6521](https://github.com/ovh/manager/issues/6521)) ([4cce2f9](https://github.com/ovh/manager/commit/4cce2f9b48c6c9533502c7caac91e594be989063))
+
+
+
+# [13.32.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.31.2...@ovh-ux/manager-telecom@13.32.0) (2022-02-15)
+
+
+### Features
+
+* **telecom:** display systran feedback info ([#6439](https://github.com/ovh/manager/issues/6439)) ([5b03ce7](https://github.com/ovh/manager/commit/5b03ce71bcf3aa458ce3faf894497a7239646194))
+
+
+
+## [13.31.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.31.1...@ovh-ux/manager-telecom@13.31.2) (2022-02-14)
+
+
+### Bug Fixes
+
+* **pack.xdsl.access.notifications:** change the moduleName ([#6461](https://github.com/ovh/manager/issues/6461)) ([e8a9193](https://github.com/ovh/manager/commit/e8a9193e7ecfd8c0dda5939a807bdbdf07bcdb54))
+
+
+
+## [13.31.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.31.0...@ovh-ux/manager-telecom@13.31.1) (2022-02-10)
+
+
+### Bug Fixes
+
+* **modem.templates:** fix templates modem ([ef09bba](https://github.com/ovh/manager/commit/ef09bbaee5181738fdabaa416c8003bf15f2d2b3)), closes [#6339](https://github.com/ovh/manager/issues/6339)
+
+
+
+# [13.31.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.30.3...@ovh-ux/manager-telecom@13.31.0) (2022-02-09)
+
+
+### Bug Fixes
+
+* **modem.templates:** fix templates modem ([#6339](https://github.com/ovh/manager/issues/6339)) ([ad52838](https://github.com/ovh/manager/commit/ad528385676fb65d691bb70bcc0cf2bb96b34de0))
+* **telecom.alias.ccs:** modification regex internal or external agent ([#5751](https://github.com/ovh/manager/issues/5751)) ([f993ed2](https://github.com/ovh/manager/commit/f993ed2fa7e58e69cd48941611a41ce12ff24946))
+
+
+### Features
+
+* **telecom/xdsl/notif:** add allowIncident & downThreshold in notif ([#5886](https://github.com/ovh/manager/issues/5886)) ([a33bea1](https://github.com/ovh/manager/commit/a33bea1ca847ae24265b312deaef2794c41bd9db))
+
+
+
 ## [13.30.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom@13.30.2...@ovh-ux/manager-telecom@13.30.3) (2022-01-25)
 
 

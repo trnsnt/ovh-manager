@@ -1,7 +1,12 @@
+import { PCI_FEATURES } from '../../../projects.constant';
+
 export default /* @ngInject */ ($stateProvider) => {
   $stateProvider.state('pci.projects.project.storages.object-storage', {
     url: '/objects',
     component: 'pciProjectStorageObjectStorage',
+    onEnter: /* @ngInject */ (pciFeatureRedirect) => {
+      return pciFeatureRedirect(PCI_FEATURES.PRODUCTS.OBJECT_STORAGE);
+    },
     redirectTo: (transition) =>
       transition
         .injector()
@@ -23,6 +28,10 @@ export default /* @ngInject */ ($stateProvider) => {
         archive,
         projectId,
       ) => PciProjectStorageContainersService.getAll(projectId, archive),
+
+      containersRegions: /* @ngInject */ (containers) =>
+        Array.from(new Set(containers.map(({ region }) => region))),
+
       containersLink: /* @ngInject */ ($state, projectId) =>
         $state.href('pci.projects.project.storages.object-storage.objects', {
           projectId,

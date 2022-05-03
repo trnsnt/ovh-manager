@@ -24,6 +24,7 @@
                     data-track-on="click"
                     data-track-name="vps::detail::dashboard::vcore-upscale"
                     data-track-type="action"
+                    target="_top"
                 >
                     <span
                         data-translate="vps_dashboard_tile_configuration_vcore_upscale"
@@ -48,7 +49,7 @@
                     data-disabled="$ctrl.vpsUpgradeTask && !$ctrl.isInRescueMode"
                 >
                     <span
-                        data-ng-bind=":: ($ctrl.stateVps.model.memory / 1024) | cucBytes:0:false:'GB'"
+                        data-ng-bind=":: ($ctrl.stateVps.model.memory / 1024) | bytes:0:false:'GB'"
                     ></span>
                 </oui-radio>
                 <oui-radio
@@ -56,7 +57,7 @@
                     data-disabled="$ctrl.vpsUpgradeTask && !$ctrl.isInRescueMode"
                 >
                     <span
-                        data-ng-bind=":: ($ctrl.stateVps.model.memory * 2 / 1024) | cucBytes:0:false:'GB'"
+                        data-ng-bind=":: ($ctrl.stateVps.model.memory * 2 / 1024) | bytes:0:false:'GB'"
                     ></span>
                 </oui-radio>
             </oui-radio-toggle-group>
@@ -71,7 +72,7 @@
             data-ng-if="!$ctrl.configurationTile.upgrades.memory.plan || $ctrl.isVpsStarter"
         >
             <span
-                data-ng-bind=":: ($ctrl.stateVps.model.memory / 1024) | cucBytes:0:false:'GB'"
+                data-ng-bind=":: ($ctrl.stateVps.model.memory / 1024) | bytes:0:false:'GB'"
             ></span>
             <p
                 class="p-0"
@@ -82,6 +83,7 @@
                     data-track-on="click"
                     data-track-name="vps::detail::dashboard::memory-upscale"
                     data-track-type="action"
+                    target="_top"
                 >
                     <span
                         data-translate="{{ $ctrl.isMaxEliteVcore ? 'vps_dashboard_tile_configuration_memory_add_upscale_elite' : 'vps_dashboard_tile_configuration_memory_add_upscale' }}"
@@ -106,7 +108,7 @@
                     data-disabled="$ctrl.isMigrating || ($ctrl.vpsUpgradeTask && !$ctrl.isInRescueMode)"
                 >
                     <span
-                        data-ng-bind=":: $ctrl.stateVps.model.disk | cucBytes:0:false:'GB'"
+                        data-ng-bind=":: $ctrl.stateVps.model.disk | bytes:0:false:'GB'"
                     ></span>
                 </oui-radio>
                 <oui-radio
@@ -114,7 +116,7 @@
                     data-disabled="$ctrl.isMigrating || ($ctrl.vpsUpgradeTask && !$ctrl.isInRescueMode)"
                 >
                     <span
-                        data-ng-bind=":: ($ctrl.stateVps.model.disk * 2) | cucBytes:0:false:'GB'"
+                        data-ng-bind=":: ($ctrl.stateVps.model.disk * 2) | bytes:0:false:'GB'"
                     ></span>
                 </oui-radio>
             </oui-radio-toggle-group>
@@ -129,7 +131,7 @@
             data-ng-if="!$ctrl.configurationTile.upgrades.storage.plan || $ctrl.isVpsStarter"
         >
             <span
-                data-ng-bind=":: $ctrl.stateVps.model.disk | cucBytes:0:false:'GB'"
+                data-ng-bind=":: $ctrl.stateVps.model.disk | bytes:0:false:'GB'"
             ></span>
             <p
                 class="p-0"
@@ -140,6 +142,7 @@
                     data-track-on="click"
                     data-track-name="vps::detail::dashboard::storage-upscale"
                     data-track-type="action"
+                    target="_top"
                 >
                     <span
                         data-translate="{{ $ctrl.isMaxEliteVcore ? 'vps_dashboard_tile_configuration_storage_add_upscale_elite' : 'vps_dashboard_tile_configuration_storage_add_upscale' }}"

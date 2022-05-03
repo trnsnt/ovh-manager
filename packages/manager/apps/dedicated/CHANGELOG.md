@@ -1,3 +1,200 @@
+## [17.16.5](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.16.4...@ovh-ux/manager-dedicated@17.16.5) (2022-04-26)
+
+
+### Bug Fixes
+
+* **ip:** add missing `associate-ip-bloc` module import ([#6960](https://github.com/ovh/manager/issues/6960)) ([6489896](https://github.com/ovh/manager/commit/64898967aeadb9cf05854548fad51ae793da48ad))
+
+
+
+## [17.16.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.16.3...@ovh-ux/manager-dedicated@17.16.4) (2022-04-21)
+
+
+### Bug Fixes
+
+* **dedicated:** hpc navbar highlight ([3214593](https://github.com/ovh/manager/commit/3214593716e4fa94705b244c1dc665480ecb6f57))
+* **hosted-private-cloud:** correct UX for order button ([9630671](https://github.com/ovh/manager/commit/9630671d85e93473bc332e08d7dcb19661f36cb9))
+* **vmware:** fix a cta is not in blue color ([#6890](https://github.com/ovh/manager/issues/6890)) ([1a45060](https://github.com/ovh/manager/commit/1a450601a810d0fe213f976816c0b8fb8ad47d5b))
+
+
+
+## [17.16.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.16.2...@ovh-ux/manager-dedicated@17.16.3) (2022-04-20)
+
+
+### Bug Fixes
+
+* **cdn:** display Order Backends modal ([#6828](https://github.com/ovh/manager/issues/6828)) ([5eca000](https://github.com/ovh/manager/commit/5eca000040b148a1cc197ad4186dd8e614902b08))
+* **dedicated.server:** block nb disks selection on os with no partition ([28fcbd7](https://github.com/ovh/manager/commit/28fcbd7a8f47ddce43fd79f2c513f5da6bd2b370)), closes [#6566](https://github.com/ovh/manager/issues/6566)
+* **dedicated/server:** fix installation error message ([ca55b1b](https://github.com/ovh/manager/commit/ca55b1b9872f9c1d9364a696a0ee4310658cc712))
+
+
+
+## [17.16.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.16.1...@ovh-ux/manager-dedicated@17.16.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* check country to display GST ([#6872](https://github.com/ovh/manager/issues/6872)) ([#6883](https://github.com/ovh/manager/issues/6883)) ([28fa8df](https://github.com/ovh/manager/commit/28fa8dfc8e0f7c857cea293a7ba07a308bc025b8))
+
+
+
+## [17.16.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.16.0...@ovh-ux/manager-dedicated@17.16.1) (2022-04-12)
+
+
+### Bug Fixes
+
+* add target _top to links ([2d375e6](https://github.com/ovh/manager/commit/2d375e6ac23773f6d4f9780aa3fa8df903692adc))
+
+
+
+# [17.16.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.15.4...@ovh-ux/manager-dedicated@17.16.0) (2022-04-07)
+
+
+### Features
+
+* **account.user.new-account-form:** add `GST` field for india ([#6760](https://github.com/ovh/manager/issues/6760)) ([5c81f59](https://github.com/ovh/manager/commit/5c81f59195ce0c973f86359edc6a328c96f3487b))
+
+
+
+## [17.15.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.15.3...@ovh-ux/manager-dedicated@17.15.4) (2022-04-06)
+
+
+### Bug Fixes
+
+* **account.contacts.edit:** add restriction to nic inputs ([96a1f4b](https://github.com/ovh/manager/commit/96a1f4b6927323f134c3968e0f8433835ee20781))
+* **dedicated-cloud.name-edition:** disallow HTML carets ([01f7bf4](https://github.com/ovh/manager/commit/01f7bf49115135566a5c0030971227b801b422b5))
+* **dedicated.server:** restrict display name edition ([2cb5816](https://github.com/ovh/manager/commit/2cb58164677910df2ccadf098a0c80da0de9545f))
+* **dedicated.server.seondary-dns:** prevent html chars to be set ([4910aba](https://github.com/ovh/manager/commit/4910abad9cc183813abbb184f1bc05889e2e0629))
+* **i18n:** add missing translations [CDS 1533] ([11d6c54](https://github.com/ovh/manager/commit/11d6c547e0baafcb51e8b970291caa645f26adad))
+
+
+
+## [17.15.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.15.2...@ovh-ux/manager-dedicated@17.15.3) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+* **server.details:** prevent overriding status ([#6744](https://github.com/ovh/manager/issues/6744)) ([c07b91f](https://github.com/ovh/manager/commit/c07b91fa5c670a680d1ccd874ae982c58fb6c905))
+
+
+
+## [17.15.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.15.1...@ovh-ux/manager-dedicated@17.15.2) (2022-03-23)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1531] ([cbf6abc](https://github.com/ovh/manager/commit/cbf6abc0d0594f8200986fc1f233c0379f83c2ef))
+* remove unused translations [CDS] ([e8edc25](https://github.com/ovh/manager/commit/e8edc2548971de95752b5f006be19df633265509))
+* **backup:** update guides links ([#6599](https://github.com/ovh/manager/issues/6599)) ([03a06fb](https://github.com/ovh/manager/commit/03a06fbd3bb28a98d2a722944c23644a7672e890))
+* **server.display-name:** display loader during state navigation ([#6668](https://github.com/ovh/manager/issues/6668)) ([487aeb3](https://github.com/ovh/manager/commit/487aeb34be5b7b4bb77208b5bc501987f09759e3))
+
+
+### Performance Improvements
+
+* remove calls to /incident/* ([#6564](https://github.com/ovh/manager/issues/6564)) ([e949a3d](https://github.com/ovh/manager/commit/e949a3d52bc7bd6b5a7260e8a7cbf4c33f3df2cf))
+
+
+
+## [17.15.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.15.0...@ovh-ux/manager-dedicated@17.15.1) (2022-03-21)
+
+
+### Bug Fixes
+
+* **dedicated-cloud:** retrieve servicename in kms deletion ([#6716](https://github.com/ovh/manager/issues/6716)) ([bbaabd4](https://github.com/ovh/manager/commit/bbaabd4b580a48f33e657d281b4f8892490c53b2))
+
+
+
+# [17.15.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.14.0...@ovh-ux/manager-dedicated@17.15.0) (2022-03-16)
+
+
+### Features
+
+* add eco range order ([#6401](https://github.com/ovh/manager/issues/6401)) ([a569802](https://github.com/ovh/manager/commit/a56980279358367aa4a0ffd759a6165b0ffc897d))
+
+
+
+# [17.14.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.13.0...@ovh-ux/manager-dedicated@17.14.0) (2022-03-15)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1506] ([14e17e0](https://github.com/ovh/manager/commit/14e17e0125ccb0598c7fc760cf1f6a92b8266739))
+* **i18n:** add missing translations [CDS 1517] ([5f099ae](https://github.com/ovh/manager/commit/5f099aef0afc1578bd17381fac723dcf3600f526))
+* **i18n:** add missing translations [CDS 1518] ([94b5343](https://github.com/ovh/manager/commit/94b53430567bbfd69d7a016df8fc4804215e65c0))
+
+
+### Features
+
+* nutanix service ui ([5d9d1fd](https://github.com/ovh/manager/commit/5d9d1fd5dd10dd614df4068c3cfc84d44791b739))
+* show warning message ([3241cf4](https://github.com/ovh/manager/commit/3241cf44407d2387290fb684ff306f4bf4f7eeb6))
+
+
+
+# [17.13.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.12.3...@ovh-ux/manager-dedicated@17.13.0) (2022-03-09)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 1489] ([#6611](https://github.com/ovh/manager/issues/6611)) ([433e5c6](https://github.com/ovh/manager/commit/433e5c60c4dceb7f818177d722f33a6f4869f955))
+* remove unused translations [CDS] ([97969a5](https://github.com/ovh/manager/commit/97969a565df95942e4761feaa0b0b73acc1aee61))
+
+
+### Features
+
+* **dedicated-cloud.user:** handle active directory users and groups ([#6421](https://github.com/ovh/manager/issues/6421)) ([47be670](https://github.com/ovh/manager/commit/47be670371389726b98602d422d29a704e7c5745))
+
+
+
+## [17.12.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.12.2...@ovh-ux/manager-dedicated@17.12.3) (2022-03-02)
+
+
+### Bug Fixes
+
+* **dedicated:** fix semver issue ([618a84f](https://github.com/ovh/manager/commit/618a84fdc17e4d84f29f1d35c1770d802f6d814e))
+
+
+
+## [17.12.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.12.1...@ovh-ux/manager-dedicated@17.12.2) (2022-02-23)
+
+
+### Bug Fixes
+
+* **server.consumption:** fix consumption increase modal opening ([af8871d](https://github.com/ovh/manager/commit/af8871d1d46f5ddaadfcbc5047e5abc38a8b9a4d)), closes [#6445](https://github.com/ovh/manager/issues/6445)
+
+
+
+## [17.12.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.12.0...@ovh-ux/manager-dedicated@17.12.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* **dedicated-cloud.user:** change status column name ([#6511](https://github.com/ovh/manager/issues/6511)) ([1a2dc1d](https://github.com/ovh/manager/commit/1a2dc1d90103948dcb4cd424e1a314699102781a)), closes [#6331](https://github.com/ovh/manager/issues/6331)
+* **dedicated-cloud.user:** nsx right not displayed in user list ([#6332](https://github.com/ovh/manager/issues/6332)) ([cc6974a](https://github.com/ovh/manager/commit/cc6974ac393780f57c47b236c78cad207c5cbdd3))
+* **i18n:** add missing translations [CDS 1456] ([e140f4e](https://github.com/ovh/manager/commit/e140f4e54263212f68edb7bb116c66111e624f93))
+* **server.consumption:** fix consumption increase modal opening ([#6445](https://github.com/ovh/manager/issues/6445)) ([cd6dd34](https://github.com/ovh/manager/commit/cd6dd348f09db8533f81161b7c15ac353649674e))
+* **server.details:** add new filesystems for ESXi ([#6507](https://github.com/ovh/manager/issues/6507)) ([211159c](https://github.com/ovh/manager/commit/211159c368bac1f0a54481b068161574f1a60004))
+
+
+
+# [17.12.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.11.1...@ovh-ux/manager-dedicated@17.12.0) (2022-02-15)
+
+
+### Features
+
+* **server:** enable rename feature for us region ([#6352](https://github.com/ovh/manager/issues/6352)) ([707dc2c](https://github.com/ovh/manager/commit/707dc2cfc2a5bf46b67406a1cda80906dd7d16ea))
+
+
+
+## [17.11.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.11.0...@ovh-ux/manager-dedicated@17.11.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* **server.installation:** prevent custom if partitioning not allowed ([#6059](https://github.com/ovh/manager/issues/6059)) ([40eb488](https://github.com/ovh/manager/commit/40eb488225aea1d8dfd1007c995e3bd84782a9e1)), closes [#5952](https://github.com/ovh/manager/issues/5952)
+
+
+
 # [17.11.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@17.10.1...@ovh-ux/manager-dedicated@17.11.0) (2022-01-28)
 
 

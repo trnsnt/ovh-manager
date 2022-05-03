@@ -1,3 +1,57 @@
+# [12.11.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-core@12.10.3...@ovh-ux/manager-core@12.11.0) (2022-04-12)
+
+
+### Features
+
+* **ovh-shell:** add new shell plugins ([5616f7b](https://github.com/ovh/manager/commit/5616f7bf829404510e86fa26cf2dd06facfc65a8))
+
+
+
+## [12.10.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-core@12.10.2...@ovh-ux/manager-core@12.10.3) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** upgrade `@ovh-ux/ui-kit` to `v5.3.3` ([#6745](https://github.com/ovh/manager/issues/6745)) ([38d1144](https://github.com/ovh/manager/commit/38d11445b3671755758d153a4f4a166c7946705c)), closes [ovh/ovh-ui-kit#777](https://github.com/ovh/ovh-ui-kit/issues/777)
+
+
+
+## [12.10.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-core@12.10.1...@ovh-ux/manager-core@12.10.2) (2022-03-04)
+
+
+### Bug Fixes
+
+* **dev-deps:** update `@ovh-ux/component-rollup-config` to `v12.0.` ([8145cd4](https://github.com/ovh/manager/commit/8145cd44a34cec071db4b5267182705625951077))
+
+
+
+## [12.10.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-core@12.10.0...@ovh-ux/manager-core@12.10.1) (2022-03-02)
+
+
+### Bug Fixes
+
+* **core:** use right ca express order url ([01af584](https://github.com/ovh/manager/commit/01af584c0ce1499ccaccb6ebad3edab2e707df08))
+
+
+
+# [12.10.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-core@12.9.0...@ovh-ux/manager-core@12.10.0) (2022-02-23)
+
+
+### Features
+
+* **hub:** use i18n shell plugin ([c6c5e52](https://github.com/ovh/manager/commit/c6c5e529442c33ca4612b9e150d599be79515c8a))
+
+
+
+# [12.9.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-core@12.8.0...@ovh-ux/manager-core@12.9.0) (2022-02-09)
+
+
+### Features
+
+* **core:** send sentry user information event ([4a12c5d](https://github.com/ovh/manager/commit/4a12c5de1ba336274010ee19a9051da22a0f6046))
+
+
+
 # [12.8.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-core@12.7.0...@ovh-ux/manager-core@12.8.0) (2021-12-14)
 
 
