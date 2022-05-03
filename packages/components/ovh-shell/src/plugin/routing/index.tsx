@@ -29,6 +29,7 @@ export function initRoutingConfiguration(
             publicURL: appConfig.publicURL,
           };
           routing.addConfiguration(routingConfig);
+          console.log('addConfiguration', routingConfig);
           if (appConfig.container.isDefault) {
             routing.setDefault(routingConfig);
           }
