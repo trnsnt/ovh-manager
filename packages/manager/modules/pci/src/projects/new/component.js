@@ -8,5 +8,7 @@ export default {
     projects: '<',
     isHdsAvailable: '<',
     isValidHdsSupportLevel: '<',
+    summary: '<',
+    getSummary: '<',
   },
 };
