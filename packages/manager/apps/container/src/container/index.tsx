@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import LegacyContainer from '@/container/legacy';
 import NavReshuffleContainer from '@/container/nav-reshuffle';
 import { useShell } from '@/context';
 import useContainer from '@/core/container';
 import { ProductNavReshuffleProvider } from '@/core/product-nav-reshuffle';
+import CookiePolicy from '@/cookie-policy/CookiePolicy';
+import SSOAuthModal from '@/sso-auth-modal/SSOAuthModal';
 
 export default function Container(): JSX.Element {
   const { isLoading, betaVersion, useBeta } = useContainer();
@@ -25,6 +27,12 @@ export default function Container(): JSX.Element {
       ) : (
         <LegacyContainer />
       )}
+      <Suspense fallback="">
+        <SSOAuthModal />
+      </Suspense>
+      <Suspense fallback="...">
+        <CookiePolicy shell={shell} />
+      </Suspense>
     </>
   );
 }
