@@ -34,6 +34,10 @@ function AssistanceSidebar(): JSX.Element {
     });
   };
 
+  const trackNode = (id) => {
+    trackingPlugin.trackClick({ name: `navbar_v2_${id}`, type: 'navigation' });
+  };
+
   return (
     <ul>
       <li>
@@ -47,6 +51,7 @@ function AssistanceSidebar(): JSX.Element {
             count: false,
             isExternal: true,
           }}
+          onClick={() => trackNode('assistance_help_center')}
         />
         <SidebarLink
           node={{
@@ -57,6 +62,7 @@ function AssistanceSidebar(): JSX.Element {
             },
             count: false,
           }}
+          onClick={() => trackNode('assistance_tickets')}
         />
         <SidebarLink
           node={{
@@ -65,6 +71,7 @@ function AssistanceSidebar(): JSX.Element {
             count: false,
             isExternal: true,
           }}
+          onClick={() => trackNode('assistance_status')}
         />
         {hasAdvancedSupport && (
           <SidebarLink
@@ -76,12 +83,16 @@ function AssistanceSidebar(): JSX.Element {
               },
               count: false,
             }}
+            onClick={() => trackNode('assistance_support_level')}
           />
         )}
         {hasAdvancedSupport && (
           <SidebarLink
             node={{ translation: 'sidebar_assistance_live_chat', count: false }}
-            onClick={() => shell.getPlugin('ux').openChatbot()}
+            onClick={() => {
+              shell.getPlugin('ux').openChatbot();
+              trackNode('assistance_live_chat');
+            }}
           />
         )}
         <SidebarLink

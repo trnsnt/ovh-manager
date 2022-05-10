@@ -14,6 +14,7 @@ import { countServices, findPathToNode } from './utils';
 function Sidebar(): JSX.Element {
   const { t } = useTranslation('sidebar');
   const shell = useShell();
+  const trackingPlugin = shell.getPlugin('tracking');
   const navigationPlugin = shell.getPlugin('navigation');
   const routingPlugin = shell.getPlugin('routing');
   const environment = shell.getPlugin('environment').getEnvironment();
@@ -31,10 +32,23 @@ function Sidebar(): JSX.Element {
   const [initialNavigationPath, setInitialNavigationPath] = useState([]);
 
   const clickHandler = (node) => {
+    let trackingIdComplement = `navbar_v2_entry_${
+      node.children ? 'services' : node.id
+    }::`;
+
+    navigationHistory.forEach((entry) => {
+      trackingIdComplement += `${entry.id.replace('-', '_')}::`;
+    });
+
     if (node.children) {
       setNavigationHistory([...navigationHistory, currentNavigationNode]);
       setCurrentNavigationNode(node);
     }
+
+    trackingPlugin.trackClick({
+      name: trackingIdComplement.replace(/[:][:]$/g, ''),
+      type: 'navigation',
+    });
   };
 
   const goBackHandler = () => {
@@ -248,7 +262,12 @@ function Sidebar(): JSX.Element {
         {menuItems}
       </ul>
       <div className={style.sidebar_action}>
-        <a href={navigationPlugin.getURL('hub', '#/catalog')}>
+        <a
+          onClick={() =>
+            trackingPlugin.trackClick('navbar_v2_cta_add_a_service')
+          }
+          href={navigationPlugin.getURL('hub', '#/catalog')}
+        >
           <span
             className={`oui-icon oui-icon-plus ${style.sidebar_action_icon}`}
             aria-hidden="true"
