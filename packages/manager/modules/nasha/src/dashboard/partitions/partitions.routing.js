@@ -19,17 +19,17 @@ export default /* @ngInject */ ($stateProvider) => {
   }, {});
 
   const goToTabPartitionsResolve = [
-    { id: 'create', name: 'Create' },
-    { id: 'delete', name: 'Delete' },
-    { id: 'edit-size', name: 'EditSize' },
-    { id: 'zfs-options', name: 'ZfsOptions' },
+    { id: 'create', name: 'Create', abstract: false },
+    { id: 'delete', name: 'Delete', abstract: true },
+    { id: 'edit-size', name: 'EditSize', abstract: true },
+    { id: 'zfs-options', name: 'ZfsOptions', abstract: true },
   ].reduce(
-    (resolves, { id, name }) => ({
+    (resolves, { id, name, abstract }) => ({
       ...resolves,
       [`goToTabPartitions${name}`]: /* @ngInject */ ($state, serviceName) => (
         partition,
       ) =>
-        $state.go(`${STATE_NAME}.${id}`, {
+        $state.go(`${STATE_NAME}${abstract ? '.partition' : ''}.${id}`, {
           serviceName,
           partition,
           partitionName: partition?.partitionName,
@@ -50,6 +50,24 @@ export default /* @ngInject */ ($stateProvider) => {
         }),
       ...goToPagePartitionResolve,
       ...goToTabPartitionsResolve,
+    },
+  });
+
+  $stateProvider.state(`${STATE_NAME}.partition`, {
+    abstract: true,
+    url: '/:partitionName',
+    params: {
+      partition: null,
+    },
+    resolve: {
+      breadcrumb: () => null,
+      partition: /* @ngInject */ ($transition$, $http, partitionApiUrl) =>
+        $transition$.params().partition ||
+        $http.get(partitionApiUrl).then(({ data }) => data),
+      partitionApiUrl: /* @ngInject */ (nashaApiUrl, partitionName) =>
+        `${nashaApiUrl}/partition/${partitionName}`,
+      partitionName: /* @ngInject */ ($transition$) =>
+        $transition$.params().partitionName,
     },
   });
 };

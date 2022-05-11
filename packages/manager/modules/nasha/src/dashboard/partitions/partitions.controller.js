@@ -52,7 +52,7 @@ export default class NashaDashboardPartitionsController {
   }
 
   loadPartitions() {
-    const { serviceName } = this;
+    const { nashaApiUrl, serviceName } = this;
     const aapi = this.OvhApiDedicatedNasha.Aapi();
 
     aapi.resetCache();
@@ -62,7 +62,7 @@ export default class NashaDashboardPartitionsController {
         partitions: aapi
           .partitions({ serviceName })
           .$promise.then((partitions) => partitions.map(this.preparePartition)),
-        tasks: this.iceberg(`/dedicated/nasha/${serviceName}/task`)
+        tasks: this.iceberg(`${nashaApiUrl}/task`)
           .query()
           .expand('CachedObjectList-Pages')
           .addFilter('status', 'in', Object.values(this.NashaTask.status))
@@ -83,7 +83,7 @@ export default class NashaDashboardPartitionsController {
       this.NashaTask.operation.ZfsOptions,
     ];
     tasks
-      .filter(({ operation }) => operation === this.NashaTask.operation.Add)
+      .filter(({ operation }) => operation === this.NashaTask.operation.Create)
       .forEach(({ partitionName }) => {
         partitions.push({ partitionName, inCreation: true });
       });
@@ -101,12 +101,12 @@ export default class NashaDashboardPartitionsController {
   }
 
   startPolls(partitions) {
-    const { NashaTask, Poller, reload, serviceName } = this;
+    const { NashaTask, nashaApiUrl, Poller, reload } = this;
     const statuses = Object.values(NashaTask.status);
 
     partitions.forEach((partition) => {
       partition.tasks.forEach(({ taskId }) => {
-        Poller.poll(`/dedicated/nasha/${serviceName}/task/${taskId}`, null, {
+        Poller.poll(`${nashaApiUrl}/task/${taskId}`, null, {
           namespace: STATE_NAME,
           successRule: ({ status }) => !statuses.includes(status),
         }).then(reload);

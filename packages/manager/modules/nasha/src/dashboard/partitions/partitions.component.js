@@ -14,6 +14,7 @@ export default {
     goToTabPartitionsZfsOptions: '<',
     localizeOperation: '<',
     nasha: '<',
+    nashaApiUrl: '<',
     preparePartition: '<',
     reload: '<',
     serviceInfo: '<',

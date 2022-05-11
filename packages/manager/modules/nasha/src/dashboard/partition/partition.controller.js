@@ -10,11 +10,11 @@ export default class NashaDashboardPartitionController extends NashaDashboardCon
   }
 
   $onInit() {
-    const { NashaTask, Poller, reload, serviceName, tasks } = this;
+    const { NashaTask, nashaApiUrl, Poller, reload, tasks } = this;
     const statuses = Object.values(NashaTask.status);
 
     tasks.forEach(({ taskId }) =>
-      Poller.poll(`/dedicated/nasha/${serviceName}/task/${taskId}`, null, {
+      Poller.poll(`${nashaApiUrl}/task/${taskId}`, null, {
         namespace: STATE_NAME,
         successRule: ({ status }) => !statuses.includes(status),
       }).then(reload),
